@@ -1,29 +1,36 @@
 {
     "name": "bpump-web",
-    "private": true,
     "version": "1.0.0",
-    "type": "module",
+    "private": true,
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview"
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
     },
     "dependencies": {
-        "axios": "^1.6.7",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-responsive-carousel": "^3.2.23",
-        "react-router-dom": "^6.21.3"
+        "@radix-ui/react-accordion": "^1.1.2",
+        "@radix-ui/react-dropdown-menu": "^2.0.6",
+        "@radix-ui/react-slot": "^1.0.2",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.0",
+        "lucide-react": "^0.334.0",
+        "next": "14.1.0",
+        "next-themes": "^0.2.1",
+        "react": "^18",
+        "react-dom": "^18",
+        "tailwind-merge": "^2.2.1",
+        "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {
-        "@types/react": "^18.2.43",
-        "@types/react-dom": "^18.2.17",
-        "@vitejs/plugin-react": "^4.2.1",
-        "eslint": "^8.55.0",
-        "eslint-plugin-react": "^7.33.2",
-        "eslint-plugin-react-hooks": "^4.6.0",
-        "eslint-plugin-react-refresh": "^0.4.5",
-        "vite": "^5.0.8"
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "autoprefixer": "^10.0.1",
+        "eslint": "^8",
+        "eslint-config-next": "14.1.0",
+        "postcss": "^8",
+        "tailwindcss": "^3.3.0",
+        "typescript": "^5"
     }
 }
