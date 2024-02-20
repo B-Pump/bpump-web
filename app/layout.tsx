@@ -2,24 +2,33 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { Header } from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
+import { fontSans } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
     title: "Projet B-Pump",
     description: "Website of B-Pump project",
+    icons: {
+        icon: "/favicon.ico",
+    },
 };
 
-export default function RootLayout({
-    children,
-}: Readonly<{
+interface RootLayoutProps {
     children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <html lang="fr">
+        <html lang="fr" suppressHydrationWarning>
             <head />
-            <body>
+            <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                    {children}
+                    <div className="relative flex min-h-screen flex-col">
+                        <Header />
+                        <div className="flex-1">{children}</div>
+                    </div>
                 </ThemeProvider>
             </body>
         </html>

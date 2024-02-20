@@ -1,3 +1,5 @@
+"use client";
+
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -9,7 +11,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export const ThemeToggle = () => {
+export function ThemeToggle() {
     const { setTheme } = useTheme();
 
     return (
@@ -28,4 +30,4 @@ export const ThemeToggle = () => {
             </DropdownMenuContent>
         </DropdownMenu>
     );
-};
+}
