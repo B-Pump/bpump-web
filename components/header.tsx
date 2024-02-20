@@ -10,7 +10,11 @@ interface MainNavProps {
 }
 
 export const Header = () => {
-    const items = [{ title: "Accueil", href: "/" }];
+    const items = [
+        { title: "Accueil", href: "/" },
+        { title: "Boutique", href: "boutique" },
+        { title: "À propos", href: "about" },
+    ];
 
     return (
         <header className="bg-background sticky top-0 z-40 w-full border-b">
