@@ -1,9 +1,7 @@
-"use client";
-
-export default function Boutique() {
+export default function Contact() {
     return (
         <section className="grid items-center gap-6">
-            <p>Boutique</p>
+            <p>Contact</p>
         </section>
     );
 }

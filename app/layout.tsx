@@ -37,9 +37,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     <div className="relative flex min-h-screen flex-col">
                         <Header />
-                        <main className="flex-1 container">
+                        <main className="flex-1 container md:py-10 pb-8 pt-6">
                             {children}
-                            <Toaster />
+                            <Toaster position="bottom-center" />
                         </main>
                         <Footer />
                     </div>
