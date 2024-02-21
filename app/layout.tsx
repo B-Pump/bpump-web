@@ -2,19 +2,22 @@ import "@/styles/globals.css";
 
 import type { Metadata } from "next";
 
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
+import config from "../config/config.json";
+
 export const metadata: Metadata = {
     title: {
-        default: "Projet B-Pump",
-        template: "%s | Projet B-Pump",
+        default: config.sugar.title,
+        template: `%s | ${config.sugar.title}`,
     },
-    description: "Website of B-Pump project",
-    keywords: ["Sport", "Robot"],
+    description: config.sugar.description,
+    keywords: config.sugar.keywords,
     authors: [{ name: "wiizz", url: "https://githhub.com/wiizzl" }],
     creator: "wiizz",
     icons: {
@@ -34,8 +37,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     <div className="relative flex min-h-screen flex-col">
                         <Header />
-                        <main className="flex-1">{children}</main>
-                        <Toaster />
+                        <main className="flex-1 container">
+                            {children}
+                            <Toaster />
+                        </main>
+                        <Footer />
                     </div>
                 </ThemeProvider>
             </body>

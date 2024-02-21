@@ -5,18 +5,9 @@ import { DialogCommand } from "./dialog-command";
 import { ThemeToggle } from "./theme-toggle";
 import { buttonVariants } from "./ui/button";
 
-interface NavItem {
-    title: string;
-    href: string;
-}
+import config from "../config/config.json";
 
 export const Header = () => {
-    const items: NavItem[] = [
-        { title: "Accueil", href: "/" },
-        { title: "Boutique", href: "boutique" },
-        { title: "À propos", href: "about" },
-    ];
-
     return (
         <header className="bg-background sticky top-0 z-40 w-full border-b">
             <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
@@ -25,22 +16,17 @@ export const Header = () => {
                         <Medal className="size-6" />
                         <span className="inline-block font-bold">Projet B-Pump</span>
                     </Link>
-                    {items?.length ? (
-                        <nav className="flex gap-6">
-                            {items.map(
-                                (item, index) =>
-                                    item.href && (
-                                        <Link
-                                            key={index}
-                                            href={item.href}
-                                            className="flex items-center text-sm font-medium text-muted-foreground"
-                                        >
-                                            {item.title}
-                                        </Link>
-                                    ),
-                            )}
-                        </nav>
-                    ) : null}
+                    <nav className="flex gap-6">
+                        {config.link.map((item, index) => (
+                            <Link
+                                key={index}
+                                href={item.href}
+                                className="flex items-center text-sm font-medium text-muted-foreground"
+                            >
+                                {item.title}
+                            </Link>
+                        ))}
+                    </nav>
                 </div>
                 <div className="flex flex-1 items-center justify-end space-x-4">
                     <nav className="flex items-center space-x-1">

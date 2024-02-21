@@ -1,0 +1,12 @@
+{
+    "sugar": {
+        "title": "Projet B-Pump",
+        "description": "config.sugar.",
+        "keywords": ["Sport", "Robot"]
+    },
+    "link": [
+        { "title": "Accueil", "href": "/" },
+        { "title": "Boutique", "href": "boutique" },
+        { "title": "À propos", "href": "about" }
+    ]
+}
