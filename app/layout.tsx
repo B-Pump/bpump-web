@@ -39,7 +39,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                         <Header />
                         <main className="flex-1 container md:py-10 pb-8 pt-6">
                             {children}
-                            <Toaster position="bottom-center" />
+                            <Toaster position="bottom-center" className="select-none" />
                         </main>
                         <Footer />
                     </div>

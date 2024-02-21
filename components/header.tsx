@@ -1,20 +1,25 @@
-import { Github, Instagram, Medal } from "lucide-react";
+import { Medal, User } from "lucide-react";
 import Link from "next/link";
 
 import { DialogCommand } from "./dialog-command";
 import { ThemeToggle } from "./theme-toggle";
+
+import { Drawer } from "./Drawer";
 import { buttonVariants } from "./ui/button";
 
 import config from "../config/config.json";
 
 export const Header = () => {
     return (
-        <header className="bg-background sticky top-0 z-40 w-full border-b">
+        <header className="select-none bg-background sticky top-0 z-40 w-full border-b">
             <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-                <div className="flex gap-6 md:gap-10">
+                <div className="lg:hidden">
+                    <Drawer />
+                </div>
+                <div className="hidden lg:flex gap-6 lg:gap-10">
                     <Link href="/" className="flex items-center space-x-2">
                         <Medal className="size-6" />
-                        <span className="inline-block font-bold">Projet B-Pump</span>
+                        <span className="inline-block font-bold">{config.sugar.title}</span>
                     </Link>
                     <nav className="flex gap-6">
                         {config.link.map((item, index) => (
@@ -31,26 +36,15 @@ export const Header = () => {
                 <div className="flex flex-1 items-center justify-end space-x-4">
                     <nav className="flex items-center space-x-1">
                         <DialogCommand />
-                        <Link href="https://www.instagram.com/b.pump76/" target="_blank" rel="noreferrer">
+                        <Link href="account">
                             <div
                                 className={buttonVariants({
                                     size: "icon",
                                     variant: "outline",
                                 })}
                             >
-                                <Instagram className="size-5" />
-                                <span className="sr-only">Instagram</span>
-                            </div>
-                        </Link>
-                        <Link href="https://github.com/B-Pump" target="_blank" rel="noreferrer">
-                            <div
-                                className={buttonVariants({
-                                    size: "icon",
-                                    variant: "outline",
-                                })}
-                            >
-                                <Github className="size-5" />
-                                <span className="sr-only">GitHub</span>
+                                <User className="size-5" />
+                                <span className="sr-only">Account</span>
                             </div>
                         </Link>
                         <ThemeToggle />
