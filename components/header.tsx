@@ -1,16 +1,17 @@
+import { Github, Instagram, Medal } from "lucide-react";
 import Link from "next/link";
 
-import { NavItem } from "@/types/nav";
-import { Icons } from "./icons";
+import { DialogCommand } from "./dialog-command";
 import { ThemeToggle } from "./theme-toggle";
 import { buttonVariants } from "./ui/button";
 
-interface MainNavProps {
-    items?: NavItem[];
+interface NavItem {
+    title: string;
+    href: string;
 }
 
 export const Header = () => {
-    const items = [
+    const items: NavItem[] = [
         { title: "Accueil", href: "/" },
         { title: "Boutique", href: "boutique" },
         { title: "À propos", href: "about" },
@@ -21,7 +22,7 @@ export const Header = () => {
             <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
                 <div className="flex gap-6 md:gap-10">
                     <Link href="/" className="flex items-center space-x-2">
-                        <Icons.bpump className="size-6" />
+                        <Medal className="size-6" />
                         <span className="inline-block font-bold">Projet B-Pump</span>
                     </Link>
                     {items?.length ? (
@@ -43,6 +44,7 @@ export const Header = () => {
                 </div>
                 <div className="flex flex-1 items-center justify-end space-x-4">
                     <nav className="flex items-center space-x-1">
+                        <DialogCommand />
                         <Link href="https://www.instagram.com/b.pump76/" target="_blank" rel="noreferrer">
                             <div
                                 className={buttonVariants({
@@ -50,7 +52,7 @@ export const Header = () => {
                                     variant: "outline",
                                 })}
                             >
-                                <Icons.instagram className="size-5" />
+                                <Instagram className="size-5" />
                                 <span className="sr-only">Instagram</span>
                             </div>
                         </Link>
@@ -61,7 +63,7 @@ export const Header = () => {
                                     variant: "outline",
                                 })}
                             >
-                                <Icons.github className="size-5" />
+                                <Github className="size-5" />
                                 <span className="sr-only">GitHub</span>
                             </div>
                         </Link>

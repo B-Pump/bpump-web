@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { toast } from "sonner";
 
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
     return (
@@ -17,22 +17,19 @@ export default function Home() {
                 </p>
             </div>
             <div className="flex gap-4">
-                <Link
-                    href={"https://www.instagram.com/b.pump76/"}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={buttonVariants()}
+                <Button
+                    onClick={() =>
+                        toast("Voici une notification", {
+                            description: "Je suis une notification",
+                            action: {
+                                label: "Bilal",
+                                onClick: () => console.log("Bilaaaaal"),
+                            },
+                        })
+                    }
                 >
-                    Instagram
-                </Link>
-                <Link
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://github.com/B-Pump"
-                    className={buttonVariants({ variant: "outline" })}
-                >
-                    GitHub
-                </Link>
+                    Notif
+                </Button>
             </div>
         </section>
     );

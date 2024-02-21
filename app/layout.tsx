@@ -1,15 +1,22 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 
 import type { Metadata } from "next";
 
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-    title: "Projet B-Pump",
+    title: {
+        default: "Projet B-Pump",
+        template: "%s | Projet B-Pump",
+    },
     description: "Website of B-Pump project",
+    keywords: ["Sport", "Robot"],
+    authors: [{ name: "wiizz", url: "https://githhub.com/wiizzl" }],
+    creator: "wiizz",
     icons: {
         icon: "/favicon.ico",
     },
@@ -27,7 +34,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     <div className="relative flex min-h-screen flex-col">
                         <Header />
-                        <div className="flex-1">{children}</div>
+                        <main className="flex-1">{children}</main>
+                        <Toaster />
                     </div>
                 </ThemeProvider>
             </body>
