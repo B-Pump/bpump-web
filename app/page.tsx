@@ -12,8 +12,8 @@ export default function Home() {
                     Procurrez vous un robot B-Pump
                 </h1>
                 <p className="max-w-[700px] text-lg text-muted-foreground">
-                    💪 La perfection dans chaque mouvements.✨ Améliorez la justesse de vos postures grâce à B-Pump,
-                    votre coach sportif 100% Robotique !🤖🌟
+                    La perfection dans chaque mouvements. Améliorez la justesse de vos postures grâce à B-Pump, votre
+                    coach sportif 100% Robotique !
                 </p>
             </div>
             <div className="flex gap-4">
