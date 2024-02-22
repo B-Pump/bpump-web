@@ -4,7 +4,7 @@ import Link from "next/link";
 import { DialogCommand } from "./dialog-command";
 import { ThemeToggle } from "./theme-toggle";
 
-import { Drawer } from "./Drawer";
+import { Drawer } from "./drawer";
 import { buttonVariants } from "./ui/button";
 
 import config from "../config/config.json";
