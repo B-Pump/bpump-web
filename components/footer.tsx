@@ -8,7 +8,7 @@ import config from "../config/config.json";
 export const Footer = () => {
     return (
         <footer className="select-none bg-card">
-            <div className="p-20">
+            <div className="p-8">
                 <div className="w-full flex justify-between">
                     <div className="flex flex-col gap-4">
                         <div className="space-y-1">
