@@ -7,7 +7,7 @@ interface SiteLayoutProps {
 
 export default function SiteLayout({ children }: SiteLayoutProps) {
     return (
-        <div className="relative flex min-h-screen flex-col">
+        <div className="relative flex flex-col">
             <Header />
             <main className="flex-1 md:py-10 pb-8 pt-6">{children}</main>
             <Footer />

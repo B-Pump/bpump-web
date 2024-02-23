@@ -1,6 +1,8 @@
 "use client";
 
-import { Calculator, Calendar, CreditCard, Settings, Smile, User } from "lucide-react";
+import { Circle, Computer, Moon, SunMedium } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import {
@@ -11,11 +13,15 @@ import {
     CommandItem,
     CommandList,
     CommandSeparator,
-    CommandShortcut,
 } from "@/components/ui/command";
+
 import { Button } from "./ui/button";
 
+import config from "../config/config.json";
+
 export function DialogCommand() {
+    const router = useRouter();
+    const { setTheme } = useTheme();
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -49,36 +55,48 @@ export function DialogCommand() {
                 <CommandInput placeholder="Entrez une commande ou faites une recherche..." />
                 <CommandList>
                     <CommandEmpty>Aucun résultat trouvé</CommandEmpty>
-                    <CommandGroup heading="Suggestions">
-                        <CommandItem>
-                            <Calendar className="mr-2 h-4 w-4" />
-                            <span>Calendar</span>
-                        </CommandItem>
-                        <CommandItem>
-                            <Smile className="mr-2 h-4 w-4" />
-                            <span>Search Emoji</span>
-                        </CommandItem>
-                        <CommandItem>
-                            <Calculator className="mr-2 h-4 w-4" />
-                            <span>Calculator</span>
-                        </CommandItem>
+                    <CommandGroup heading="Catégories">
+                        {config?.link.map((item, index) => (
+                            <CommandItem
+                                key={index}
+                                onSelect={() => {
+                                    router.push(item.href);
+                                    setOpen(false);
+                                }}
+                            >
+                                <Circle className="mr-2 h-4 w-4" />
+                                <span>{item.title}</span>
+                            </CommandItem>
+                        ))}
                     </CommandGroup>
                     <CommandSeparator />
-                    <CommandGroup heading="Settings">
-                        <CommandItem>
-                            <User className="mr-2 h-4 w-4" />
-                            <span>Profile</span>
-                            <CommandShortcut>⌘P</CommandShortcut>
+                    <CommandGroup heading="Thème">
+                        <CommandItem
+                            onSelect={() => {
+                                setTheme("system");
+                                setOpen(false);
+                            }}
+                        >
+                            <Computer className="mr-2 h-4 w-4" />
+                            <span>Système</span>
                         </CommandItem>
-                        <CommandItem>
-                            <CreditCard className="mr-2 h-4 w-4" />
-                            <span>Billing</span>
-                            <CommandShortcut>⌘B</CommandShortcut>
+                        <CommandItem
+                            onSelect={() => {
+                                setTheme("light");
+                                setOpen(false);
+                            }}
+                        >
+                            <SunMedium className="mr-2 h-4 w-4" />
+                            <span>Clair</span>
                         </CommandItem>
-                        <CommandItem>
-                            <Settings className="mr-2 h-4 w-4" />
-                            <span>Settings</span>
-                            <CommandShortcut>⌘S</CommandShortcut>
+                        <CommandItem
+                            onSelect={() => {
+                                setTheme("dark");
+                                setOpen(false);
+                            }}
+                        >
+                            <Moon className="mr-2 h-4 w-4" />
+                            <span>Sombre</span>
                         </CommandItem>
                     </CommandGroup>
                 </CommandList>

@@ -3,7 +3,7 @@
 import { HeroParallax } from "@/components/ui/hero-parallax";
 
 export default function Home() {
-    const items = [
+    const products = [
         {
             title: "Moonbeam",
             link: "https://gomoonbeam.com",
@@ -84,5 +84,5 @@ export default function Home() {
         },
     ];
 
-    return <HeroParallax products={items} />;
+    return <HeroParallax products={products} />;
 }
