@@ -6,8 +6,8 @@
     },
     "link": [
         { "title": "Accueil", "href": "/" },
-        { "title": "Boutique", "href": "boutique" },
         { "title": "À propos", "href": "about" },
+        { "title": "Boutique", "href": "boutique" },
         { "title": "Contact", "href": "contact" }
     ]
 }
