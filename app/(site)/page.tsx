@@ -1,88 +1,94 @@
 "use client";
 
-import { HeroParallax } from "@/components/ui/hero-parallax";
+import { HeroGeminiEffect } from "@/components/gemini";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { InfiniteMovingCards } from "@/components/ui/moving-cards";
 
 export default function Home() {
-    const products = [
+    const projects = [
         {
-            title: "Moonbeam",
-            link: "https://gomoonbeam.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
+            title: "Intelligence artificielle",
+            description:
+                "Nous utilisons la dernière technologie IA de google afin de détecter le positionnement de votre corps et mieux vous acompagner lors de vos exercices.",
+            link: "https://developers.google.com/mediapipe",
         },
         {
-            title: "Cursor",
-            link: "https://cursor.so",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/cursor.png",
+            title: "Bibliothèque d'API",
+            description:
+                "Maximisez l'efficacité de votre expérience avec notre API backend rapide et performante. Notre choix s'est porté sur le framework FastAPI, pour sa rapidité et sa simplicité d'utilisation. ",
+            link: "https://fastapi.tiangolo.com/",
         },
         {
-            title: "Rogue",
-            link: "https://userogue.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+            title: "Expérience utilisateur",
+            description:
+                "Nous avons intégré l'écosystème React de manière innovante pour développer notre site web et notre application. Cette approche nous permet d'offrir une expérience utilisateur fluide et optimale",
+            link: "https://react.dev/",
         },
-
+    ];
+    const testimonials = [
         {
-            title: "Editorially",
-            link: "https://editorially.org",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/editorially.png",
-        },
-        {
-            title: "Editrix AI",
-            link: "https://editrix.ai",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/editrix.png",
+            title: "Étudiante",
+            quote: "Ce projet a révolutionné ma routine d'entraînement. C'est comme avoir un coach personnel 24/7. J'adore la manière dont il ajuste les exercices en fonction de mes progrès. Une vraie percée technologique!",
+            name: "Sophie, 20 ans",
         },
         {
-            title: "Pixel Perfect",
-            link: "https://app.pixelperfect.quest",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
-        },
-
-        {
-            title: "Algochurn",
-            link: "https://algochurn.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
+            title: "Lycéen passionné de sport",
+            quote: "Ce robot sportif autonome m'a impressionné par sa précision et sa capacité à simuler des situations réelles. C'est comme avoir un partenaire d'entraînement qui ne fatigue jamais. Parfait pour rester en forme!",
+            name: "Alexandre, 17 ans",
         },
         {
-            title: "Aceternity UI",
-            link: "https://ui.aceternity.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+            title: "Amatrice de technologie",
+            quote: "Je suis bluffé par la performance de B-Pump. Il offre une variété d'activités, s'adapte à mon niveau de condition physique et motive constamment. Un investissement qui vaut vraiment la peine!",
+            name: "Marie, 22 ans",
         },
         {
-            title: "Tailwind Master Kit",
-            link: "https://tailwindmasterkit.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+            title: "Technophile",
+            quote: "Ce robot de sport a ajouté une dimension ludique à mon programme d'exercices. Ses fonctionnalités intelligentes et son interface conviviale en font un compagnon idéal pour rester actif et motivé.",
+            name: "Antoine, 16 ans",
         },
         {
-            title: "SmartBridge",
-            link: "https://smartbridgetech.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
-        },
-        {
-            title: "Renderwork Studio",
-            link: "https://renderwork.studio",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
-        },
-
-        {
-            title: "Creme Digital",
-            link: "https://cremedigital.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
-        },
-        {
-            title: "Golden Bells Academy",
-            link: "https://goldenbellsacademy.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
-        },
-        {
-            title: "Invoker Labs",
-            link: "https://invoker.lol",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/invoker.png",
-        },
-        {
-            title: "E Free Invoice",
-            link: "https://efreeinvoice.com",
-            thumbnail: "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+            title: "Sportive",
+            quote: "En tant qu'adepte de la technologie, B-Pump a comblé toutes mes attentes. Il offre une expérience d'entraînement sans pareil, et ses capteurs intelligents font de chaque session un défi stimulant.",
+            name: "Camille, 18 ans",
         },
     ];
 
-    return <HeroParallax products={products} />;
+    return (
+        <section className="grid items-center gap-6">
+            <HeroGeminiEffect />
+            <div id="startPage" className="container">
+                <div className="max-w-5xl mx-auto px-8">
+                    <HoverEffect items={projects} />
+                </div>
+                <div className="py-20">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et deserunt assumenda, repellat
+                        corrupti distinctio atque officia minus officiis, aliquid odit nihil. Esse quia magnam dolorum
+                        voluptates cupiditate illo, blanditiis iste fuga iure autem quasi fugiat? Non laudantium animi
+                        at tempore! Sit unde deleniti dicta aspernatur sunt, minus facere odit iste necessitatibus
+                        dignissimos eius aut aperiam tempore impedit expedita incidunt totam possimus quod. Esse aliquam
+                        voluptates totam. Beatae voluptatum voluptate dolore tempora. Eveniet consequuntur voluptates
+                        dignissimos pariatur optio sequi temporibus nemo fuga ipsum maiores repudiandae commodi,
+                        adipisci eum alias aspernatur fugit labore enim reiciendis rerum. Autem pariatur, laudantium
+                        eveniet, dolorum est iusto sunt rem beatae ipsa ex ea! Unde odit animi sed, voluptate cumque,
+                        assumenda ratione vel corrupti, dolorem dolores repudiandae voluptatum nostrum harum
+                        exercitationem ducimus eius facere vitae odio autem sequi commodi. Delectus, aperiam nemo dolor
+                        voluptas dolorem beatae corrupti tenetur explicabo quaerat suscipit labore rem magni nisi
+                        aliquam! Incidunt iusto totam pariatur saepe. Et ut magni fuga consequatur commodi nostrum,
+                        quasi fugiat aliquid accusantium officiis, suscipit eaque expedita maxime! Voluptate,
+                        praesentium neque ut officiis earum consequuntur id sunt magnam dolorum numquam eos fugit
+                        excepturi iste fuga magni! Voluptate odio quas sint quisquam voluptatibus! Aperiam dignissimos
+                        atque dolores. Ut aspernatur expedita aut libero reprehenderit laudantium accusantium! Eos ad
+                        odit quaerat, nostrum debitis amet nam, dolores sunt laudantium voluptatum, reiciendis laborum
+                        perspiciatis voluptatibus officia natus labore repellendus tempora est! Debitis, ipsa id. Dolore
+                        cumque nesciunt laboriosam tempore, debitis eius fuga laudantium! Pariatur, eveniet iste.
+                        Mollitia explicabo minima veniam doloremque perferendis magni!
+                    </p>
+                </div>
+            </div>
+            <div className="rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
+                <InfiniteMovingCards items={testimonials} />
+            </div>
+        </section>
+    );
 }
