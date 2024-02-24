@@ -3,7 +3,7 @@
 import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-import { GoogleGeminiEffect } from "./ui/google-gemini-effect";
+import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect";
 
 export function HeroGeminiEffect() {
     const ref = useRef(null);

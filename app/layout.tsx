@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
-import config from "../config/config.json";
+import config from "@/config/config.json";
 
 export const metadata: Metadata = {
     title: {

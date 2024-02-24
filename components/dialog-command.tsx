@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import {
     CommandDialog,
     CommandEmpty,
@@ -15,9 +16,7 @@ import {
     CommandSeparator,
 } from "@/components/ui/command";
 
-import { Button } from "./ui/button";
-
-import config from "../config/config.json";
+import config from "@/config/config.json";
 
 export function DialogCommand() {
     const router = useRouter();

@@ -3,7 +3,7 @@
 import { motion, MotionValue } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-import { TextGenerateEffect } from "./text-generation";
+import { TextGenerateEffect } from "@/components/ui/text-generation";
 
 import { cn } from "@/lib/utils";
 

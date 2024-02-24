@@ -26,10 +26,10 @@ export const Tooltip = ({
 
     return (
         <>
-            {items.map((item, idx) => (
+            {items.map((item, index) => (
                 <div
+                    key={index}
                     className="-mr-4 relative group"
-                    key={item.name}
                     onMouseEnter={() => setHoveredIndex(item.id)}
                     onMouseLeave={() => setHoveredIndex(null)}
                 >

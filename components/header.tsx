@@ -1,14 +1,14 @@
 import { Medal, User } from "lucide-react";
 import Link from "next/link";
 
-import { DialogCommand } from "./dialog-command";
-import { ThemeToggle } from "./theme-toggle";
+import { DialogCommand } from "@/components/dialog-command";
+import { ThemeToggle } from "@/components/theme-toggle";
 
-import { Drawer } from "./drawer";
-import { Menu } from "./menu";
-import { buttonVariants } from "./ui/button";
+import { Drawer } from "@/components/drawer";
+import { Menu } from "@/components/menu";
+import { buttonVariants } from "@/components/ui/button";
 
-import config from "../config/config.json";
+import config from "@/config/config.json";
 
 export const Header = () => {
     return (
