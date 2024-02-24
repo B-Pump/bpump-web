@@ -19,7 +19,7 @@ export const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: Mo
         <div className={cn("sticky top-80", className)}>
             <TextGenerateEffect
                 className="md:text-2xl xl:text-5xl 2xl:text-7xl font-bold pb-4 text-center bg-clip-text"
-                lineOne={"Un robot coach sportif autonomne"}
+                lineOne={"Un robot coach sportif autonome"}
                 lineTwo={"construit par 6 élèves de terminale"}
             />
             <p className="text-xs md:text-xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">

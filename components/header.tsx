@@ -5,6 +5,7 @@ import { DialogCommand } from "./dialog-command";
 import { ThemeToggle } from "./theme-toggle";
 
 import { Drawer } from "./drawer";
+import { Menu } from "./menu";
 import { buttonVariants } from "./ui/button";
 
 import config from "../config/config.json";
@@ -22,15 +23,7 @@ export const Header = () => {
                         <span className="inline-block font-bold">{config.sugar.title}</span>
                     </Link>
                     <nav className="flex gap-6">
-                        {config.link.map((item, index) => (
-                            <Link
-                                key={index}
-                                href={item.href}
-                                className="flex items-center text-sm font-medium text-muted-foreground"
-                            >
-                                {item.title}
-                            </Link>
-                        ))}
+                        <Menu />
                     </nav>
                 </div>
                 <div className="flex flex-1 items-center justify-end space-x-4">
