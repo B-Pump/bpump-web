@@ -16,7 +16,10 @@ export const metadata: Metadata = {
     },
     description: config.sugar.description,
     keywords: config.sugar.keywords,
-    authors: [{ name: "wiizz", url: "https://githhub.com/wiizzl" }],
+    authors: [
+        { name: "wiizz", url: "https://github.com/wiizzl" },
+        { name: "Neipe", url: "https://github.com/Neipe-the-Patatitator" },
+    ],
     creator: "wiizz",
     icons: {
         icon: "/favicon.ico",
