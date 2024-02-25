@@ -1,3 +1,7 @@
+"use client";
+
+import { SessionProvider } from "next-auth/react";
+
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
@@ -6,11 +10,17 @@ interface SiteLayoutProps {
 }
 
 export default function SiteLayout({ children }: SiteLayoutProps) {
+    const session = {
+        expires: "test",
+    };
+
     return (
-        <div className="relative flex flex-col">
-            <Header />
-            <main className="flex-1 md:py-10 pb-8 pt-6">{children}</main>
-            <Footer />
-        </div>
+        <SessionProvider>
+            <div className="relative flex flex-col">
+                <Header />
+                <main className="flex-1 md:py-10 pb-8 pt-6">{children}</main>
+                <Footer />
+            </div>
+        </SessionProvider>
     );
 }

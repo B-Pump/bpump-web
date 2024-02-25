@@ -15,30 +15,30 @@ export default function Home() {
         {
             title: "Bibliothèque d'API",
             description:
-                "Maximisez l'efficacité de votre expérience avec notre API backend rapide et performante. Notre choix s'est porté sur le framework FastAPI, pour sa rapidité et sa simplicité d'utilisation. ",
+                "Maximisez l'efficacité de votre expérience avec notre API backend rapide et performante. Notre choix s'est porté sur le framework FastAPI, pour sa rapidité et sa simplicité d'utilisation.",
             link: "https://fastapi.tiangolo.com/",
         },
         {
             title: "Expérience utilisateur",
             description:
-                "Nous avons intégré l'écosystème React de manière innovante pour développer notre site web et notre application. Cette approche nous permet d'offrir une expérience utilisateur fluide et optimale",
+                "Nous avons intégré l'écosystème React de manière innovante pour développer notre site web et notre application. Cette approche nous permet d'offrir une expérience utilisateur fluide et optimale.",
             link: "https://react.dev/",
         },
     ];
     const testimonials = [
         {
             title: "Étudiante",
-            quote: "Ce projet a révolutionné ma routine d'entraînement. C'est comme avoir un coach personnel 24/7. J'adore la manière dont il ajuste les exercices en fonction de mes progrès. Une vraie percée technologique!",
+            quote: "Ce projet a révolutionné ma routine d'entraînement. C'est comme avoir un coach personnel 24/7. J'adore la manière dont il ajuste les exercices en fonction de mes progrès. Une vraie percée technologique !",
             name: "Sophie, 20 ans",
         },
         {
             title: "Lycéen passionné de sport",
-            quote: "Ce robot sportif autonome m'a impressionné par sa précision et sa capacité à simuler des situations réelles. C'est comme avoir un partenaire d'entraînement qui ne fatigue jamais. Parfait pour rester en forme!",
+            quote: "Ce robot sportif autonome m'a impressionné par sa précision et sa capacité à simuler des situations réelles. C'est comme avoir un partenaire d'entraînement qui ne fatigue jamais. Parfait pour rester en forme !",
             name: "Alexandre, 17 ans",
         },
         {
             title: "Amatrice de technologie",
-            quote: "Je suis bluffé par la performance de B-Pump. Il offre une variété d'activités, s'adapte à mon niveau de condition physique et motive constamment. Un investissement qui vaut vraiment la peine!",
+            quote: "Je suis bluffé par la performance de B-Pump. Il offre une variété d'activités, s'adapte à mon niveau de condition physique et motive constamment. Un investissement qui vaut vraiment la peine !",
             name: "Marie, 22 ans",
         },
         {

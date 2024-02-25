@@ -12,7 +12,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 
-import config from "../config/config.json";
+import config from "@/config/config.json";
 
 export function Drawer() {
     return (

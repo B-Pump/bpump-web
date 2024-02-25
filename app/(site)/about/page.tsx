@@ -4,7 +4,7 @@ import { BentoGridThird } from "@/components/grid";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip } from "@/components/ui/tooltip";
 
-import useFetch from "@/app/api/bpump";
+import useFetch from "@/pages/api/bpump";
 
 export default function About() {
     const { data, isLoading, error } = useFetch("GET", "exos/all");

@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle, Computer, Moon, SunMedium } from "lucide-react";
+import { Circle, Computer, Moon, Search, SunMedium } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -38,7 +38,10 @@ export function DialogCommand() {
     return (
         <>
             <div className="w-full flex-1 md:w-auto md:flex-none">
-                <Button variant="outline" onClick={() => setOpen((open) => !open)}>
+                <Button className="lg:hidden" variant="outline" size="icon" onClick={() => setOpen((open) => !open)}>
+                    <Search />
+                </Button>
+                <Button className="hidden lg:flex" variant="outline" onClick={() => setOpen((open) => !open)}>
                     <p className="text-muted-foreground">Rechercher</p>
                     <p className="text-sm text-muted-foreground ml-5">
                         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
