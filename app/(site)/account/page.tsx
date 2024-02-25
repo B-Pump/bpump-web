@@ -7,12 +7,9 @@ import { useEffect } from "react";
 export default function Account() {
     const router = useRouter();
     const { data, status } = useSession();
-    console.log(data);
 
     useEffect(() => {
-        if (status === "unauthenticated") {
-            router.replace("/login");
-        }
+        if (status === "unauthenticated") router.replace("/login");
     }, [status, router]);
 
     if (status === "authenticated") {

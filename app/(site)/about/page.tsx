@@ -4,7 +4,7 @@ import { BentoGridThird } from "@/components/grid";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip } from "@/components/ui/tooltip";
 
-import useFetch from "@/pages/api/bpump";
+import useFetch from "@/lib/api";
 
 export default function About() {
     const { data, isLoading, error } = useFetch("GET", "exos/all");
@@ -75,7 +75,7 @@ export default function About() {
                             </div>
                         </div>
                     ) : error ? (
-                        <p>{error}</p>
+                        <p>{error.message}</p>
                     ) : (
                         data?.map((item: any, index: number) => <p key={index}>{item.sugar.title}</p>)
                     )}

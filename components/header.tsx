@@ -3,18 +3,25 @@
 import { Medal, User } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { DialogCommand } from "@/components/dialog-command";
-import { ThemeToggle } from "@/components/theme-toggle";
-
 import { Drawer } from "@/components/drawer";
 import { Menu } from "@/components/menu";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import config from "@/config/config.json";
 
 export const Header = () => {
     const { status } = useSession();
+    const router = useRouter();
 
     return (
         <header className="select-none bg-background sticky top-0 z-40 w-full border-b">
@@ -45,15 +52,22 @@ export const Header = () => {
                                 Connexion
                             </Button>
                         ) : status === "authenticated" ? (
-                            <Link
-                                href={"account"}
-                                className={buttonVariants({
-                                    size: "icon",
-                                    variant: "outline",
-                                })}
-                            >
-                                <User />
-                            </Link>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="outline" size="icon">
+                                        <User />
+                                        <span className="sr-only">Account dropdown</span>
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                    <DropdownMenuItem onClick={() => router.push("account")}>
+                                        Votre compte
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => router.push("programs")}>
+                                        Vos programmes
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                         ) : null}
                     </nav>
                 </div>
