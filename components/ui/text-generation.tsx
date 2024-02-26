@@ -46,7 +46,7 @@ export const TextGenerateEffect = ({
     return (
         <div className={className}>
             <div className="mt-4">
-                <div className="md:text-2xl xl:text-5xl 2xl:text-7xl font-bold pb-4 text-center bg-clip-text">
+                <div className="bg-clip-text pb-4 text-center font-bold md:text-2xl xl:text-5xl 2xl:text-7xl">
                     {renderWords()}
                 </div>
             </div>

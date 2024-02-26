@@ -24,14 +24,14 @@ export const HoverEffect = ({
                     href={item?.link}
                     key={item?.link}
                     target="_blank"
-                    className="relative group block p-2 h-full w-full"
+                    className="group relative block size-full p-2"
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <AnimatePresence>
                         {hoveredIndex === index && (
                             <motion.span
-                                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-card block rounded-3xl"
+                                className="absolute inset-0 block size-full rounded-3xl bg-neutral-200 dark:bg-card"
                                 layoutId="hoverBackground"
                                 initial={{ opacity: 0 }}
                                 animate={{

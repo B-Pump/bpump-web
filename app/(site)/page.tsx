@@ -57,7 +57,7 @@ export default function Home() {
         <section className="grid items-center gap-6">
             <HeroGeminiEffect />
             <div id="startPage" className="container">
-                <div className="max-w-5xl mx-auto px-8">
+                <div className="mx-auto max-w-5xl px-8">
                     <HoverEffect items={projects} />
                 </div>
                 <div className="py-20">
@@ -86,7 +86,7 @@ export default function Home() {
                     </p>
                 </div>
             </div>
-            <div className="rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
+            <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
                 <InfiniteMovingCards items={testimonials} />
             </div>
         </section>

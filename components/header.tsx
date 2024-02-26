@@ -24,12 +24,12 @@ export const Header = () => {
     const router = useRouter();
 
     return (
-        <header className="select-none bg-background sticky top-0 z-40 w-full border-b">
+        <header className="sticky top-0 z-40 w-full select-none border-b bg-background">
             <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
                 <div className="lg:hidden">
                     <Drawer />
                 </div>
-                <div className="hidden lg:flex gap-6 lg:gap-10">
+                <div className="hidden gap-6 lg:flex lg:gap-10">
                     <Link href="/" className="flex items-center space-x-2">
                         <Medal className="size-6" />
                         <span className="inline-block font-bold">{config.sugar.title}</span>

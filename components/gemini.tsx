@@ -20,7 +20,7 @@ export function HeroGeminiEffect() {
     const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
 
     return (
-        <div className="h-[400vh] w-full rounded-md relative pt-40 overflow-clip" ref={ref}>
+        <div className="relative h-[400vh] w-full text-clip rounded-md pt-40" ref={ref}>
             <GoogleGeminiEffect
                 pathLengths={[pathLengthFirst, pathLengthSecond, pathLengthThird, pathLengthFourth, pathLengthFifth]}
             />

@@ -51,7 +51,7 @@ export default function About() {
     return (
         <section className="grid items-center gap-6">
             <div className="container">
-                <div className="flex flex-row items-center justify-center mb-10 w-full">
+                <div className="mb-10 flex w-full flex-row items-center justify-center">
                     <Tooltip items={people} />
                 </div>
                 <div>

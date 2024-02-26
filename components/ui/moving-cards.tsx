@@ -75,20 +75,20 @@ export const InfiniteMovingCards = ({
                 {items.map((item, index) => (
                     <li
                         key={index}
-                        className="bg-neutral-200 dark:bg-card w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-card px-8 py-6 md:w-[450px]"
+                        className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-card bg-neutral-200 px-8 py-6 dark:bg-card md:w-[450px]"
                     >
                         <blockquote className="select-none">
                             <div
                                 aria-hidden="true"
-                                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+                                className="pointer-events-none absolute -left-0.5 -top-0.5 size-[calc(100%_+_4px)] select-none"
                             ></div>
-                            <span className="relative z-20 text-sm leading-[1.6] font-normal">{item.quote}</span>
+                            <span className="relative z-20 text-sm font-normal leading-[1.6]">{item.quote}</span>
                             <div className="relative z-20 mt-6 flex flex-row items-center">
                                 <span className="flex flex-col gap-1">
-                                    <span className="text-sm leading-[1.6] dark:text-gray-400 font-normal">
+                                    <span className="text-sm font-normal leading-[1.6] dark:text-gray-400">
                                         {item.name}
                                     </span>
-                                    <span className="text-sm leading-[1.6] dark:text-gray-400 font-normal">
+                                    <span className="text-sm font-normal leading-[1.6] dark:text-gray-400">
                                         {item.title}
                                     </span>
                                 </span>

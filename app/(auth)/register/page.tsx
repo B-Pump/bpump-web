@@ -28,7 +28,7 @@ export default function Register() {
                 href="/login"
                 className={cn(buttonVariants({ variant: "ghost" }), "absolute right-4 top-4 md:right-8 md:top-8")}
             >
-                <Lock className="mr-2 h-4 w-4" />
+                <Lock className="mr-2 size-4" />
                 Vous connecter
             </Link>
             <div className="hidden h-full bg-muted lg:block">
@@ -37,7 +37,7 @@ export default function Register() {
             <div className="lg:p-8">
                 <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                     <div className="flex flex-col space-y-2 text-center">
-                        <Medal className="mx-auto h-6 w-6" />
+                        <Medal className="mx-auto size-6" />
                         <h1 className="text-2xl font-semibold tracking-tight">Créer un compte</h1>
                         <p className="text-sm text-muted-foreground">
                             Entrez vos informations ci-dessous pour créer un compte

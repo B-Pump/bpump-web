@@ -43,11 +43,11 @@ export function DialogCommand() {
                 </Button>
                 <Button className="hidden lg:flex" variant="outline" onClick={() => setOpen((open) => !open)}>
                     <p className="text-muted-foreground">Rechercher</p>
-                    <p className="text-sm text-muted-foreground ml-5">
+                    <p className="ml-5 text-sm text-muted-foreground">
                         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
                             <span className="text-xs">CTRL</span>
                         </kbd>
-                        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100 ml-1">
+                        <kbd className="pointer-events-none ml-1 inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
                             <span className="text-xs">K</span>
                         </kbd>
                     </p>
@@ -66,7 +66,7 @@ export function DialogCommand() {
                                     setOpen(false);
                                 }}
                             >
-                                <Circle className="mr-2 h-4 w-4" />
+                                <Circle className="mr-2 size-4" />
                                 <span>{item.title}</span>
                             </CommandItem>
                         ))}
@@ -79,7 +79,7 @@ export function DialogCommand() {
                                 setOpen(false);
                             }}
                         >
-                            <Computer className="mr-2 h-4 w-4" />
+                            <Computer className="mr-2 size-4" />
                             <span>Système</span>
                         </CommandItem>
                         <CommandItem
@@ -88,7 +88,7 @@ export function DialogCommand() {
                                 setOpen(false);
                             }}
                         >
-                            <SunMedium className="mr-2 h-4 w-4" />
+                            <SunMedium className="mr-2 size-4" />
                             <span>Clair</span>
                         </CommandItem>
                         <CommandItem
@@ -97,7 +97,7 @@ export function DialogCommand() {
                                 setOpen(false);
                             }}
                         >
-                            <Moon className="mr-2 h-4 w-4" />
+                            <Moon className="mr-2 size-4" />
                             <span>Sombre</span>
                         </CommandItem>
                     </CommandGroup>
