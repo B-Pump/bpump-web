@@ -41,7 +41,7 @@ export default function Boutique() {
                         </p>
                     </div>
                     <div className="flex justify-center">
-                        <Button variant="destructive">Galaad petit gentil</Button>
+                        <Button variant="destructive">Acheter dès maintenant</Button>
                     </div>
                 </div>
             </div>
