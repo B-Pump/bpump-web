@@ -16,6 +16,8 @@ import {
 
 import { cn } from "@/lib/utils";
 
+import config from "@/config/config.json";
+
 export function Menu() {
     const home: { title: string; href: string; description: string }[] = [
         {
@@ -104,10 +106,9 @@ export function Menu() {
                                         href="/"
                                     >
                                         <Medal className="size-6" />
-                                        <div className="mb-2 mt-4 text-lg font-medium">B-Pump</div>
+                                        <div className="mb-2 mt-4 text-lg font-medium">{config.sugar.title}</div>
                                         <p className="text-sm leading-tight text-muted-foreground">
-                                            La perfection dans chaque mouvements. Améliorez la justesse de vos postures
-                                            grâce à B-Pump, votre coach sportif 100% Robotique !
+                                            {config.sugar.description}
                                         </p>
                                     </a>
                                 </NavigationMenuLink>

@@ -38,6 +38,7 @@ export const CardContainer = ({
         setIsMouseEntered(false);
         containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
     };
+
     return (
         <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
             <div
@@ -120,7 +121,6 @@ export const CardItem = ({
     );
 };
 
-// Create a hook to use the context
 export const useMouseEnter = () => {
     const context = useContext(MouseEnterContext);
     if (context === undefined) {
