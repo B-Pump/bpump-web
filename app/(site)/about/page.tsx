@@ -53,7 +53,7 @@ export default function About() {
 
     return (
         <section className="grid items-center gap-6">
-            <div className="container">
+            <div className="container pt-6 md:py-10">
                 <div className="mb-10 flex w-full flex-row items-center justify-center">
                     <Tooltip items={people} />
                 </div>

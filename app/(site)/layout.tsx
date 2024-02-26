@@ -10,15 +10,11 @@ interface SiteLayoutProps {
 }
 
 export default function SiteLayout({ children }: SiteLayoutProps) {
-    const session = {
-        expires: "test",
-    };
-
     return (
         <SessionProvider>
             <div className="relative flex flex-col">
                 <Header />
-                <main className="flex-1 pb-8 pt-6 md:py-10">{children}</main>
+                <main className="flex-1 pb-8">{children}</main>
                 <Footer />
             </div>
         </SessionProvider>
