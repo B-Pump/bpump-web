@@ -1,10 +1,13 @@
 "use client";
 
+import { ThreeDCard } from "@/components/3d-card";
 import { BentoGridThird } from "@/components/grid";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip } from "@/components/ui/tooltip";
 
 import useFetch from "@/lib/api";
+
+import config from "@/config/config.json";
 
 export default function About() {
     const { data, isLoading, error } = useFetch("GET", "exos/all");
@@ -57,12 +60,9 @@ export default function About() {
                 <div>
                     <div>
                         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-                            Projet B-Pump
+                            {config.sugar.title}
                         </h1>
-                        <p className="max-w-[700px] text-lg text-muted-foreground">
-                            La perfection dans chaque mouvements. Améliorez la justesse de vos postures grâce à B-Pump,
-                            votre coach sportif 100% Robotique !
-                        </p>
+                        <p className="max-w-[700px] text-lg text-muted-foreground">{config.sugar.description}</p>
                     </div>
                     <BentoGridThird />
                 </div>
@@ -77,7 +77,7 @@ export default function About() {
                     ) : error ? (
                         <p>{error.message}</p>
                     ) : (
-                        data?.map((item: any, index: number) => <p key={index}>{item.sugar.title}</p>)
+                        data?.map((item: any, index: number) => <ThreeDCard key={index} />)
                     )}
                 </div>
             </div>

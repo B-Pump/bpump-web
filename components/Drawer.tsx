@@ -34,7 +34,7 @@ export function Drawer() {
                                 href={item.href}
                                 className={buttonVariants({
                                     size: "sm",
-                                    variant: "outline",
+                                    variant: "secondary",
                                 })}
                             >
                                 {item.title}

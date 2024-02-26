@@ -1,14 +1,14 @@
 "use client";
 
-import { Medal, User } from "lucide-react";
+import { Medal, Moon, Sun, User } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { DialogCommand } from "@/components/dialog-command";
 import { Drawer } from "@/components/drawer";
 import { Menu } from "@/components/menu";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -20,8 +20,9 @@ import {
 import config from "@/config/config.json";
 
 export const Header = () => {
-    const { status } = useSession();
     const router = useRouter();
+    const { status } = useSession();
+    const { theme, setTheme } = useTheme();
 
     return (
         <header className="sticky top-0 z-40 w-full select-none border-b bg-background">
@@ -41,7 +42,23 @@ export const Header = () => {
                 <div className="flex flex-1 items-center justify-end space-x-4">
                     <nav className="flex items-center space-x-1">
                         <DialogCommand />
-                        <ThemeToggle />
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => {
+                                if (theme === "dark") {
+                                    setTheme("light");
+                                } else if (theme === "light") {
+                                    setTheme("dark");
+                                } else {
+                                    setTheme("dark");
+                                }
+                            }}
+                        >
+                            <Sun className="size-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                            <Moon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                            <span className="sr-only">Toggle theme</span>
+                        </Button>
                         {status === "unauthenticated" ? (
                             <Button
                                 variant="secondary"

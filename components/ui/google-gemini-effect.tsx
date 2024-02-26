@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, MotionValue } from "framer-motion";
-import { useRouter } from "next/navigation";
 
 import { TextGenerateEffect } from "@/components/ui/text-generation";
 
@@ -13,8 +12,6 @@ const transition = {
 };
 
 export const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: MotionValue[]; className?: string }) => {
-    const router = useRouter();
-
     return (
         <div className={cn("sticky top-80", className)}>
             <TextGenerateEffect

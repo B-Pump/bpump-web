@@ -20,7 +20,8 @@ export function HeroGeminiEffect() {
     const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
 
     return (
-        <div className="relative h-[400vh] w-full text-clip rounded-md pt-40" ref={ref}>
+        // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+        <div className="relative h-[400vh] w-full overflow-clip rounded-md pt-40" ref={ref}>
             <GoogleGeminiEffect
                 pathLengths={[pathLengthFirst, pathLengthSecond, pathLengthThird, pathLengthFourth, pathLengthFifth]}
             />
