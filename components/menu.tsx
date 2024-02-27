@@ -1,6 +1,6 @@
 "use client";
 
-import { Medal } from "lucide-react";
+import { IconRobot } from "@tabler/icons-react";
 import Link from "next/link";
 import React from "react";
 
@@ -105,7 +105,7 @@ export function Menu() {
                                         className="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                         href="/"
                                     >
-                                        <Medal className="size-6" />
+                                        <IconRobot className="size-6" />
                                         <div className="mb-2 mt-4 text-lg font-medium">{config.sugar.title}</div>
                                         <p className="text-sm leading-tight text-muted-foreground">
                                             {config.sugar.description}

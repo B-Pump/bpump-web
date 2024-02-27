@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, Medal } from "lucide-react";
+import { IconChevronLeft, IconRobot } from "@tabler/icons-react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -32,12 +32,12 @@ export default function Login() {
                 href="/"
                 className={cn(buttonVariants({ variant: "ghost" }), "absolute left-4 top-4 md:left-8 md:top-8")}
             >
-                <ChevronLeft className="mr-2 size-4" />
+                <IconChevronLeft className="mr-2 size-4" />
                 Retour à l&apos;accueil
             </Link>
             <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                 <div className="flex flex-col space-y-2 text-center">
-                    <Medal className="mx-auto size-6" />
+                    <IconRobot className="mx-auto size-6" />
                     <h1 className="text-2xl font-semibold tracking-tight">Bienvenue !</h1>
                     <p className="text-sm text-muted-foreground">
                         Entrez vos identifiants pour vous connecter à votre compte

@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle, Computer, Moon, Search, SunMedium } from "lucide-react";
+import { IconCircle, IconDeviceLaptop, IconMoon, IconSearch, IconSun } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -39,7 +39,7 @@ export function DialogCommand() {
         <>
             <div className="w-full flex-1 md:w-auto md:flex-none">
                 <Button className="lg:hidden" variant="outline" size="icon" onClick={() => setOpen((open) => !open)}>
-                    <Search />
+                    <IconSearch />
                 </Button>
                 <Button className="hidden lg:flex" variant="outline" onClick={() => setOpen((open) => !open)}>
                     <p className="text-muted-foreground">Rechercher</p>
@@ -66,7 +66,7 @@ export function DialogCommand() {
                                     setOpen(false);
                                 }}
                             >
-                                <Circle className="mr-2 size-4" />
+                                <IconCircle className="mr-2 size-4" />
                                 <span>{item.title}</span>
                             </CommandItem>
                         ))}
@@ -79,7 +79,7 @@ export function DialogCommand() {
                                 setOpen(false);
                             }}
                         >
-                            <Computer className="mr-2 size-4" />
+                            <IconDeviceLaptop className="mr-2 size-4" />
                             <span>Système</span>
                         </CommandItem>
                         <CommandItem
@@ -88,7 +88,7 @@ export function DialogCommand() {
                                 setOpen(false);
                             }}
                         >
-                            <SunMedium className="mr-2 size-4" />
+                            <IconSun className="mr-2 size-4" />
                             <span>Clair</span>
                         </CommandItem>
                         <CommandItem
@@ -97,7 +97,7 @@ export function DialogCommand() {
                                 setOpen(false);
                             }}
                         >
-                            <Moon className="mr-2 size-4" />
+                            <IconMoon className="mr-2 size-4" />
                             <span>Sombre</span>
                         </CommandItem>
                     </CommandGroup>

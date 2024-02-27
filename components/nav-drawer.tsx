@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { IconMenu2 } from "@tabler/icons-react";
 import Link from "next/link";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -14,12 +14,12 @@ import {
 
 import config from "@/config/config.json";
 
-export function Drawer() {
+export function NavDrawer() {
     return (
         <Sheet>
             <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
-                    <Menu />
+                    <IconMenu2 />
                 </Button>
             </SheetTrigger>
             <SheetContent side="left">

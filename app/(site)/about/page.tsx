@@ -20,7 +20,7 @@ export default function About() {
         },
         {
             id: 2,
-            name: "Auguste C.",
+            name: "Auguste G.",
             designation: "Programmation",
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/nalmvys51hlp.jpeg",
         },
@@ -28,7 +28,7 @@ export default function About() {
             id: 3,
             name: "Galaad G.",
             designation: "Programmation",
-            image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/13p2skah8fqp.png",
+            image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/35zjwqvkwtk2.jpg",
         },
         {
             id: 4,
