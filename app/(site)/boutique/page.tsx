@@ -40,7 +40,6 @@ export default function Boutique() {
                     </div>
                     <div className="flex justify-center">
                         <Button>! acheter maintenant !</Button>
-                        
                     </div>
                     <p className="flex justify-center pt-9">À partir de xxxx €</p>
                 </div>
