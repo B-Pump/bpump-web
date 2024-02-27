@@ -2,20 +2,14 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
-import { BPump } from "@/components/model/b-pump";
+import { BPump } from "@/components/model/bpump";
 
 export function Model() {
     return (
         <Canvas>
-            <ambientLight intensity={2.5} />
-            <OrbitControls
-                enableZoom={true}
-                enablePan={false}
-                autoRotate={true}
-                autoRotateSpeed={3}
-                minPolarAngle={1}
-                maxPolarAngle={2}
-            />
+            <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+            <ambientLight intensity={0.8} />
+            <OrbitControls enableZoom={false} enablePan={false} autoRotate={true} autoRotateSpeed={3} />
             <Suspense fallback={null}>
                 <BPump />
             </Suspense>
