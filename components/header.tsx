@@ -19,7 +19,7 @@ import {
 
 import config from "@/config/config.json";
 
-export const Header = () => {
+export function Header() {
     const router = useRouter();
     const { status } = useSession();
     const { theme, setTheme } = useTheme();
@@ -91,4 +91,4 @@ export const Header = () => {
             </div>
         </header>
     );
-};
+}

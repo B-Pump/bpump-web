@@ -55,16 +55,13 @@ export default function Boutique() {
             </div>
             <div className="flex h-[80vh] pb-20">
                 <div
-                    className={cn(
-                        "w-1/2 rounded-r-3xl bg-accent p-4 dark:bg-card",
-                        isGrabbing ? "cursor-grabbing" : "cursor-grab",
-                    )}
+                    className={cn("w-1/2 rounded-r-3xl bg-muted", isGrabbing ? "cursor-grabbing" : "cursor-grab")}
                     onMouseDown={() => setIsGrabbing(true)}
                     onMouseUp={() => setIsGrabbing(false)}
                 >
                     <Model />
                 </div>
-                <div className="flex w-1/2 justify-center p-4">
+                <div className="flex w-1/2 items-center justify-center p-4">
                     <Accordion type="single" collapsible className="w-3/4">
                         <AccordionItem value="item-1">
                             <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -113,18 +110,6 @@ export default function Boutique() {
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-9">
-                            <AccordionTrigger>Is it animated?</AccordionTrigger>
-                            <AccordionContent>
-                                Yes. It&apos;s animated by default, but you can disable it if you prefer.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-10">
-                            <AccordionTrigger>Is it animated?</AccordionTrigger>
-                            <AccordionContent>
-                                Yes. It&apos;s animated by default, but you can disable it if you prefer.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-11">
                             <AccordionTrigger>Is it animated?</AccordionTrigger>
                             <AccordionContent>
                                 Yes. It&apos;s animated by default, but you can disable it if you prefer.
