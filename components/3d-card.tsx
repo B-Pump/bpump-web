@@ -25,6 +25,7 @@ export function ThreeDCard({ title, description, image }: { title: string; descr
                         width="1000"
                         className="h-60 w-full rounded-xl object-cover group-hover/card:shadow-xl"
                         alt="Product"
+                        priority
                     />
                 </CardItem>
                 <div className="mt-20 flex items-end justify-end">
