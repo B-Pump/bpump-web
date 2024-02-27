@@ -35,14 +35,14 @@ export default function Boutique() {
                             Procurez vous B-Pump
                         </h1>
                         <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-muted-foreground">
-                            Spotlight effect is a great way to draw attention to a specific part of the page. Here, we
-                            are drawing the attention towards the text section of the page. I don&apos;t know why but
-                            I&apos;m running out of copy.
+                        Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de remise en forme avec facilité et motivation. Commandez le vôtre dès maintenant et laissez-vous guider vers le succès !
                         </p>
                     </div>
                     <div className="flex justify-center">
-                        <Button variant="destructive">Galaad petit gentil</Button>
+                        <Button>! acheter maintenant !</Button>
+                        
                     </div>
+                    <p className="flex justify-center pt-9">À partir de xxxx €</p>
                 </div>
             </div>
             <div className="flex flex-wrap justify-center gap-5">

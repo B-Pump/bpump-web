@@ -77,7 +77,7 @@ export default function About() {
                     ) : error ? (
                         <p>{error.message}</p>
                     ) : (
-                        data?.map((item: any, index: number) => <ThreeDCard key={index} />)
+                        data?.map((item: any, index: number) => <p key={index}>{item?.sugar?.title}</p>)
                     )}
                 </div>
             </div>
