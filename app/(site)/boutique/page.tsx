@@ -1,6 +1,7 @@
 "use client";
 
 import { ThreeDCard } from "@/components/3d-card";
+import { Model } from "@/components/model";
 import { Button } from "@/components/ui/button";
 import { Spotlight } from "@/components/ui/spotlight";
 
@@ -35,14 +36,19 @@ export default function Boutique() {
                             Procurez vous B-Pump
                         </h1>
                         <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-muted-foreground">
-                        Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de remise en forme avec facilité et motivation. Commandez le vôtre dès maintenant et laissez-vous guider vers le succès !
+                            Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de
+                            remise en forme avec facilité et motivation. Commandez le vôtre dès maintenant et
+                            laissez-vous guider vers le succès !
                         </p>
                     </div>
                     <div className="flex justify-center">
-                        <Button>! acheter maintenant !</Button>
+                        <Button>Acheter dès maintenant</Button>
+                        <p className="flex justify-center pt-9">À partir de x €</p>
                     </div>
-                    <p className="flex justify-center pt-9">À partir de xxxx €</p>
                 </div>
+            </div>
+            <div className="h-[100vh]">
+                <Model />
             </div>
             <div className="flex flex-wrap justify-center gap-5">
                 {products.map((item, index) => (
