@@ -2,7 +2,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
-import { BPUMP } from "@/components/model/b-pump";
+import { BPump } from "@/components/model/b-pump";
 
 export function Model() {
     return (
@@ -17,7 +17,7 @@ export function Model() {
                 maxPolarAngle={2}
             />
             <Suspense fallback={null}>
-                <BPUMP />
+                <BPump />
             </Suspense>
         </Canvas>
     );

@@ -1,6 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 
-export function BPUMP() {
+export function BPump() {
     const { nodes, materials } = useGLTF("3d/minibpump.gltf");
 
     return (
