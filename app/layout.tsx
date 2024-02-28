@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: config.sugar.description,
     keywords: config.sugar.keywords,
     authors: config.author,
-    creator: config.sugar.title,
+    creator: config.author[0].name,
     icons: {
         icon: "/favicon.ico",
     },
