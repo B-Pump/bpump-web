@@ -18,7 +18,6 @@ export function Footer() {
             content: [
                 { title: "shadcn/ui", href: "https://ui.shadcn.com/" },
                 { title: "Aceternity UI", href: "https://ui.aceternity.com/" },
-                { title: "", href: "" },
             ],
         },
         {
@@ -39,7 +38,7 @@ export function Footer() {
     return (
         <footer className="border-t p-10">
             <div className="container">
-                <div className="mx-auto flex flex-col items-center justify-between md:flex-row md:items-start">
+                <div className="flex flex-col items-center justify-between text-center md:flex-row md:items-start md:text-start">
                     <div className="mb-4 md:mb-0">
                         <Link href="/" className="flex space-x-1">
                             <IconRobot />
@@ -48,7 +47,7 @@ export function Footer() {
                     </div>
                     {footer.map((item, index) => (
                         <div key={index}>
-                            <h3 className="font-bold">{item.title}</h3>
+                            <h3 className="pb-5 pt-3 font-bold md:pb-0">{item.title}</h3>
                             <div>
                                 <ul>
                                     {item.content.map((item, index) => (
@@ -73,7 +72,7 @@ export function Footer() {
                         </div>
                     ))}
                 </div>
-                <div className="flex space-x-1 text-sm text-muted-foreground">
+                <div className="flex justify-center space-x-1 pt-10 text-sm text-muted-foreground md:justify-start md:pt-0">
                     <p>Fait par</p>
                     {author.map((item, index) => (
                         <div key={index}>
