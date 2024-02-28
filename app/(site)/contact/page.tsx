@@ -1,5 +1,6 @@
 "use client";
 
+import emailjs from "@emailjs/browser";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
@@ -11,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function Contact() {
-    const { data, status } = useSession();
+    const { data } = useSession();
 
     const formSchema = z.object({
         username: z.string().min(5, {
@@ -34,7 +35,19 @@ export default function Contact() {
     });
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
+        emailjs
+            .send(
+                "service_21096s9",
+                "template_amv97xj",
+                {
+                    account: data?.user?.name || "Pas de compte",
+                    name: values.username,
+                    email: values.email,
+                    message: values.contenu,
+                },
+                process.env.NEXT_PUBLIC_EJS_PUBLIC_KEY,
+            )
+            .catch((error) => console.error("Error while sending email :", error));
     }
 
     return (
