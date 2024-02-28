@@ -1,7 +1,9 @@
-import { cn } from "@/lib/utils";
 import { IconRobot } from "@tabler/icons-react";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
+
+import { buttonVariants } from "@/components/ui/button";
+
+import { cn } from "@/lib/utils";
 
 import config from "@/config/config.json";
 
@@ -18,6 +20,7 @@ export function Footer() {
         {
             title: "Crédits",
             content: [
+                { title: "Next.js", href: "https://nextjs.org/" },
                 { title: "shadcn/ui", href: "https://ui.shadcn.com/" },
                 { title: "Aceternity UI", href: "https://ui.aceternity.com/" },
             ],
@@ -39,7 +42,7 @@ export function Footer() {
                     <div className="mb-4 md:mb-0">
                         <Link href="/" className="flex space-x-1">
                             <IconRobot />
-                            <p className="font-bold">B-Pump</p>
+                            <p className="font-bold">{config.sugar.title}</p>
                         </Link>
                     </div>
                     {footer.map((item, index) => (

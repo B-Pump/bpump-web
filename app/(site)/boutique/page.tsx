@@ -15,14 +15,13 @@ export default function Boutique() {
     const products = [
         {
             title: "Porte clef",
-            description:
-                "Emportez l&apos;esprit novateur de notre projet partout avec vous grâce à ce porte-clés exclusif.",
+            description: "Emportez l'esprit novateur de notre projet partout avec vous grâce à ce porte-clés exclusif.",
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
         {
             title: "Figurine",
             description:
-                "Plongez dans l&apos;univers captivant de notre projet avec cette adorable figurine à l&apos;effigie de B-Pump. ",
+                "Plongez dans l'univers captivant de notre projet avec cette adorable figurine à l'effigie de B-Pump. ",
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
         {
