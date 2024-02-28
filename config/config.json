@@ -1,4 +1,8 @@
 {
+    "author": [
+        { "name": "Pierre", "url": "https://github.com/wiizzl" },
+        { "name": "Galaad", "url": "https://github.com/Neipe-the-Patatitator" }
+    ],
     "sugar": {
         "title": "Projet B-Pump",
         "description": "La perfection dans chaque mouvements. Améliorez la justesse de vos postures grâce à B-Pump votre coach sportif 100% Robotique !",

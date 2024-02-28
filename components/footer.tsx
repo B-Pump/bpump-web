@@ -3,6 +3,8 @@ import { IconRobot } from "@tabler/icons-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 
+import config from "@/config/config.json";
+
 export function Footer() {
     const footer = [
         {
@@ -28,11 +30,6 @@ export function Footer() {
                 { title: "Termes d'utilisation", href: "terms" },
             ],
         },
-    ];
-
-    const author = [
-        { name: "Pierre", url: "https://github.com/wiizzl" },
-        { name: "Galaad", url: "https://github.com/Neipe-the-Patatitator" },
     ];
 
     return (
@@ -74,12 +71,12 @@ export function Footer() {
                 </div>
                 <div className="flex justify-center space-x-1 pt-10 text-sm text-muted-foreground md:justify-start md:pt-0">
                     <p>Fait par</p>
-                    {author.map((item, index) => (
+                    {config.author.map((item, index) => (
                         <div key={index}>
                             <Link href={item.url} className="font-bold hover:text-accent-foreground">
                                 {item.name}
                             </Link>
-                            {index < author.length - 1 && <>&nbsp;&</>}
+                            {index < config.author.length - 1 && <>&nbsp;&</>}
                         </div>
                     ))}
                 </div>
