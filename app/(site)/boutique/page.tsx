@@ -12,6 +12,15 @@ import { cn } from "@/lib/utils";
 export default function Boutique() {
     const [isGrabbing, setIsGrabbing] = useState(false);
 
+    const accordion = [
+        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
+        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
+        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
+        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
+        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
+        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
+    ];
+
     const products = [
         {
             title: "Porte clef",
@@ -63,62 +72,12 @@ export default function Boutique() {
                 </div>
                 <div className="flex w-1/2 items-center justify-center p-4">
                     <Accordion type="single" collapsible className="w-3/4">
-                        <AccordionItem value="item-1">
-                            <AccordionTrigger>Est-ce animé?</AccordionTrigger>
-                            <AccordionContent>
-                                Oui, il est animé par défaut, mais vous pouvez le désactiver si vous le préférez.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-2">
-                            <AccordionTrigger>Comment le robot de sport autonome fonctionne-t-il?</AccordionTrigger>
-                            <AccordionContent>
-                                Le robot de sport autonome utilise des capteurs et des algorithmes pour aider les
-                                utilisateurs à faire de l&apos;exercice de manière autonome.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-3">
-                            <AccordionTrigger>
-                                Quels types d&apos;exercices le robot peut-il aider à réaliser?
-                            </AccordionTrigger>
-                            <AccordionContent>
-                                Le robot peut aider à réaliser une variété d&apos;exercices, y compris des entraînements
-                                cardiovasculaires, de musculation, et plus encore.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-4">
-                            <AccordionTrigger>
-                                Le robot s&apos;adapte-t-il aux besoins individuels des utilisateurs?
-                            </AccordionTrigger>
-                            <AccordionContent>
-                                Oui, le robot peut être programmé pour s&apos;adapter aux besoins et aux niveaux de
-                                fitness individuels des utilisateurs.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-5">
-                            <AccordionTrigger>Quelles sont les fonctionnalités de sécurité intégrées?</AccordionTrigger>
-                            <AccordionContent>
-                                Le robot est équipé de fonctionnalités de sécurité telles que l&apos;arrêt automatique
-                                en cas d&apos;urgence et la détection d&apos;obstacles pour éviter les collisions.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-6">
-                            <AccordionTrigger>
-                                Est-ce que le robot peut être utilisé par des personnes de tous âges?
-                            </AccordionTrigger>
-                            <AccordionContent>
-                                Oui, le robot de sport autonome est conçu pour être utilisé par des personnes de tous
-                                âges et niveaux de condition physique.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-7">
-                            <AccordionTrigger>
-                                Peut-on personnaliser les séances d&apos;entraînement avec le robot?
-                            </AccordionTrigger>
-                            <AccordionContent>
-                                Oui, les utilisateurs peuvent personnaliser leurs séances d&apos;entraînement en
-                                fonction de leurs objectifs et préférences.
-                            </AccordionContent>
-                        </AccordionItem>
+                        {accordion.map((item, index) => (
+                            <AccordionItem key={index} value={`item-${index}`}>
+                                <AccordionTrigger>{item.title}</AccordionTrigger>
+                                <AccordionContent>{item.description}</AccordionContent>
+                            </AccordionItem>
+                        ))}
                     </Accordion>
                 </div>
             </div>
