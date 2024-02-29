@@ -40,22 +40,20 @@ export default function Faq() {
             <div className="container pt-6 md:py-10">
                 <h1 className="mb-10 text-5xl font-bold">FAQ B-Pump</h1>
                 <div className="mx-10">
-                  
                     {faq.map((item, index) => (
                         <div key={index}>
                             <h1 className="pb-6 pt-16 text-3xl font-bold md:pb-0">{item.title}</h1>
                             <Accordion type="single" collapsible className="mx-5 my-2 w-full">
-                                {item.content.map((content, idx) => (
-                                    <AccordionItem key={idx} value={`item-${idx}`}>
-                                        <AccordionTrigger>{content.title}</AccordionTrigger>
-                                        <AccordionContent>{content.reponse}</AccordionContent>
+                                {item.content.map((item, index) => (
+                                    <AccordionItem key={index} value={`item-${index}`}>
+                                        <AccordionTrigger>{item.title}</AccordionTrigger>
+                                        <AccordionContent>{item.reponse}</AccordionContent>
                                     </AccordionItem>
                                 ))}
                             </Accordion>
                         </div>
                     ))}
                 </div>
-                    
             </div>
         </section>
     );
