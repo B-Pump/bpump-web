@@ -11,6 +11,7 @@ export function Footer() {
     const footer = [
         {
             title: "Réseaux",
+            new_tab: true,
             content: [
                 { title: "Instagram", href: "https://www.instagram.com/b.pump76/" },
                 { title: "TikTok", href: "" },
@@ -19,6 +20,7 @@ export function Footer() {
         },
         {
             title: "Crédits",
+            new_tab: true,
             content: [
                 { title: "Next.js", href: "https://nextjs.org/" },
                 { title: "shadcn/ui", href: "https://ui.shadcn.com/" },
@@ -27,6 +29,7 @@ export function Footer() {
         },
         {
             title: "Aide",
+            new_tab: false,
             content: [
                 { title: "FAQ", href: "faq" },
                 { title: "Politique de confidentialité", href: "confidentitality" },
@@ -50,11 +53,11 @@ export function Footer() {
                             <h3 className="pb-5 pt-3 font-bold md:pb-0">{item.title}</h3>
                             <div>
                                 <ul>
-                                    {item.content.map((item, index) => (
+                                    {item.content.map((content, index) => (
                                         <li key={index} className="-mx-3">
                                             <Link
-                                                href={item.href}
-                                                target="_blank"
+                                                href={content.href}
+                                                target={item.new_tab ? "_blank" : "_self"}
                                                 className={cn(
                                                     buttonVariants({
                                                         variant: "link",
@@ -63,7 +66,7 @@ export function Footer() {
                                                     }),
                                                 )}
                                             >
-                                                {item.title}
+                                                {content.title}
                                             </Link>
                                         </li>
                                     ))}
