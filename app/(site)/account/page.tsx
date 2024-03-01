@@ -11,14 +11,4 @@ export default function Account() {
     useEffect(() => {
         if (status === "unauthenticated") router.replace("/login");
     }, [status, router]);
-
-    if (status === "authenticated") {
-        return (
-            <section className="grid items-center gap-6">
-                <div className="container">
-                    <p>Account : {JSON.stringify(data.user, null, 2)}</p>
-                </div>
-            </section>
-        );
-    }
 }
