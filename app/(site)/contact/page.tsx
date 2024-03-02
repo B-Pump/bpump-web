@@ -21,6 +21,12 @@ export default function Contact() {
         email: z.string().email({
             message: "Doit être une adresse email valide",
         }),
+        phone: z.string().min(10, {
+            message: "Doit être un numéro de téléphone valide",
+        }),
+        subject: z.string().min(5, {
+            message: "Doit être au moins de 5 caractères",
+        }),
         contenu: z.string().min(20, {
             message: "Doit être au moins de 20 caractères",
         }),
@@ -30,6 +36,8 @@ export default function Contact() {
         defaultValues: {
             username: "",
             email: "",
+            phone: "",
+            subject: "",
             contenu: "",
         },
     });
@@ -43,6 +51,8 @@ export default function Contact() {
                     account: data?.user?.name || "Pas de compte",
                     name: values.username,
                     email: values.email,
+                    phone: values.phone,
+                    subject: values.subject,
                     message: values.contenu,
                 },
                 process.env.NEXT_PUBLIC_EJS_PUBLIC_KEY,
@@ -52,55 +62,108 @@ export default function Contact() {
 
     return (
         <section className="grid items-center gap-6">
-            <div className="container pt-6 md:py-10">
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                        <FormField
-                            control={form.control}
-                            name="username"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormControl>
-                                        <Input placeholder="Nom et Prénom" autoComplete="off" required {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormControl>
-                                        <Input placeholder="Votre adresse mail" autoComplete="on" required {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="contenu"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormControl>
-                                        <Textarea
-                                            placeholder="Contenu de votre message"
-                                            autoComplete="off"
-                                            required
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <Button type="submit" variant="secondary">
-                            Envoyer
-                        </Button>
-                    </form>
-                </Form>
+            <div className="container flex pt-6 md:py-10">
+                <div className="flex-1">
+                    <h1 className="mb-10 text-center text-3xl font-bold">
+                        Contactez notre équipe en renseignant tous les champs ci-dessous
+                    </h1>
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                            <FormField
+                                control={form.control}
+                                name="username"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Input placeholder="Nom et Prénom" autoComplete="off" required {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Input
+                                                type="email"
+                                                placeholder="Votre adresse email"
+                                                autoComplete="on"
+                                                required
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="phone"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Input
+                                                type="tel"
+                                                placeholder="Numéro de téléphone"
+                                                autoComplete="on"
+                                                required
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="subject"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Input
+                                                placeholder="Sujet du message"
+                                                autoComplete="off"
+                                                required
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="contenu"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Textarea
+                                                placeholder="Contenu de votre message"
+                                                autoComplete="off"
+                                                required
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <Button type="submit" variant="secondary">
+                                Envoyer
+                            </Button>
+                        </form>
+                    </Form>
+                </div>
+                <div className="flex flex-1 flex-col items-center justify-center text-center">
+                    <h2 className="mb-4 text-xl font-semibold">Contactez-nous</h2>
+                    <p className="mb-2">Vous pouvez également nous contacter par téléphone ou par email :</p>
+                    <p>Téléphone : +123456789</p>
+                    <p>Email : contact@bpump.com</p>
+                    <p className="mt-4">Heures de disponibilité : Du lundi au vendredi, de 9h à 18h</p>
+                </div>
             </div>
         </section>
     );
