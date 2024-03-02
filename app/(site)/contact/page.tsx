@@ -161,7 +161,7 @@ export default function Contact() {
                     <h2 className="mb-4 text-xl font-semibold">Contactez-nous</h2>
                     <p className="mb-2">Vous pouvez également nous contacter par téléphone ou par email :</p>
                     <p>Téléphone : +123456789</p>
-                    <p>Email : contact@bpump.com</p>
+                    <p>Email : b.pump.project@gmail.com</p>
                     <p className="mt-4">Heures de disponibilité : Du lundi au vendredi, de 9h à 18h</p>
                 </div>
             </div>
