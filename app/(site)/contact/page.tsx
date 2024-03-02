@@ -21,7 +21,7 @@ export default function Contact() {
         email: z.string().email({
             message: "Doit être une adresse email valide",
         }),
-        phone: z.string().min(10, {
+        phone: z.string().regex(new RegExp(/^(\+33|0)[1-9](\d{2}){4}$/), {
             message: "Doit être un numéro de téléphone valide",
         }),
         subject: z.string().min(5, {
