@@ -79,7 +79,7 @@ export function Footer() {
                     <p>Fait par</p>
                     {config.author.map((item, index) => (
                         <div key={index}>
-                            <Link href={item.url} className="font-bold hover:text-accent-foreground">
+                            <Link href={item.url} target="_blank" className="font-bold hover:text-accent-foreground">
                                 {item.name}
                             </Link>
                             {index < config.author.length - 1 && <>&nbsp;&</>}

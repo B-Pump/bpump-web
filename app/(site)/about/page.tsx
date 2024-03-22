@@ -74,9 +74,9 @@ export default function About() {
                             </div>
                         </div>
                     ) : error ? (
-                        <p>{error.message}</p>
+                        <p>{error}</p>
                     ) : (
-                        data?.map((item: any, index: number) => <p key={index}>{item?.sugar?.title}</p>)
+                        data?.map((item: any, index: number) => <p key={index}>{item?.title}</p>)
                     )}
                 </div>
             </div>
