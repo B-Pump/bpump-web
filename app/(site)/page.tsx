@@ -1,7 +1,7 @@
 "use client";
 
-import { HeroGeminiEffect } from "@/components/gemini";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { HeroGeminiEffect } from "@/components/ui/gemini";
 import { InfiniteMovingCards } from "@/components/ui/moving-cards";
 
 export default function Home() {

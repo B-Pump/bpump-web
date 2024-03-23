@@ -1,24 +1,324 @@
 "use client";
 
-import { IconMoon, IconRobot, IconSun, IconUser } from "@tabler/icons-react";
+import {
+    IconCircle,
+    IconDeviceLaptop,
+    IconMenu2,
+    IconMoon,
+    IconRobot,
+    IconSearch,
+    IconSun,
+    IconUser,
+} from "@tabler/icons-react";
 import { signIn, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-import { DialogCommand } from "@/components/dialog-command";
-import { Menu } from "@/components/menu";
-import { NavDrawer } from "@/components/nav-drawer";
-import { Button } from "@/components/ui/button";
+import { CartDrawer } from "@/components/cart-drawer";
+import { Button, buttonVariants } from "@/components/ui/button";
+import {
+    CommandDialog,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+    CommandSeparator,
+} from "@/components/ui/command";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet";
+
+import { cn } from "@/lib/utils";
 
 import config from "@/config/config.json";
-import { CartDrawer } from "./cart-drawer";
+
+function Menu() {
+    const home: { title: string; href: string; description: string }[] = [
+        {
+            title: "Bienvenue",
+            href: "/",
+            description: "Page d'accueil du site",
+        },
+        {
+            title: "Présentation",
+            href: "/",
+            description: "Présentation brève des technologies utilisées",
+        },
+        {
+            title: "Retour utilisateur",
+            href: "/",
+            description: "Avis des personnes ayant eu l'occasion de tester notre robot",
+        },
+    ];
+
+    const about: { title: string; href: string; description: string }[] = [
+        {
+            title: "Notre équipe",
+            href: "about",
+            description: "Présentation des membres du projet et du rôle de chacun",
+        },
+        {
+            title: "Détails technique",
+            href: "about",
+            description: "Découvrez les composants et la méthode de fabrication du robot",
+        },
+        {
+            title: "Détails logiciels",
+            href: "about",
+            description: "Explorez les méthodes utilisées pour la programmation du robot",
+        },
+    ];
+
+    const boutique: { title: string; href: string; description: string }[] = [
+        {
+            title: "Robot",
+            href: "boutique",
+            description: "Allez sur la page principale de la boutique",
+        },
+        {
+            title: "Produits dérivés",
+            href: "boutique",
+            description: "Soutenez notre projet en vous procurant des produits dérivés",
+        },
+    ];
+
+    const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
+        ({ className, title, children, ...props }, ref) => {
+            return (
+                <li>
+                    <NavigationMenuLink asChild>
+                        <a
+                            ref={ref}
+                            className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                className,
+                            )}
+                            {...props}
+                        >
+                            <div className="text-sm font-medium leading-none">{title}</div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+                        </a>
+                    </NavigationMenuLink>
+                </li>
+            );
+        },
+    );
+
+    ListItem.displayName = "ListItem";
+
+    return (
+        <NavigationMenu>
+            <NavigationMenuList>
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>Accueil</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                            <li className="row-span-3">
+                                <NavigationMenuLink asChild>
+                                    <a
+                                        className="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                        href="/"
+                                    >
+                                        <IconRobot className="size-6" />
+                                        <div className="mb-2 mt-4 text-lg font-medium">{config.sugar.title}</div>
+                                        <p className="text-sm leading-tight text-muted-foreground">
+                                            {config.sugar.description}
+                                        </p>
+                                    </a>
+                                </NavigationMenuLink>
+                            </li>
+                            {home.map((item, index) => (
+                                <ListItem key={index} title={item.title} href={item.href}>
+                                    {item.description}
+                                </ListItem>
+                            ))}
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>À propos</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                            {about.map((item, index) => (
+                                <ListItem key={index} title={item.title} href={item.href}>
+                                    {item.description}
+                                </ListItem>
+                            ))}
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>Boutique</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                            {boutique.map((item, index) => (
+                                <ListItem key={index} title={item.title} href={item.href}>
+                                    {item.description}
+                                </ListItem>
+                            ))}
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <Link href="contact" legacyBehavior passHref>
+                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>Contact</NavigationMenuLink>
+                    </Link>
+                </NavigationMenuItem>
+            </NavigationMenuList>
+        </NavigationMenu>
+    );
+}
+
+function NavDrawer() {
+    return (
+        <Sheet>
+            <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                    <IconMenu2 />
+                </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+                <SheetHeader>
+                    <SheetTitle className="text-center">{config.sugar.title}</SheetTitle>
+                    <SheetDescription className="text-center">{config.sugar.description}</SheetDescription>
+                </SheetHeader>
+                <div className="grid gap-4 py-10">
+                    {config.link.map((item, index) => (
+                        <SheetClose key={index} asChild>
+                            <Link
+                                href={item.href}
+                                className={buttonVariants({
+                                    size: "sm",
+                                    variant: "secondary",
+                                })}
+                            >
+                                {item.title}
+                            </Link>
+                        </SheetClose>
+                    ))}
+                </div>
+            </SheetContent>
+        </Sheet>
+    );
+}
+
+function DialogCommand() {
+    const router = useRouter();
+    const { setTheme } = useTheme();
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        const down = (e: KeyboardEvent) => {
+            if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault();
+                setOpen((open) => !open);
+            }
+        };
+
+        document.addEventListener("keydown", down);
+        return () => document.removeEventListener("keydown", down);
+    }, [open]);
+
+    return (
+        <>
+            <div className="w-full flex-1 md:w-auto md:flex-none">
+                <Button
+                    className="lg:hidden"
+                    variant="outline"
+                    size="icon"
+                    onClick={() => setOpen((open: boolean) => !open)}
+                >
+                    <IconSearch />
+                </Button>
+                <Button className="hidden lg:flex" variant="outline" onClick={() => setOpen((open: boolean) => !open)}>
+                    <p className="text-muted-foreground">Rechercher</p>
+                    <p className="ml-5 text-sm text-muted-foreground">
+                        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+                            <span className="text-xs">CTRL</span>
+                        </kbd>
+                        <kbd className="pointer-events-none ml-1 inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+                            <span className="text-xs">K</span>
+                        </kbd>
+                    </p>
+                </Button>
+            </div>
+            <CommandDialog open={open} onOpenChange={setOpen}>
+                <CommandInput placeholder="Entrez une commande ou faites une recherche..." />
+                <CommandList>
+                    <CommandEmpty>Aucun résultat trouvé</CommandEmpty>
+                    <CommandGroup heading="Catégories">
+                        {config?.link.map((item, index) => (
+                            <CommandItem
+                                key={index}
+                                onSelect={() => {
+                                    router.push(item.href);
+                                    setOpen(false);
+                                }}
+                            >
+                                <IconCircle className="mr-2 size-4" />
+                                <span>{item.title}</span>
+                            </CommandItem>
+                        ))}
+                    </CommandGroup>
+                    <CommandSeparator />
+                    <CommandGroup heading="Thème">
+                        <CommandItem
+                            onSelect={() => {
+                                setTheme("system");
+                                setOpen(false);
+                            }}
+                        >
+                            <IconDeviceLaptop className="mr-2 size-4" />
+                            <span>Système</span>
+                        </CommandItem>
+                        <CommandItem
+                            onSelect={() => {
+                                setTheme("light");
+                                setOpen(false);
+                            }}
+                        >
+                            <IconSun className="mr-2 size-4" />
+                            <span>Clair</span>
+                        </CommandItem>
+                        <CommandItem
+                            onSelect={() => {
+                                setTheme("dark");
+                                setOpen(false);
+                            }}
+                        >
+                            <IconMoon className="mr-2 size-4" />
+                            <span>Sombre</span>
+                        </CommandItem>
+                    </CommandGroup>
+                </CommandList>
+            </CommandDialog>
+        </>
+    );
+}
 
 export function Header() {
     const router = useRouter();

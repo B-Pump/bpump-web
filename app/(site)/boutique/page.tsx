@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 
-import { ThreeDCard } from "@/components/3d-card";
 import { Model } from "@/components/model";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Spotlight } from "@/components/ui/spotlight";
+import { ThreeDCard } from "@/components/ui/threed-card";
+
 import { cn } from "@/lib/utils";
 
 export default function Boutique() {

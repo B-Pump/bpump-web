@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, MotionValue } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 import { TextGenerateEffect } from "@/components/ui/text-generation";
 
@@ -11,7 +12,7 @@ const transition = {
     ease: "linear",
 };
 
-export const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: MotionValue[]; className?: string }) => {
+const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: MotionValue[]; className?: string }) => {
     return (
         <div className={cn("sticky top-80", className)}>
             <TextGenerateEffect
@@ -161,3 +162,27 @@ export const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: Mo
         </div>
     );
 };
+
+export function HeroGeminiEffect() {
+    const ref = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"],
+    });
+
+    const pathLengthFirst = useTransform(scrollYProgress, [0, 0.8], [0.2, 1.2]);
+    const pathLengthSecond = useTransform(scrollYProgress, [0, 0.8], [0.15, 1.2]);
+    const pathLengthThird = useTransform(scrollYProgress, [0, 0.8], [0.1, 1.2]);
+    const pathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [0.05, 1.2]);
+    const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
+
+    return (
+        // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+        <div className="relative h-[400vh] w-full overflow-clip rounded-md pt-40" ref={ref}>
+            <GoogleGeminiEffect
+                pathLengths={[pathLengthFirst, pathLengthSecond, pathLengthThird, pathLengthFourth, pathLengthFifth]}
+            />
+        </div>
+    );
+}
