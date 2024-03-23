@@ -12,5 +12,9 @@ export default function Account() {
         if (!authState?.authenticated) router.replace("/");
     }, [authState, router]);
 
-    return;
+    return (
+        <section className="grid items-center gap-6">
+            <div className="container pt-6 md:py-10">{authState?.token}</div>
+        </section>
+    );
 }
