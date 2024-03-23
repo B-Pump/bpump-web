@@ -87,12 +87,21 @@ const config = {
                         transform: "translate(-50%,-40%) scale(1)",
                     },
                 },
+                aurora: {
+                    from: {
+                        backgroundPosition: "50% 50%, 50% 50%",
+                    },
+                    to: {
+                        backgroundPosition: "350% 50%, 350% 50%",
+                    },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
                 scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
                 spotlight: "spotlight 2s ease .75s 1 forwards",
+                aurora: "aurora 60s linear infinite",
             },
         },
     },

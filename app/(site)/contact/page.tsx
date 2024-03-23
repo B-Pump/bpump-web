@@ -2,7 +2,6 @@
 
 import emailjs from "@emailjs/browser";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -11,8 +10,10 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+import { useAuth } from "@/context/auth";
+
 export default function Contact() {
-    const { data } = useSession();
+    const { authState } = useAuth();
 
     const formSchema = z.object({
         username: z.string().min(5, {
@@ -48,7 +49,7 @@ export default function Contact() {
                 "service_21096s9",
                 "template_amv97xj",
                 {
-                    account: data?.user?.name || "Pas de compte",
+                    account: authState?.token || "Pas de compte",
                     name: values.username,
                     email: values.email,
                     phone: values.phone,

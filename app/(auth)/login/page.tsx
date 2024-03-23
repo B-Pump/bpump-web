@@ -1,14 +1,16 @@
 "use client";
 
 import { IconChevronLeft, IconRobot } from "@tabler/icons-react";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+import { useAuth } from "@/context/auth";
 import { cn } from "@/lib/utils";
 
 interface Inputs {
@@ -17,13 +19,22 @@ interface Inputs {
 }
 
 export default function Login() {
+    const { onLogin } = useAuth();
+    const router = useRouter();
+
+    const [loading, setLoading] = useState(false);
+
     const { register, handleSubmit } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        await signIn("credentials", {
-            username: data.username,
-            password: data.password,
-            redirect: true,
-        });
+        setLoading(true);
+
+        const result = await onLogin!(data.username, data.password);
+        if (result && result.error) {
+            alert("Identifiants invalides");
+        } else {
+            router.replace("/");
+        }
+        setLoading(false);
     };
 
     return (
@@ -74,15 +85,19 @@ export default function Login() {
                                     {...register("password")}
                                 />
                             </div>
-                            <Button variant="secondary">Vous connecter</Button>
+                            <Button variant="secondary" disabled={loading}>
+                                Vous connecter
+                            </Button>
                         </div>
                     </form>
                 </div>
-                <p className="px-8 text-center text-sm text-muted-foreground">
-                    <Link href="/register" className="underline underline-offset-4">
-                        Vous n&apos;avez pas de compte ?
-                    </Link>
-                </p>
+                {!loading ? (
+                    <p className="px-8 text-center text-sm text-muted-foreground">
+                        <Link href="/register" className="underline underline-offset-4">
+                            Vous n&apos;avez pas de compte ?
+                        </Link>
+                    </p>
+                ) : null}
             </div>
         </div>
     );

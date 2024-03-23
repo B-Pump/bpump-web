@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+
+import { AuthProvider } from "@/context/auth";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
@@ -32,10 +34,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <html lang="fr" suppressHydrationWarning>
             <head />
             <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                    {children}
-                    <Toaster position="bottom-center" className="select-none" />
-                </ThemeProvider>
+                <AuthProvider>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                        {children}
+                        <Toaster position="bottom-center" className="select-none" />
+                    </ThemeProvider>
+                </AuthProvider>
             </body>
         </html>
     );

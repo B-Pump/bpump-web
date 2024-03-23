@@ -25,7 +25,7 @@ export default function TermsOfUse() {
     return (
         <section className="grid items-center gap-6">
             <div className="container w-full pt-6">
-                <h1 className="mb-10 text-center text-5xl font-bold">Termes d'utilisation B-Pump</h1>
+                <h1 className="mb-10 text-center text-5xl font-bold">Termes d&apos;utilisation B-Pump</h1>
                 <div className="flex flex-col space-y-8">
                     {articles.map((article, index) => (
                         <div key={index} className="rounded-lg border border-gray-300 p-6">

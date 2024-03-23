@@ -1,15 +1,20 @@
 "use client";
 
 import { IconLock, IconRobot } from "@tabler/icons-react";
-import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
+import { AuroraBackground } from "@/components/ui/aurora";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+import { useAuth } from "@/context/auth";
 import { cn } from "@/lib/utils";
+
+import config from "@/config/config.json";
 
 interface Inputs {
     username: string;
@@ -17,9 +22,32 @@ interface Inputs {
 }
 
 export default function Register() {
+    const { onLogin, onRegister } = useAuth();
+    const router = useRouter();
+
+    const [loading, setLoading] = useState(false);
+
+    const login = async (username: string, password: string) => {
+        const result = await onLogin!(username, password);
+        if (result && result.error) {
+            alert("Veuillez réessayer");
+        } else router.replace("/");
+        setLoading(false);
+    };
+
     const { register, handleSubmit } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        setLoading(true);
+
+        const usernameRegex = /^[a-zA-Z0-9_\-]+$/;
+        const passwordRegex = /^[a-zA-Z0-9@#$%^&*]+$/;
+
+        if (usernameRegex.test(data.username.trim()) && passwordRegex.test(data.password.trim())) {
+            const result = await onRegister!(data.username, data.password);
+            if (result && result.error) {
+                alert(result.msg);
+            } else login(data.username, data.password);
+        } else alert("Le nom d'utilisateur ou le mot de passe contient des caractères non autorisés");
     };
 
     return (
@@ -32,7 +60,10 @@ export default function Register() {
                 Vous connecter
             </Link>
             <div className="hidden h-full bg-muted lg:block">
-                <Image src="" alt="" />
+                <AuroraBackground
+                    title={config.sugar.title}
+                    description="Créez un compte dès maintenant pour modifier vos programmes !"
+                />
             </div>
             <div className="lg:p-8">
                 <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
@@ -74,7 +105,9 @@ export default function Register() {
                                         {...register("password")}
                                     />
                                 </div>
-                                <Button variant="secondary">Créer un compte</Button>
+                                <Button variant="secondary" disabled={loading}>
+                                    Créer un compte
+                                </Button>
                             </div>
                         </form>
                     </div>

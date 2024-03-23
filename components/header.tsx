@@ -10,7 +10,6 @@ import {
     IconSun,
     IconUser,
 } from "@tabler/icons-react";
-import { signIn, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -52,6 +51,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 
+import { useAuth } from "@/context/auth";
 import { cn } from "@/lib/utils";
 
 import config from "@/config/config.json";
@@ -322,7 +322,7 @@ function DialogCommand() {
 
 export function Header() {
     const router = useRouter();
-    const { status } = useSession();
+    const { authState, onLogout } = useAuth();
     const { theme, setTheme } = useTheme();
 
     return (
@@ -361,11 +361,7 @@ export function Header() {
                             <span className="sr-only">Toggle theme</span>
                         </Button>
                         <CartDrawer />
-                        {status === "unauthenticated" ? (
-                            <Button variant="secondary" onClick={() => signIn()}>
-                                Connexion
-                            </Button>
-                        ) : status === "authenticated" ? (
+                        {authState?.authenticated ? (
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
                                     <Button variant="outline" size="icon">
@@ -375,14 +371,16 @@ export function Header() {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end">
                                     <DropdownMenuItem onClick={() => router.push("account")}>
-                                        Votre compte
+                                        Dashboard
                                     </DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => router.push("programs")}>
-                                        Vos programmes
-                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={onLogout}>Déconnexion</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
-                        ) : null}
+                        ) : (
+                            <Button variant="secondary" onClick={() => router.push("/login")}>
+                                Connexion
+                            </Button>
+                        )}
                     </nav>
                 </div>
             </div>
