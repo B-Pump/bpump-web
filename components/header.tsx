@@ -30,6 +30,7 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
+    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -373,6 +374,7 @@ export function Header() {
                                     <DropdownMenuItem onClick={() => router.push("account")}>
                                         Dashboard
                                     </DropdownMenuItem>
+                                    <DropdownMenuSeparator />
                                     <DropdownMenuItem onClick={onLogout}>Déconnexion</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
