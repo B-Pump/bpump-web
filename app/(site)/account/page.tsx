@@ -1,7 +1,6 @@
 "use client";
 
 import { IconChartArea, IconHome, IconShirtSport } from "@tabler/icons-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -27,7 +26,14 @@ export default function Account() {
             title: "Votre compte",
             value: "account",
             icon: <IconHome className="size-4" />,
-            content: <div></div>,
+            content: (
+                <div>
+                    <h1>
+                        Bonjour,{" "}
+                        {authState?.token && authState.token.charAt(0).toUpperCase() + authState.token.slice(1)}
+                    </h1>
+                </div>
+            ),
         },
         {
             title: "Vos programmes",
@@ -52,11 +58,7 @@ export default function Account() {
                                     <Button className="mt-4">Ajouer un programme</Button>
                                 </div>
                             ) : (
-                                <>
-                                    {data.map((item: Progs, index: string) => (
-                                        <p key={index}>{item.title}</p>
-                                    ))}
-                                </>
+                                <>{data && data.map((item: Progs, index: string) => <p key={index}>{item.title}</p>)}</>
                             )}
                         </>
                     )}
@@ -80,30 +82,35 @@ export default function Account() {
                     </div>
                     <nav className="grid items-start px-2 font-medium lg:px-4">
                         {items.map((item, index) => (
-                            <Link
-                                href="#"
-                                passHref
-                                className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary ${
+                            <Button
+                                variant="ghost"
+                                onClick={() => setSelectedTab(item.value)}
+                                className={`justify-start gap-3 text-base text-muted-foreground hover:text-primary ${
                                     selectedTab === item.value && "text-primary"
                                 }`}
-                                onClick={() => setSelectedTab(item.value)}
                                 key={index}
                             >
                                 {item.icon}
                                 {item.title}
-                            </Link>
+                            </Button>
                         ))}
                     </nav>
                 </div>
             </div>
             <div className="flex flex-col">
-                <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-                    <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
-                        {items.map((item, index) => {
-                            if (selectedTab === item.value) return <div key={index}>{item.content}</div>;
-                        })}
-                    </div>
-                </main>
+                <div className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+                    {items.map((item, index) => {
+                        if (selectedTab === item.value)
+                            return (
+                                <div
+                                    className="flex flex-1 gap-4 rounded-lg border border-dashed p-4 lg:gap-6 lg:p-6"
+                                    key={index}
+                                >
+                                    {item.content}
+                                </div>
+                            );
+                    })}
+                </div>
             </div>
         </div>
     );
