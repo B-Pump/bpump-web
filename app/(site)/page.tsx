@@ -63,23 +63,38 @@ export default function Home() {
                 </div>
                 <div className="py-20">
                     <h1 className="text-4xl font-bold">
-                        C'est quoi <span className=""> B-Pump</span> ?
+                        C&apos;est quoi <span className="text-primary">B-Pump</span> ?
                     </h1>
                     <p>
-                        B-Pump est un coach sportif intelligent, fait pour t'aider à réaliser tes entrainements sportifs le plus efficacement possible. Ce coach virtuel combine habilement la vision machine et l'intelligence artificielle pour offrir une expérience d'entraînement <b className="font-bold text-primary">révolutionnaire</b>.
-                        Notre système repose sur la puissance de la vision par ordinateur pour <b className="font-bold text-primary">analyser en temps réel les mouvements des sportifs.</b> Grâce à des algorithmes avancés, nous sommes en mesure de détecter les moindres détails et nuances dans la gestuelle des athlètes, offrant ainsi une analyse précise et approfondie de leurs performances. L'intelligence artificielle intégrée à notre coach robotique assure <b className="font-bold text-primary">un suivi personnalisé</b> et adaptatif de l'entraînement. En analysant les données de mouvement recueillies par la vision machine, notre système est capable de fournir des conseils individualisés et des recommandations d'<b className="font-bold text-primary">entraînement sur mesure.</b> Que ce soit pour corriger une technique, optimiser la stratégie de jeu ou maximiser les résultats, notre coach virtuel est là pour guider et soutenir les sportifs à chaque étape de leur parcours. B-pump offre aux sportifs un outil puissant pour améliorer leurs performances et atteindre leurs objectifs. 
+                        B-Pump est un coach sportif intelligent, fait pour t&apos;aider à réaliser tes entrainements
+                        sportifs le plus efficacement possible. Ce coach virtuel combine habilement la vision machine et
+                        l&apos;intelligence artificielle pour offrir une expérience d&apos;entraînement
+                        <b className="font-bold text-primary">révolutionnaire</b>. Notre système repose sur la puissance
+                        de la vision par ordinateur pour
+                        <b className="font-bold text-primary">analyser en temps réel les mouvements des sportifs.</b>
+                        Grâce à des algorithmes avancés, nous sommes en mesure de détecter les moindres détails et
+                        nuances dans la gestuelle des athlètes, offrant ainsi une analyse précise et approfondie de
+                        leurs performances. L&apos;intelligence artificielle intégrée à notre coach robotique assure
+                        <b className="font-bold text-primary">un suivi personnalisé</b> et adaptatif de
+                        l&apos;entraînement. En analysant les données de mouvement recueillies par la vision machine,
+                        notre système est capable de fournir des conseils individualisés et des recommandations d&apos;
+                        <b className="font-bold text-primary">entraînement sur mesure.</b> Que ce soit pour corriger une
+                        technique, optimiser la stratégie de jeu ou maximiser les résultats, notre coach virtuel est là
+                        pour guider et soutenir les sportifs à chaque étape de leur parcours. B-pump offre aux sportifs
+                        un outil puissant pour améliorer leurs performances et atteindre leurs objectifs.
                     </p>
                 </div>
             </div>
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
-            <a href='http://play.google.com/store/b-pump?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
-                <Image
-                alt='Disponible sur Google Play'
-                src='https://play.google.com/intl/fr_FR/badges/static/images/badges/fr_badge_web_generic.png'
-                priority
-                height={300}
-                width={300}
-                /></a>
+                <a href="http://play.google.com/store/b-pump?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+                    <Image
+                        alt="Disponible sur Google Play"
+                        src="https://play.google.com/intl/fr_FR/badges/static/images/badges/fr_badge_web_generic.png"
+                        priority
+                        height={300}
+                        width={300}
+                    />
+                </a>
             </div>
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
                 <InfiniteMovingCards items={testimonials} />
