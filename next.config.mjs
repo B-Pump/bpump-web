@@ -15,6 +15,10 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "pbs.twimg.com",
             },
+            {
+                protocol: "https",
+                hostname: "play.google.com",
+            },
         ],
     },
 };

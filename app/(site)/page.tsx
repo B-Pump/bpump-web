@@ -3,6 +3,7 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { HeroGeminiEffect } from "@/components/ui/gemini";
 import { InfiniteMovingCards } from "@/components/ui/moving-cards";
+import Image from "next/image";
 
 export default function Home() {
     const projects = [
@@ -69,6 +70,16 @@ export default function Home() {
                         Notre système repose sur la puissance de la vision par ordinateur pour <b className="font-bold text-primary">analyser en temps réel les mouvements des sportifs.</b> Grâce à des algorithmes avancés, nous sommes en mesure de détecter les moindres détails et nuances dans la gestuelle des athlètes, offrant ainsi une analyse précise et approfondie de leurs performances. L'intelligence artificielle intégrée à notre coach robotique assure <b className="font-bold text-primary">un suivi personnalisé</b> et adaptatif de l'entraînement. En analysant les données de mouvement recueillies par la vision machine, notre système est capable de fournir des conseils individualisés et des recommandations d'<b className="font-bold text-primary">entraînement sur mesure.</b> Que ce soit pour corriger une technique, optimiser la stratégie de jeu ou maximiser les résultats, notre coach virtuel est là pour guider et soutenir les sportifs à chaque étape de leur parcours. B-pump offre aux sportifs un outil puissant pour améliorer leurs performances et atteindre leurs objectifs. 
                     </p>
                 </div>
+            </div>
+            <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
+            <a href='http://play.google.com/store/b-pump?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+                <Image
+                alt='Disponible sur Google Play'
+                src='https://play.google.com/intl/fr_FR/badges/static/images/badges/fr_badge_web_generic.png'
+                priority
+                height={300}
+                width={300}
+                /></a>
             </div>
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
                 <InfiniteMovingCards items={testimonials} />
