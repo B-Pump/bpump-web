@@ -9,20 +9,20 @@ export default function Home() {
         {
             title: "Intelligence artificielle",
             description:
-                "Nous utilisons la dernière technologie IA de google afin de détecter le positionnement de votre corps et mieux vous acompagner lors de vos exercices.",
+                "Nous utilisons la dernière technologie d'IA de Google afin de détecter le positionnement de votre corps et mieux vous acompagner lors de vos exercices.",
             link: "https://developers.google.com/mediapipe",
         },
         {
-            title: "Bibliothèque d'API",
+            title: "Technologies innovantes",
             description:
-                "Maximisez l'efficacité de votre expérience avec notre API backend rapide et performante. Notre choix s'est porté sur le framework FastAPI, pour sa rapidité et sa simplicité d'utilisation.",
-            link: "https://fastapi.tiangolo.com/",
+                "Notre robot contient les dernières technologies en terme de vision ordinateur pour vous aider à obtenir un entrainement aussi efficace que possible.",
+            link: "./about",
         },
         {
             title: "Expérience utilisateur",
             description:
-                "Nous avons intégré l'écosystème React de manière innovante pour développer notre site web et notre application. Cette approche nous permet d'offrir une expérience utilisateur fluide et optimale.",
-            link: "https://react.dev/",
+                "Notre projet s'adapte à votre profil unique pour vous aider à obtenir l'entrainement qui vous convient le mieux.",
+            link: "./onboarding",
         },
     ];
     const testimonials = [
@@ -61,28 +61,12 @@ export default function Home() {
                     <HoverEffect items={projects} />
                 </div>
                 <div className="py-20">
+                    <h1 className="text-4xl font-bold">
+                        C'est quoi <span className=""> B-Pump</span> ?
+                    </h1>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et deserunt assumenda, repellat
-                        corrupti distinctio atque officia minus officiis, aliquid odit nihil. Esse quia magnam dolorum
-                        voluptates cupiditate illo, blanditiis iste fuga iure autem quasi fugiat? Non laudantium animi
-                        at tempore! Sit unde deleniti dicta aspernatur sunt, minus facere odit iste necessitatibus
-                        dignissimos eius aut aperiam tempore impedit expedita incidunt totam possimus quod. Esse aliquam
-                        voluptates totam. Beatae voluptatum voluptate dolore tempora. Eveniet consequuntur voluptates
-                        dignissimos pariatur optio sequi temporibus nemo fuga ipsum maiores repudiandae commodi,
-                        adipisci eum alias aspernatur fugit labore enim reiciendis rerum. Autem pariatur, laudantium
-                        eveniet, dolorum est iusto sunt rem beatae ipsa ex ea! Unde odit animi sed, voluptate cumque,
-                        assumenda ratione vel corrupti, dolorem dolores repudiandae voluptatum nostrum harum
-                        exercitationem ducimus eius facere vitae odio autem sequi commodi. Delectus, aperiam nemo dolor
-                        voluptas dolorem beatae corrupti tenetur explicabo quaerat suscipit labore rem magni nisi
-                        aliquam! Incidunt iusto totam pariatur saepe. Et ut magni fuga consequatur commodi nostrum,
-                        quasi fugiat aliquid accusantium officiis, suscipit eaque expedita maxime! Voluptate,
-                        praesentium neque ut officiis earum consequuntur id sunt magnam dolorum numquam eos fugit
-                        excepturi iste fuga magni! Voluptate odio quas sint quisquam voluptatibus! Aperiam dignissimos
-                        atque dolores. Ut aspernatur expedita aut libero reprehenderit laudantium accusantium! Eos ad
-                        odit quaerat, nostrum debitis amet nam, dolores sunt laudantium voluptatum, reiciendis laborum
-                        perspiciatis voluptatibus officia natus labore repellendus tempora est! Debitis, ipsa id. Dolore
-                        cumque nesciunt laboriosam tempore, debitis eius fuga laudantium! Pariatur, eveniet iste.
-                        Mollitia explicabo minima veniam doloremque perferendis magni!
+                        B-Pump est un coach sportif intelligent, fait pour t'aider à réaliser tes entrainements sportifs le plus efficacement possible. Ce coach virtuel combine habilement la vision machine et l'intelligence artificielle pour offrir une expérience d'entraînement <b className="font-bold text-primary">révolutionnaire</b>.
+                        Notre système repose sur la puissance de la vision par ordinateur pour <b className="font-bold text-primary">analyser en temps réel les mouvements des sportifs.</b> Grâce à des algorithmes avancés, nous sommes en mesure de détecter les moindres détails et nuances dans la gestuelle des athlètes, offrant ainsi une analyse précise et approfondie de leurs performances. L'intelligence artificielle intégrée à notre coach robotique assure <b className="font-bold text-primary">un suivi personnalisé</b> et adaptatif de l'entraînement. En analysant les données de mouvement recueillies par la vision machine, notre système est capable de fournir des conseils individualisés et des recommandations d'<b className="font-bold text-primary">entraînement sur mesure.</b> Que ce soit pour corriger une technique, optimiser la stratégie de jeu ou maximiser les résultats, notre coach virtuel est là pour guider et soutenir les sportifs à chaque étape de leur parcours. B-pump offre aux sportifs un outil puissant pour améliorer leurs performances et atteindre leurs objectifs. 
                     </p>
                 </div>
             </div>

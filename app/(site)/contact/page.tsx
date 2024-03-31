@@ -153,7 +153,7 @@ export default function Contact() {
             <div>
                 <MaskContainer
                     revealText={
-                        <p className="mx-auto max-w-4xl text-center text-4xl  font-bold text-slate-800">
+                        <p className="mx-auto max-w-4xl text-center text-4xl  font-bold text-slate-500">
                             Quand la détermination forge le corps, chaque séance devient une étape vers la victoire
                             personnelle.
                         </p>

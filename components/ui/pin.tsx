@@ -21,7 +21,7 @@ const PinContainer = ({
     const [transform, setTransform] = useState("translate(-50%,-50%) rotateX(0deg)");
 
     const onMouseEnter = () => {
-        setTransform("translate(-50%,-50%) rotateX(40deg) scale(0.8)");
+        setTransform("translate(-50%,-50%) rotateX(10deg) scale(0.9)");
     };
     const onMouseLeave = () => {
         setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
