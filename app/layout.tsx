@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
 import { ThemeProvider } from "@/components/theme-provider";
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <AuthProvider>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                         {children}
+                        <SpeedInsights />
                         <Toaster position="bottom-center" className="select-none" />
                     </ThemeProvider>
                 </AuthProvider>
