@@ -4,6 +4,7 @@ import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { HeroGeminiEffect } from "@/components/ui/gemini";
 import { InfiniteMovingCards } from "@/components/ui/moving-cards";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
     const projects = [
@@ -86,7 +87,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
-                <a href="http://play.google.com/store/b-pump?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+                <Link href="http://play.google.com/store/b-pump?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
                     <Image
                         alt="Disponible sur Google Play"
                         src="https://play.google.com/intl/fr_FR/badges/static/images/badges/fr_badge_web_generic.png"
@@ -94,7 +95,7 @@ export default function Home() {
                         height={300}
                         width={300}
                     />
-                </a>
+                </Link>
             </div>
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
                 <InfiniteMovingCards items={testimonials} />
