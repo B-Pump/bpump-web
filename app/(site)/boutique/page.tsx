@@ -10,10 +10,20 @@ import { ThreeDCard } from "@/components/ui/threed-card";
 
 import { cn } from "@/lib/utils";
 
-export default function Boutique() {
-    const [isGrabbing, setIsGrabbing] = useState(false);
+type AccordionItem = {
+    title: string;
+    description: string;
+};
+type ProductItem = {
+    title: string;
+    description: string;
+    image: string;
+};
 
-    const accordion = [
+export default function Boutique() {
+    const [isGrabbing, setIsGrabbing] = useState<boolean>(false);
+
+    const accordion: AccordionItem[] = [
         { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
         { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
         { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
@@ -22,7 +32,7 @@ export default function Boutique() {
         { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
     ];
 
-    const products = [
+    const products: ProductItem[] = [
         {
             title: "Porte clef",
             description: "Emportez l'esprit novateur de notre projet partout avec vous grâce à ce porte-clés exclusif.",
@@ -58,7 +68,7 @@ export default function Boutique() {
                         </p>
                     </div>
                     <div className="flex justify-center">
-                        <Button>Acheter dès maintenant</Button>
+                        <Button onClick={() => {}}>Acheter dès maintenant</Button>
                     </div>
                     <p className="flex justify-center pt-3 text-muted-foreground">À partir de 200€</p>
                 </div>
@@ -73,7 +83,7 @@ export default function Boutique() {
                 </div>
                 <div className="flex w-1/2 items-center justify-center p-4">
                     <Accordion type="single" collapsible className="w-3/4">
-                        {accordion.map((item, index) => (
+                        {accordion.map((item: AccordionItem, index: number) => (
                             <AccordionItem key={index} value={`item-${index}`}>
                                 <AccordionTrigger>{item.title}</AccordionTrigger>
                                 <AccordionContent>{item.description}</AccordionContent>
@@ -83,7 +93,7 @@ export default function Boutique() {
                 </div>
             </div>
             <div className="flex flex-wrap justify-center gap-5">
-                {products.map((item, index) => (
+                {products.map((item: ProductItem, index: number) => (
                     <ThreeDCard key={index} title={item.title} description={item.description} image={item.image} />
                 ))}
             </div>

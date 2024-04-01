@@ -28,6 +28,7 @@ export default function Home() {
             link: "./onboarding",
         },
     ];
+
     const testimonials = [
         {
             title: "Étudiante",
@@ -88,11 +89,11 @@ export default function Home() {
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
                 <Link href="/">
                     <Image
-                        alt="Disponible sur Google Play"
+                        alt="Télécharger l'application pour Android"
                         src="https://play.google.com/intl/fr_FR/badges/static/images/badges/fr_badge_web_generic.png"
-                        priority
-                        height={300}
-                        width={300}
+                        style={{ width: "auto", height: "auto" }}
+                        width={150}
+                        height={150}
                     />
                 </Link>
             </div>

@@ -16,7 +16,7 @@ const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: MotionVal
     return (
         <div className={cn("sticky top-80", className)}>
             <TextGenerateEffect
-                className="bg-clip-text pb-4 text-center font-bold md:text-2xl xl:text-5xl 2xl:text-7xl"
+                className="bg-clip-text pb-4 text-center text-3xl font-bold md:text-4xl xl:text-5xl 2xl:text-7xl"
                 lineOne={"Un robot coach sportif autonome"}
                 lineTwo={"construit par 6 élèves de terminale"}
             />

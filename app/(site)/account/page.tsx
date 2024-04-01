@@ -9,19 +9,44 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/auth";
 import useFetch from "@/lib/api";
 
+interface Progs {
+    id: string;
+    owner: string;
+    icon: string;
+    title: string;
+    description: string;
+    category: string;
+    difficulty: number;
+    hint: string[];
+    exercises: string[];
+}
+interface ProgsData {
+    data: Progs[];
+    isLoading: boolean;
+    error: boolean;
+    refetch: () => void;
+}
+
+type TabItem = {
+    title: string;
+    value: string;
+    icon: React.ReactNode;
+    content: React.ReactNode;
+};
+
 export default function Account() {
     const { authState } = useAuth();
     const router = useRouter();
 
-    const { data, isLoading, error } = useFetch("GET", `progs/all?username=${authState?.token}`);
+    const { data, isLoading, error }: ProgsData = useFetch("GET", `progs/all?username=${authState?.token}`);
 
     useEffect(() => {
         if (!authState?.authenticated) router.replace("/");
     }, [authState, router]);
 
-    const [selectedTab, setSelectedTab] = useState("account");
+    const [selectedTab, setSelectedTab] = useState<string>("account");
 
-    const items = [
+    const items: TabItem[] = [
         {
             title: "Votre compte",
             value: "account",
@@ -44,10 +69,10 @@ export default function Account() {
                     {isLoading ? (
                         <>{/* TODO: Skeleton */}</>
                     ) : error ? (
-                        <p>{error}</p>
+                        <p>Erreur lors du chargement de vos programmes</p>
                     ) : (
                         <>
-                            {data === "[]" ? (
+                            {data && data.length < 1 ? (
                                 <div className="flex flex-col items-center gap-1 text-center">
                                     <h3 className="text-2xl font-bold tracking-tight">
                                         Vous n&apos;avez aucun programmes
@@ -58,7 +83,9 @@ export default function Account() {
                                     <Button className="mt-4">Ajouer un programme</Button>
                                 </div>
                             ) : (
-                                <>{data && data.map((item: Progs, index: string) => <p key={index}>{item.title}</p>)}</>
+                                <div>
+                                    {data && data.map((item: Progs, index: number) => <p key={index}>{item.title}</p>)}
+                                </div>
                             )}
                         </>
                     )}
@@ -81,7 +108,7 @@ export default function Account() {
                         <p>Dashboard</p>
                     </div>
                     <nav className="grid items-start px-2 font-medium lg:px-4">
-                        {items.map((item, index) => (
+                        {items.map((item: TabItem, index: number) => (
                             <Button
                                 variant="ghost"
                                 onClick={() => setSelectedTab(item.value)}
@@ -99,7 +126,7 @@ export default function Account() {
             </div>
             <div className="flex flex-col">
                 <div className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-                    {items.map((item, index) => {
+                    {items.map((item: TabItem, index: number) => {
                         if (selectedTab === item.value)
                             return (
                                 <div

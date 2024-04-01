@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 import { AuroraBackground } from "@/components/ui/aurora";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -25,15 +26,7 @@ export default function Register() {
     const { onLogin, onRegister } = useAuth();
     const router = useRouter();
 
-    const [loading, setLoading] = useState(false);
-
-    const login = async (username: string, password: string) => {
-        const result = await onLogin!(username, password);
-        if (result && result.error) {
-            alert("Veuillez réessayer");
-        } else router.replace("/");
-        setLoading(false);
-    };
+    const [loading, setLoading] = useState<boolean>(false);
 
     const { register, handleSubmit } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -46,8 +39,22 @@ export default function Register() {
             const result = await onRegister!(data.username, data.password);
             if (result && result.error) {
                 alert(result.msg);
-            } else login(data.username, data.password);
+            } else {
+                const result = await onLogin!(data.username, data.password);
+                if (result && result.error) {
+                    alert("Veuillez réessayer");
+                } else {
+                    router.replace("/");
+                    toast("Authentification", {
+                        description: `Vous êtes désormais connecté en tant que ${
+                            data.username.charAt(0).toUpperCase() + data.username.slice(1)
+                        }`,
+                    });
+                }
+            }
         } else alert("Le nom d'utilisateur ou le mot de passe contient des caractères non autorisés");
+
+        setLoading(false);
     };
 
     return (

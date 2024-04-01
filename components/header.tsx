@@ -14,7 +14,7 @@ import {
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -34,15 +34,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
 import { Separator } from "@/components/ui/separator";
 import {
     Sheet,
@@ -58,143 +49,6 @@ import { useAuth } from "@/context/auth";
 import { cn } from "@/lib/utils";
 
 import config from "@/config/config.json";
-
-function Menu() {
-    const home: { title: string; href: string; description: string }[] = [
-        {
-            title: "Bienvenue",
-            href: "/",
-            description: "Page d'accueil du site",
-        },
-        {
-            title: "Présentation",
-            href: "/",
-            description: "Présentation brève des technologies utilisées",
-        },
-        {
-            title: "Retour utilisateur",
-            href: "/",
-            description: "Avis des personnes ayant eu l'occasion de tester notre robot",
-        },
-    ];
-
-    const about: { title: string; href: string; description: string }[] = [
-        {
-            title: "Notre équipe",
-            href: "about",
-            description: "Présentation des membres du projet et du rôle de chacun",
-        },
-        {
-            title: "Détails technique",
-            href: "about",
-            description: "Découvrez les composants et la méthode de fabrication du robot",
-        },
-        {
-            title: "Détails logiciels",
-            href: "about",
-            description: "Explorez les méthodes utilisées pour la programmation du robot",
-        },
-    ];
-
-    const boutique: { title: string; href: string; description: string }[] = [
-        {
-            title: "Robot",
-            href: "boutique",
-            description: "Allez sur la page principale de la boutique",
-        },
-        {
-            title: "Produits dérivés",
-            href: "boutique",
-            description: "Soutenez notre projet en vous procurant des produits dérivés",
-        },
-    ];
-
-    const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
-        ({ className, title, children, ...props }, ref) => {
-            return (
-                <li>
-                    <NavigationMenuLink asChild>
-                        <a
-                            ref={ref}
-                            className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                                className,
-                            )}
-                            {...props}
-                        >
-                            <div className="text-sm font-medium leading-none">{title}</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
-                        </a>
-                    </NavigationMenuLink>
-                </li>
-            );
-        },
-    );
-
-    ListItem.displayName = "ListItem";
-
-    return (
-        <NavigationMenu>
-            <NavigationMenuList>
-                <NavigationMenuItem>
-                    <NavigationMenuTrigger>Accueil</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                            <li className="row-span-3">
-                                <NavigationMenuLink asChild>
-                                    <a
-                                        className="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                        href="/"
-                                    >
-                                        <IconRobot className="size-6" />
-                                        <div className="mb-2 mt-4 text-lg font-medium">{config.sugar.title}</div>
-                                        <p className="text-sm leading-tight text-muted-foreground">
-                                            {config.sugar.description}
-                                        </p>
-                                    </a>
-                                </NavigationMenuLink>
-                            </li>
-                            {home.map((item, index) => (
-                                <ListItem key={index} title={item.title} href={item.href}>
-                                    {item.description}
-                                </ListItem>
-                            ))}
-                        </ul>
-                    </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <NavigationMenuTrigger>À propos</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                            {about.map((item, index) => (
-                                <ListItem key={index} title={item.title} href={item.href}>
-                                    {item.description}
-                                </ListItem>
-                            ))}
-                        </ul>
-                    </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <NavigationMenuTrigger>Boutique</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                            {boutique.map((item, index) => (
-                                <ListItem key={index} title={item.title} href={item.href}>
-                                    {item.description}
-                                </ListItem>
-                            ))}
-                        </ul>
-                    </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <Link href="contact" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>Contact</NavigationMenuLink>
-                    </Link>
-                </NavigationMenuItem>
-            </NavigationMenuList>
-        </NavigationMenu>
-    );
-}
 
 function NavDrawer() {
     return (
@@ -377,7 +231,11 @@ export function Header() {
                         <span className="inline-block font-bold">{config.sugar.title}</span>
                     </Link>
                     <nav className="flex gap-6">
-                        <Menu />
+                        {config.link.map((item: { title: string; href: string }, index: number) => (
+                            <Link href={item.href} legacyBehavior passHref key={index}>
+                                <Button variant="ghost">{item.title}</Button>
+                            </Link>
+                        ))}
                     </nav>
                 </div>
                 <div className="flex flex-1 items-center justify-end space-x-4">
@@ -391,14 +249,11 @@ export function Header() {
                                     setTheme("light");
                                 } else if (theme === "light") {
                                     setTheme("dark");
-                                } else {
-                                    setTheme("dark");
-                                }
+                                } else setTheme("dark");
                             }}
                         >
                             <IconSun className="size-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                             <IconMoon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                            <span className="sr-only">Toggle theme</span>
                         </Button>
                         <CartDrawer />
                         {authState?.authenticated ? (
@@ -406,7 +261,6 @@ export function Header() {
                                 <DropdownMenuTrigger asChild>
                                     <Button variant="outline" size="icon">
                                         <IconUser />
-                                        <span className="sr-only">Account dropdown</span>
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end">

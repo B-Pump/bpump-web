@@ -18,9 +18,11 @@ export const MaskContainer = ({
     revealSize?: number;
     className?: string;
 }) => {
-    const [isHovered, setIsHovered] = useState(false);
+    const [isHovered, setIsHovered] = useState<boolean>(false);
+
     const [mousePosition, setMousePosition] = useState<any>({ x: null, y: null });
     const containerRef = useRef<any>(null);
+
     const updateMousePosition = (e: any) => {
         const rect = containerRef.current.getBoundingClientRect();
         setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
@@ -56,7 +58,6 @@ export const MaskContainer = ({
                     <p className="text-center text-4xl font-bold text-accent">{children}</p>
                 </div>
             </motion.div>
-
             <div className="flex size-full items-center justify-center">{revealText}</div>
         </motion.div>
     );

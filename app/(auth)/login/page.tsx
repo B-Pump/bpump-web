@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,7 +23,7 @@ export default function Login() {
     const { onLogin } = useAuth();
     const router = useRouter();
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const { register, handleSubmit } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -33,7 +34,13 @@ export default function Login() {
             alert("Identifiants invalides");
         } else {
             router.replace("/");
+            toast("Authentification", {
+                description: `Vous êtes désormais connecté en tant que ${
+                    data.username.charAt(0).toUpperCase() + data.username.slice(1)
+                }`,
+            });
         }
+
         setLoading(false);
     };
 
