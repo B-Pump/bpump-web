@@ -1,27 +1,59 @@
+"use client";
+
+type ConfidentialityItem = {
+    title: string;
+    content: string;
+};
+
 export default function Confidentiality() {
-    const articles = [
+    const confidentiality: ConfidentialityItem[] = [
         {
-            title: "Collecte d'informations",
+            title: "Informations collectées",
             content:
-                "Nous accordons une grande importance à la confidentialité de vos données personnelles. Cette politique de confidentialité décrit comment B-Pump recueille, utilise et protège vos informations lorsque vous utilisez notre site Web. Lorsque vous utilisez notre site Web, nous pouvons collecter certaines informations personnelles vous concernant, telles que votre nom, votre adresse e-mail et votre adresse IP. Ces informations sont utilisées pour améliorer votre expérience utilisateur et pour répondre à vos demandes. Nous ne vendrons, ne partagerons ni ne louerons jamais vos informations personnelles à des tiers sans votre consentement préalable. Nous utilisons des mesures de sécurité strictes pour protéger vos informations contre tout accès non autorisé. Si vous avez des questions concernant notre politique de confidentialité, veuillez nous contacter.",
+                "B-Pump peut collecter des informations personnelles identifiables telle que votre nom lorsque vous utilisez notre application ou nos services. Nous pouvons également collecter des informations non personnelles telles que des données d'utilisation anonymisées.",
         },
         {
-            title: "Cookies et Liens externes",
+            title: "Utilisation des informations",
             content:
-                "Cookies :\nNotre site Web utilise des cookies pour améliorer votre expérience. Les cookies sont de petits fichiers texte placés sur votre ordinateur pour collecter des informations standard de journal Internet et de comportement des visiteurs. Vous pouvez choisir de désactiver les cookies dans les paramètres de votre navigateur, mais cela peut affecter certaines fonctionnalités de notre site Web.\n\nLiens vers d'autres sites Web :\nNotre site Web peut contenir des liens vers d'autres sites Web. Veuillez noter que nous n'avons aucun contrôle sur ces sites et que nous ne sommes pas responsables de leur contenu ou de leurs pratiques en matière de confidentialité. Nous vous encourageons à lire les politiques de confidentialité de ces sites avant de fournir vos informations personnelles.\n\nModifications de la politique de confidentialité :\nNous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Toute modification sera publiée sur cette page. Veuillez consulter régulièrement cette page pour rester informé de toute mise à jour.",
+                "Nous utilisons les informations collectées pour fournir, maintenir et améliorer nos services, répondre à vos demandes, personnaliser votre expérience utilisateur et communiquer avec vous. Nous ne partagerons vos informations personnelles avec des tiers qu'avec votre consentement ou dans les circonstances prévues par la loi.",
         },
-        // Ajoutez d'autres articles de politique de confidentialité selon vos besoins
+        {
+            title: "Protection des informations",
+            content:
+                "B-Pump prend des mesures de sécurité appropriées pour protéger vos informations personnelles contre tout accès non autorisé, divulgation, altération ou destruction. Cependant, veuillez noter qu'aucune méthode de transmission sur Internet ou de stockage électronique n'est totalement sécurisée.",
+        },
+        {
+            title: "Cookies",
+            content: "Nous n'utilisons pas de cookies pour vous tracer.",
+        },
+        {
+            title: "Accès et contrôle de vos informations",
+            content:
+                "Vous pouvez accéder ou supprimer vos informations personnelles en vous connectant à votre compte utilisateur sur le site B-Pump. Vous pouvez également demander à supprimer votre compte ce qui supprimera l'entièreté de vos données de notre base de donnée.",
+        },
+        {
+            title: "Modifications de la politique",
+            content:
+                "B-Pump se réserve le droit de modifier cette Politique de confidentialité à tout moment. Les modifications prendront effet dès leur publication sur l'application. Il est de votre responsabilité de consulter régulièrement la Politique de confidentialité pour être informé des modifications.",
+        },
+        {
+            title: "Contactez-nous",
+            content:
+                "Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter depuis la page 'Contact' ou bien à l'adresse mail suivante : b.pump.project@gmail.com",
+        },
     ];
 
     return (
         <section className="grid items-center gap-6">
-            <div className="container w-full pt-6">
-                <h1 className="mb-10 text-center text-5xl font-bold">Politique de Confidentialité B-Pump</h1>
-                <div className="flex flex-col space-y-8">
-                    {articles.map((article, index) => (
-                        <div key={index} className="rounded-lg border border-gray-300 p-6">
-                            <h2 className="mb-4 text-3xl font-bold">{article.title}</h2>
-                            <p className="text-lg">{article.content}</p>
+            <div className="container pt-6 md:py-10">
+                <h1 className="text-5xl font-bold">Politique de confidentialité</h1>
+                <div>
+                    {confidentiality.map((item: ConfidentialityItem, index: number) => (
+                        <div key={index}>
+                            <h1 className="pt-16 text-3xl font-bold">{item.title}</h1>
+                            <div className="m-2 w-full">
+                                <p>{item.content}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

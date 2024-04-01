@@ -7,6 +7,7 @@ import {
     IconMoon,
     IconRobot,
     IconSearch,
+    IconShoppingCart,
     IconSun,
     IconUser,
 } from "@tabler/icons-react";
@@ -14,8 +15,8 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
-import { CartDrawer } from "@/components/cart-drawer";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
     CommandDialog,
@@ -42,6 +43,7 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { Separator } from "@/components/ui/separator";
 import {
     Sheet,
     SheetClose,
@@ -227,6 +229,43 @@ function NavDrawer() {
     );
 }
 
+function CartDrawer() {
+    return (
+        <Sheet>
+            <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                    <IconShoppingCart />
+                </Button>
+            </SheetTrigger>
+            <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
+                <SheetHeader className="space-y-2.5 pr-6">
+                    <SheetTitle>Votre panier</SheetTitle>
+                    <Separator />
+                </SheetHeader>
+                <div className="flex h-full flex-col items-center justify-center space-y-1">
+                    <IconShoppingCart className="mb-4 size-16 text-muted-foreground" />
+                    <div className="text-xl font-medium text-muted-foreground">Votre panier est vide !</div>
+                    <SheetTrigger asChild>
+                        <Link
+                            href="boutique"
+                            className={cn(
+                                buttonVariants({
+                                    variant: "link",
+                                    size: "sm",
+                                    className: "text-sm text-muted-foreground",
+                                }),
+                                "text-center pt-3",
+                            )}
+                        >
+                            Ajoutez des produits à votre panier pour <br /> procèder au paiement
+                        </Link>
+                    </SheetTrigger>
+                </div>
+            </SheetContent>
+        </Sheet>
+    );
+}
+
 function DialogCommand() {
     const router = useRouter();
     const { setTheme } = useTheme();
@@ -375,7 +414,16 @@ export function Header() {
                                         Dashboard
                                     </DropdownMenuItem>
                                     <DropdownMenuSeparator />
-                                    <DropdownMenuItem onClick={onLogout}>Déconnexion</DropdownMenuItem>
+                                    <DropdownMenuItem
+                                        onClick={() => {
+                                            if (onLogout) onLogout();
+                                            toast("Authentification", {
+                                                description: "Déconnexion éffectuée avec succès",
+                                            });
+                                        }}
+                                    >
+                                        Déconnexion
+                                    </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         ) : (

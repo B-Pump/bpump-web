@@ -1,10 +1,11 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { HeroGeminiEffect } from "@/components/ui/gemini";
 import { InfiniteMovingCards } from "@/components/ui/moving-cards";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
     const projects = [
@@ -63,22 +64,20 @@ export default function Home() {
                     <HoverEffect items={projects} />
                 </div>
                 <div className="py-20">
-                    <h1 className="text-4xl font-bold">
-                        C&apos;est quoi <span className="text-primary">B-Pump</span> ?
-                    </h1>
+                    <h1 className="text-4xl font-bold">C&apos;est quoi B-Pump ?</h1>
                     <p>
                         B-Pump est un coach sportif intelligent, fait pour t&apos;aider à réaliser tes entrainements
                         sportifs le plus efficacement possible. Ce coach virtuel combine habilement la vision machine et
-                        l&apos;intelligence artificielle pour offrir une expérience d&apos;entraînement
+                        l&apos;intelligence artificielle pour offrir une expérience d&apos;entraînement{" "}
                         <b className="font-bold text-primary">révolutionnaire</b>. Notre système repose sur la puissance
-                        de la vision par ordinateur pour
+                        de la vision par ordinateur pour{" "}
                         <b className="font-bold text-primary">analyser en temps réel les mouvements des sportifs.</b>
                         Grâce à des algorithmes avancés, nous sommes en mesure de détecter les moindres détails et
                         nuances dans la gestuelle des athlètes, offrant ainsi une analyse précise et approfondie de
-                        leurs performances. L&apos;intelligence artificielle intégrée à notre coach robotique assure
+                        leurs performances. L&apos;intelligence artificielle intégrée à notre coach robotique assure{" "}
                         <b className="font-bold text-primary">un suivi personnalisé</b> et adaptatif de
                         l&apos;entraînement. En analysant les données de mouvement recueillies par la vision machine,
-                        notre système est capable de fournir des conseils individualisés et des recommandations d&apos;
+                        notre système est capable de fournir des conseils individualisés et des recommandations d&apos;{" "}
                         <b className="font-bold text-primary">entraînement sur mesure.</b> Que ce soit pour corriger une
                         technique, optimiser la stratégie de jeu ou maximiser les résultats, notre coach virtuel est là
                         pour guider et soutenir les sportifs à chaque étape de leur parcours. B-pump offre aux sportifs
@@ -87,7 +86,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
-                <Link href="http://play.google.com/store/b-pump?pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+                <Link href="/">
                     <Image
                         alt="Disponible sur Google Play"
                         src="https://play.google.com/intl/fr_FR/badges/static/images/badges/fr_badge_web_generic.png"

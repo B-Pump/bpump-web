@@ -1,50 +1,144 @@
+"use client";
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+type FaqItem = {
+    title: string;
+    content: {
+        title: string;
+        reponse: string;
+    }[];
+};
+
 export default function Faq() {
-    const faq = [
+    const faq: FaqItem[] = [
         {
             title: "Questions générales",
             content: [
-                { title: "qui sont les auteurs du projet ?", reponse: "réponse questions sur la batterie1" },
-                { title: "quel est le rôle de chacun des membres", reponse: "réponse questions sur la batterie2" },
-                { title: "questions generales numéros 3", reponse: "réponse questions sur la batterie3" },
+                {
+                    title: "Qui sont les membres de l'équipe derrière le projet B-Pump ?",
+                    reponse:
+                        "Nous sommes 6 lycéens passionnés par le monde de la technologie ayant pour objectif de réaliser un projet sur le thème du sport dans le cadre des Olympiades des Sciences de l'Ingénieur 2024.",
+                },
+                {
+                    title: "Quel est le rôle de chacun des membres dans le projet B-Pump ?",
+                    reponse: "Nous sommes 4 développeurs et 2 designers.",
+                },
+                {
+                    title: "Quels sont les objectifs principaux du projet B-Pump ?",
+                    reponse:
+                        "L'objectif de ce projet est de permettre à chacun de faire du sport depuis la maison ou même en extérieur avec un assistant personnel.",
+                },
             ],
         },
         {
-            title: "questions l'application",
+            title: "Questions sur l'application mobile",
             content: [
-                { title: "questions les specs 1", reponse: "réponse questions sur l'application1" },
-                { title: "questions les specs 2", reponse: "réponse questions sur l'application2" },
-                { title: "questions les specs 3", reponse: "réponse questions sur l'application3" },
+                {
+                    title: "Quelles sont les spécifications techniques de l'application mobile ?",
+                    reponse:
+                        "L'application utilise les dernières technologies React afin de garantir une interface utilisateur optimale.",
+                },
+                {
+                    title: "Quelles fonctionnalités sont disponibles dans l'application mobile ?",
+                    reponse:
+                        "L'application vous permet de lancer des exercices et de créer vos propres programmes de sport à partir de notre catalogue d'exercices.",
+                },
+                {
+                    title: "Comment l'application mobile interagit-elle avec le robot ?",
+                    reponse:
+                        "Vous avez le choix entre la connexion via Bluetooth ou bien via WiFi. Dans les deux cas, les données sont échangées très rapidement.",
+                },
             ],
         },
         {
-            title: "question sur l'ia utiliser",
+            title: "Questions sur l'intelligence artificielle utilisée",
             content: [
-                { title: "question sur l'ia utiliser1", reponse: "réponse questions sur l'ia utiliser1" },
-                { title: "question sur l'ia utiliser2", reponse: "réponse questions sur l'ia utiliser2" },
-                { title: "question sur l'ia utiliser3", reponse: "réponse questions sur l'ia utiliser3" },
+                {
+                    title: "Quel type d'IA est utilisé ?",
+                    reponse: "Nous utilisons le modèle Mediapipe de Google.",
+                },
+                {
+                    title: "Comment l'IA contribue-t-elle aux fonctionnalités du robot ?",
+                    reponse:
+                        "L'IA permet au robot de calculer les angles entre deux de vos membres afin de détecter votre positionnement et ainsi vous proposer une correction personnalisée en fonction de votre posture.",
+                },
+                {
+                    title: "Quels sont les avantages de l'IA dans le contexte du projet ?",
+                    reponse: "Cela permet au robot d'être plus efficace en termes de correction visuelle.",
+                },
             ],
         },
         {
-            title: "questions sur la batterie",
+            title: "Questions sur le fonctionnement du robot",
             content: [
-                { title: "questions sur la batterie1", reponse: "réponse questions sur la batterie1" },
-                { title: "questions sur la batterie2", reponse: "réponse questions sur la batterie2" },
-                { title: "questions sur la batterie3", reponse: "réponse questions sur la batterie3" },
+                {
+                    title: "Comment fonctionne le robot ?",
+                    reponse:
+                        "Le robot reçoit d'abord les données sur l'exercice que vous souhaitez faire, il démarre ensuite la reconnaissance de votre posture via la caméra et vous propose une correction audible et adaptée au mouvement que vous effectuez.",
+                },
+                {
+                    title: "Quelles sont les capacités de détection de mouvement du robot ?",
+                    reponse:
+                        "Le robot détecte tous les mouvements de votre corps et saura se focaliser sur le plus important en fonction de l'exercice que vous aurez choisi.",
+                },
+                {
+                    title: "Comment le robot ajuste-t-il son assistance en fonction des besoins de l'utilisateur ?",
+                    reponse:
+                        "En fonction de l'angle entre deux de vos membres, le robot pourra calculer si votre mouvement est mal réalisé ou non. Il pourra donc par la suite proposer son assistance oralement.",
+                },
+            ],
+        },
+        {
+            title: "Questions sur la sécurité",
+            content: [
+                {
+                    title: "Quelles mesures de sécurité sont mises en place pour assurer l'utilisation sûre du robot ?",
+                    reponse:
+                        "Le robot est immobile et ne vous causera donc pas de problème lorsque vous ne l'utilisez pas. De plus, la caméra est active uniquement lorsque vous lancez un exercice depuis l'application mobile.",
+                },
+                {
+                    title: "Comment B-Pump protège-t-il les données utilisateur et la vie privée ?",
+                    reponse:
+                        "Vous avez la possibilité de supprimer toutes vos données en supprimant votre compte depuis le site ou depuis l'application mobile. Nous gardons uniquement des statistiques pouvant vous permettre de garder un œil sur votre progression.",
+                },
+                {
+                    title: "Quels sont les protocoles de sécurité intégrés dans l'application mobile ?",
+                    reponse:
+                        "Le mot de passe de votre compte n'est jamais enregistré 'tel quel' dans notre base de données ; il est crypté de bout en bout.",
+                },
+            ],
+        },
+        {
+            title: "Questions sur la disponibilité du produit",
+            content: [
+                {
+                    title: "Quand le robot sera-t-il disponible sur le marché ?",
+                    reponse:
+                        "Ce robot n'est pas destiné à la vente pour le moment car il s'agit uniquement d'un projet réalisé dans le cadre des Olympiades des Sciences de l'Ingénieur 2024.",
+                },
+                {
+                    title: "Dans quels pays l'application mobile de B-Pump sera-t-elle disponible ?",
+                    reponse: "L'application est disponible dans toute la France.",
+                },
+                {
+                    title: "Y aura-t-il des versions bêta ou des tests pour B-Pump avant sa sortie officielle ?",
+                    reponse: "Vous pouvez nous contacter via Instagram pour faire partie des testeurs.",
+                },
             ],
         },
     ];
+
     return (
         <section className="grid items-center gap-6">
             <div className="container pt-6 md:py-10">
-                <h1 className="mb-10 text-5xl font-bold">FAQ B-Pump</h1>
-                <div className="mx-10">
-                    {faq.map((item, index) => (
+                <h1 className="text-5xl font-bold">Foire aux Questions</h1>
+                <div>
+                    {faq.map((item: FaqItem, index: number) => (
                         <div key={index}>
-                            <h1 className="pb-6 pt-16 text-3xl font-bold md:pb-0">{item.title}</h1>
-                            <Accordion type="single" collapsible className="mx-5 my-2 w-full">
-                                {item.content.map((item, index) => (
+                            <h1 className="pt-16 text-3xl font-bold">{item.title}</h1>
+                            <Accordion type="single" collapsible className="m-2 w-full">
+                                {item.content.map((item: { title: string; reponse: string }, index: number) => (
                                     <AccordionItem key={index} value={`item-${index}`}>
                                         <AccordionTrigger>{item.title}</AccordionTrigger>
                                         <AccordionContent>{item.reponse}</AccordionContent>
