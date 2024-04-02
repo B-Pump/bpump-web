@@ -34,7 +34,7 @@ const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: MotionVal
                             });
                         }
                     }}
-                    className="z-30 mx-auto mt-8 w-fit rounded-full bg-black px-2 py-1 text-xs font-bold text-white dark:bg-white dark:text-black md:mt-24 md:px-4 md:py-2 md:text-base"
+                    className="z-30 mx-auto mt-16 w-fit rounded-full bg-black px-2 py-1 text-xs font-bold text-white dark:bg-white dark:text-black md:mt-24 md:px-4 md:py-2 md:text-base"
                 >
                     En savoir plus
                 </button>

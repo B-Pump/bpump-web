@@ -32,7 +32,7 @@ export function Footer() {
             new_tab: false,
             content: [
                 { title: "FAQ", href: "faq" },
-                { title: "Politique de confidentialité", href: "confidentitality" },
+                { title: "Politique de confidentialité", href: "confidentiality" },
                 { title: "Termes d'utilisation", href: "terms" },
             ],
         },
