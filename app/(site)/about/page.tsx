@@ -1,9 +1,9 @@
 "use client";
 
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { AnimatedPin } from "@/components/ui/pin";
 import { Tooltip } from "@/components/ui/tooltip";
 import Image from "next/image";
-
 
 export default function About() {
     const people = [
@@ -37,25 +37,21 @@ export default function About() {
             designation: "Programmation",
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/tcnrpl9x6f99.png",
         },
-        {
-            id: 6,
-            name: "Léo B.",
-            designation: "Communication",
-            image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/giv23ixqn90o.png",
-        },
     ];
     const items = [
         {
-            i:1,
-            title:"Une équipe de lycéens...",
+            i: 1,
+            title: "Une équipe de lycéens",
             description: "B-Pump a été entiérement réalisé par une équipe de terminales au Lycée Galilée",
-            header: <Image
-            alt="Image du lycée galilée"
-            src="https://i.imgur.com/LFcdWtd.jpeg"
-            height="0"
-            width={200}
-            className="-mb-4 h-auto w-[100%] rounded-xl"
-        />
+            header: (
+                <Image
+                    alt="Image du lycée galilée"
+                    src="https://i.imgur.com/LFcdWtd.jpeg"
+                    height="0"
+                    width={200}
+                    className="-mb-4 h-auto w-[100%] rounded-xl"
+                />
+            ),
         },
         {
             i:2,
@@ -95,11 +91,11 @@ export default function About() {
                     <BentoGrid className="mx-auto max-w-4xl">
                         {items.map((item, i) => (
                             <BentoGridItem
-                            key={i}
-                            title={item.title}
-                            description={item.description}
-                            header={item.header}
-                            className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+                                key={i}
+                                title={item.title}
+                                description={item.description}
+                                header={item.header}
+                                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
                             />
                         ))}
                     </BentoGrid>
