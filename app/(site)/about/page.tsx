@@ -1,9 +1,9 @@
 "use client";
 
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { AnimatedPin } from "@/components/ui/pin";
-import { Tooltip } from "@/components/ui/tooltip";
 import Image from "next/image";
+
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { Tooltip } from "@/components/ui/tooltip";
 
 export default function About() {
     const people = [
@@ -54,30 +54,34 @@ export default function About() {
             ),
         },
         {
-            i:2,
-            title:"...Un projet olympique...",
+            i: 2,
+            title: "...Un projet olympique...",
             description: "B-Pump a été réalisé dans le cadre des olympiades de science de l'ingénieur des lycéees",
-            header: <Image
-            alt="Logo UPSTI Olympiades de Sciences de l'ingénieur"
-            src="https://i.imgur.com/Ylv2HAZ.jpeg"
-            height="0"
-            width={200}
-            className="-mb-4 h-auto w-[100%] rounded-xl"
-        />
+            header: (
+                <Image
+                    alt="Logo UPSTI Olympiades de Sciences de l'ingénieur"
+                    src="https://i.imgur.com/Ylv2HAZ.jpeg"
+                    height="0"
+                    width={200}
+                    className="-mb-4 h-auto w-[100%] rounded-xl"
+                />
+            ),
         },
         {
-            i:3,
-            title:"... Une ambition plus grande",
+            i: 3,
+            title: "... Une ambition plus grande",
             description: "B-Pump a aussi été fait dans le but d'exister au delà d'un simple projet d'Olympiades",
-            header: <Image
-            alt="Image du lycée galilée"
-            src="https://i.imgur.com/mQYdI6C.png"
-            height="0"
-            width={200}
-            className="-mb-4 h-auto w-[100%] rounded-xl"
-        />
-        }
-    ]
+            header: (
+                <Image
+                    alt="Image du lycée galilée"
+                    src="https://i.imgur.com/mQYdI6C.png"
+                    height="0"
+                    width={200}
+                    className="-mb-4 h-auto w-[100%] rounded-xl"
+                />
+            ),
+        },
+    ];
 
     return (
         <section className="grid items-center gap-6">
@@ -100,7 +104,6 @@ export default function About() {
                         ))}
                     </BentoGrid>
                 </section>
-                
             </div>
         </section>
     );
