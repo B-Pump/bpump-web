@@ -24,12 +24,12 @@ export default function Boutique() {
     const [isGrabbing, setIsGrabbing] = useState<boolean>(false);
 
     const accordion: AccordionItem[] = [
-        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
-        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
-        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
-        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
-        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
-        { title: "Coucou je suis Galaad", description: "Oui tu l'es" },
+        { title: "Ordinateur intégré", description: "B-Pump est alimenté par un Rasperry Pi 4 offrant une puissance de traitement fiable pour fonctionnement fluidement" },
+        { title: "Caméra HD", description: "Équipé d'une caméra haute définition, B-Pump capture chaque mouvement avec une précision remarquable, permettant une analyse détaillée de la forme et des performances de l'utilisateur" },
+        { title: "Projecteur HD", description: "Le projecteur HD offre une expérience immerssive en affichant des instructions de mouvements clairs et nets" },
+        { title: "Connexion à l'application", description: "B-Pump se connecte facilement à une application dédiée, permettant aux utilisateurs de personnaliser leurs séances d'entraînement, de suivre leur progressions et d'accéder à des conseils personnalisés" },
+        { title: "Suivi des performances en temps réel", description: "Grâce à des capteurs avancés et à une analyse en temps réel, B-Pump surveille les performances de l'utilisateur pendant l'entraînement, fournissant des données précises sur la forme, la force et l'endurance." },
+        { title: "Gestion des temps d'entraînement", description: " B-Pump offre un chronométrage précis des performances, permettant aux utilisateurs de suivre leurs progrès et d'améliorer leur entraînement. Il fournit des conseils en temps réel pour ajuster la posture et optimiser les mouvements, garantissant des séances d'entraînement efficaces et sécurisées." },
     ];
 
     const products: ProductItem[] = [
