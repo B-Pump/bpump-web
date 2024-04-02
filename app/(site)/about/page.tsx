@@ -1,10 +1,9 @@
 "use client";
 
-import { BentoGridThird } from "@/components/grid";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { Tooltip } from "@/components/ui/tooltip";
 import Image from "next/image";
-import { AnimatedPin } from "@/components/ui/pin";
+
 
 export default function About() {
     const people = [
@@ -48,7 +47,7 @@ export default function About() {
     const items = [
         {
             i:1,
-            title:"Une équipe de lycéens",
+            title:"Une équipe de lycéens...",
             description: "B-Pump a été entiérement réalisé par une équipe de terminales au Lycée Galilée",
             header: <Image
             alt="Image du lycée galilée"
@@ -60,11 +59,23 @@ export default function About() {
         },
         {
             i:2,
-            title:"Un projet olympique",
+            title:"...Un projet olympique...",
             description: "B-Pump a été réalisé dans le cadre des olympiades de science de l'ingénieur des lycéees",
             header: <Image
+            alt="Logo UPSTI Olympiades de Sciences de l'ingénieur"
+            src="https://i.imgur.com/Ylv2HAZ.jpeg"
+            height="0"
+            width={200}
+            className="-mb-4 h-auto w-[100%] rounded-xl"
+        />
+        },
+        {
+            i:3,
+            title:"... Une ambition plus grande",
+            description: "B-Pump a aussi été fait dans le but d'exister au delà d'un simple projet d'Olympiades",
+            header: <Image
             alt="Image du lycée galilée"
-            src="https://i.imgur.com/LFcdWtd.jpeg"
+            src="https://i.imgur.com/mQYdI6C.png"
             height="0"
             width={200}
             className="-mb-4 h-auto w-[100%] rounded-xl"
@@ -93,12 +104,7 @@ export default function About() {
                         ))}
                     </BentoGrid>
                 </section>
-                <section id="sys-details">
-                    <div className="flex h-[40rem] w-full items-center justify-center ">
-                        <AnimatedPin title="test" description="dsvsdhjvdshj" link="google.com" />
-                        <AnimatedPin title="test" description="dsvsdhjvdshj" link="google.com" />
-                    </div>
-                </section>
+                
             </div>
         </section>
     );
