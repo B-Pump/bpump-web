@@ -29,7 +29,7 @@ export default function Boutique() {
         { title: "Projecteur HD", description: "Le projecteur HD offre une expérience immerssive en affichant des instructions de mouvements clairs et nets" },
         { title: "Connexion à l'application", description: "B-Pump se connecte facilement à une application dédiée, permettant aux utilisateurs de personnaliser leurs séances d'entraînement, de suivre leur progressions et d'accéder à des conseils personnalisés" },
         { title: "Suivi des performances en temps réel", description: "Grâce à des capteurs avancés et à une analyse en temps réel, B-Pump surveille les performances de l'utilisateur pendant l'entraînement, fournissant des données précises sur la forme, la force et l'endurance." },
-        { title: "Gestion des temps d'entraînement", description: " B-Pump offre un chronométrage précis des performances, permettant aux utilisateurs de suivre leurs progrès et d'améliorer leur entraînement. Il fournit des conseils en temps réel pour ajuster la posture et optimiser les mouvements, garantissant des séances d'entraînement efficaces et sécurisées." },
+        { title: "Gestion des temps d'entraînement", description: " B-Pump offre un chronométrage précis des performances, permettant aux utilisateurs de suivre leurs progrès et d'améliorer leur entraînement. l fournit des conseils en temps réel pour ajuster la posture et optimiser les mouvements, garantissant des séances d'entraînement efficaces et sécurisées." },
     ];
 
     const products: ProductItem[] = [
@@ -68,7 +68,9 @@ export default function Boutique() {
                         </p>
                     </div>
                     <div className="flex justify-center">
+                        <a href="./contact">
                         <Button onClick={() => {}}>Acheter dès maintenant</Button>
+                        </a>
                     </div>
                     <p className="flex justify-center pt-3 text-muted-foreground">À partir de 200€</p>
                 </div>
@@ -97,6 +99,7 @@ export default function Boutique() {
                     <ThreeDCard key={index} title={item.title} description={item.description} image={item.image} />
                 ))}
             </div>
+            <div className="h-20"></div>
         </>
     );
 }
