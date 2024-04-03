@@ -42,7 +42,7 @@ export const MaskContainer = ({
     return (
         <motion.div ref={containerRef} className={cn("h-screen relative", className)}>
             <motion.div
-                className="absolute flex size-full items-center justify-center text-6xl [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] [mask-size:40px]"
+                className="absolute flex size-full items-center justify-center text-6xl [mask-image:url(/svg/mask.svg)] [mask-repeat:no-repeat] [mask-size:40px]"
                 animate={{
                     WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${mousePosition.y - maskSize / 2}px`,
                     WebkitMaskSize: `${maskSize}px`,
@@ -50,11 +50,7 @@ export const MaskContainer = ({
                 transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
             >
                 <div className="absolute inset-0 z-0 size-full bg-accent-foreground" />
-                <div
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    className="relative z-20 mx-auto max-w-4xl"
-                >
+                <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className="relative z-20 mx-auto max-w-4xl">
                     <p className="text-center text-4xl font-bold text-accent">{children}</p>
                 </div>
             </motion.div>
