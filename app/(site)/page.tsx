@@ -65,26 +65,30 @@ export default function Home() {
                     <HoverEffect items={projects} />
                 </div>
                 <div className="flex justify-center">
-                    <div className="max-w-5xl py-20 text-center">
+                    <div className="max-w-5xl py-5 text-center">
                         <h1 className="pb-5 text-4xl font-bold">C&apos;est quoi B-Pump ?</h1>
-                        <p className="text-xl font-light leading-loose tracking-normal text-neutral-300">
-                            B-Pump est un coach sportif intelligent, fait pour vous aider à réaliser vos entrainements sportifs le plus efficacement
-                            possible. Ce coach virtuel combine habilement la vision machine et l&apos;intelligence artificielle pour offrir une
-                            expérience d&apos;entraînement <b className="font-bold text-primary">révolutionnaire</b>. Notre système repose sur la
-                            puissance de la vision par ordinateur pour <b className="font-bold text-primary">analyser en temps réel</b> vos
-                            mouvements. Grâce à des algorithmes avancés, nous sommes en mesure de détecter les moindres détails et nuances dans votre
-                            gestuelle, offrant ainsi une analyse précise et approfondie de vos performances. L&apos;intelligence artificielle intégrée
-                            à notre coach robotique assure <b className="font-bold text-primary">un suivi personnalisé</b> et adaptatif de votre
-                            entraînement. En analysant les données de mouvement recueillies par la vision machine, notre système est capable de
-                            fournir des conseils individualisés et des recommandations d&apos;
-                            <b className="font-bold text-primary">entraînement sur mesure</b>. Que ce soit pour corriger vos technique ou maximiser
-                            les résultats, notre coach virtuel est là pour vous guider et vous soutenir à chaque étape de leur parcours. B-pump vous
-                            offre ainsi un outil puissant pour améliorer vos performances et atteindre vos objectifs.
+                        <p className="text-xl font-light leading-loose tracking-normal text-muted-foreground">
+                            B-Pump est un coach sportif intelligent, fait pour vous aider à réaliser vos entrainements
+                            sportifs le plus efficacement possible. Ce coach virtuel combine habilement la vision
+                            machine et l&apos;intelligence artificielle pour offrir une expérience d&apos;entraînement{" "}
+                            <b className="font-bold text-primary">révolutionnaire</b>. Notre système repose sur la
+                            puissance de la vision par ordinateur pour{" "}
+                            <b className="font-bold text-primary">analyser en temps réel</b> vos mouvements. Grâce à des
+                            algorithmes avancés, nous sommes en mesure de détecter les moindres détails et nuances dans
+                            votre gestuelle, offrant ainsi une analyse précise et approfondie de vos performances.
+                            L&apos;intelligence artificielle intégrée à notre coach robotique assure{" "}
+                            <b className="font-bold text-primary">un suivi personnalisé</b> et adaptatif de votre
+                            entraînement. En analysant les données de mouvement recueillies par la vision machine, notre
+                            système est capable de fournir des conseils individualisés et des recommandations d&apos;
+                            <b className="font-bold text-primary">entraînement sur mesure</b>. Que ce soit pour corriger
+                            vos technique ou maximiser les résultats, notre coach virtuel est là pour vous guider et
+                            vous soutenir à chaque étape de leur parcours. B-pump vous offre ainsi un outil puissant
+                            pour améliorer vos performances et atteindre vos objectifs.
                         </p>
                     </div>
                 </div>
             </div>
-            <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased">
+            <div className="flex items-center justify-center">
                 <Link href="/">
                     <Image
                         alt="Télécharger l'application pour Android"
