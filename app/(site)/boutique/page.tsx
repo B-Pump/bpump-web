@@ -24,12 +24,34 @@ export default function Boutique() {
     const [isGrabbing, setIsGrabbing] = useState<boolean>(false);
 
     const accordion: AccordionItem[] = [
-        { title: "Ordinateur intégré", description: "B-Pump est alimenté par un Rasperry Pi 4 offrant une puissance de traitement fiable pour fonctionnement fluidement" },
-        { title: "Caméra HD", description: "Équipé d'une caméra haute définition, B-Pump capture chaque mouvement avec une précision remarquable, permettant une analyse détaillée de la forme et des performances de l'utilisateur" },
-        { title: "Projecteur HD", description: "Le projecteur HD offre une expérience immerssive en affichant des instructions de mouvements clairs et nets" },
-        { title: "Connexion à l'application", description: "B-Pump se connecte facilement à une application dédiée, permettant aux utilisateurs de personnaliser leurs séances d'entraînement, de suivre leur progressions et d'accéder à des conseils personnalisés" },
-        { title: "Suivi des performances en temps réel", description: "Grâce à des capteurs avancés et à une analyse en temps réel, B-Pump surveille les performances de l'utilisateur pendant l'entraînement, fournissant des données précises sur la forme, la force et l'endurance." },
-        { title: "Gestion des temps d'entraînement", description: " B-Pump offre un chronométrage précis des performances, permettant aux utilisateurs de suivre leurs progrès et d'améliorer leur entraînement. l fournit des conseils en temps réel pour ajuster la posture et optimiser les mouvements, garantissant des séances d'entraînement efficaces et sécurisées." },
+        {
+            title: "Ordinateur intégré",
+            description: "B-Pump est alimenté par un Rasperry Pi 4 offrant une puissance de traitement fiable pour fonctionnement fluidement",
+        },
+        {
+            title: "Caméra HD",
+            description:
+                "Équipé d'une caméra haute définition, B-Pump capture chaque mouvement avec une précision remarquable, permettant une analyse détaillée de la forme et des performances de l'utilisateur",
+        },
+        {
+            title: "Projecteur HD",
+            description: "Le projecteur HD offre une expérience immerssive en affichant des instructions de mouvements clairs et nets",
+        },
+        {
+            title: "Connexion à l'application",
+            description:
+                "B-Pump se connecte facilement à une application dédiée, permettant aux utilisateurs de personnaliser leurs séances d'entraînement, de suivre leur progressions et d'accéder à des conseils personnalisés",
+        },
+        {
+            title: "Suivi des performances en temps réel",
+            description:
+                "Grâce à des capteurs avancés et à une analyse en temps réel, B-Pump surveille les performances de l'utilisateur pendant l'entraînement, fournissant des données précises sur la forme, la force et l'endurance.",
+        },
+        {
+            title: "Gestion des temps d'entraînement",
+            description:
+                " B-Pump offre un chronométrage précis des performances, permettant aux utilisateurs de suivre leurs progrès et d'améliorer leur entraînement. l fournit des conseils en temps réel pour ajuster la posture et optimiser les mouvements, garantissant des séances d'entraînement efficaces et sécurisées.",
+        },
     ];
 
     const products: ProductItem[] = [
@@ -40,20 +62,18 @@ export default function Boutique() {
         },
         {
             title: "Figurine",
-            description:
-                "Plongez dans l'univers captivant de notre projet avec cette adorable figurine à l'effigie de B-Pump. ",
+            description: "Plongez dans l'univers captivant de notre projet avec cette adorable figurine à l'effigie de B-Pump. ",
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
         {
             title: "Casquette B-Pump",
-            description:
-                "Adoptez le style unique de notre projet avec cette casquette tendance, alliant confort et élégance.",
+            description: "Adoptez le style unique de notre projet avec cette casquette tendance, alliant confort et élégance.",
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
     ];
 
     return (
-        <>
+        <section className="grid items-center gap-6 md:py-10">
             <div className="relative flex h-[30rem] w-full overflow-hidden rounded-md antialiased md:items-center md:justify-center">
                 <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
                 <div>
@@ -62,14 +82,13 @@ export default function Boutique() {
                             Procurez vous B-Pump
                         </h1>
                         <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-muted-foreground">
-                            Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de
-                            remise en forme avec facilité et motivation. Commandez le vôtre dès maintenant et
-                            laissez-vous guider vers le succès !
+                            Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de remise en forme avec facilité et
+                            motivation. Commandez le vôtre dès maintenant et laissez-vous guider vers le succès !
                         </p>
                     </div>
                     <div className="flex justify-center">
                         <a href="./contact">
-                        <Button onClick={() => {}}>Acheter dès maintenant</Button>
+                            <Button onClick={() => {}}>Acheter dès maintenant</Button>
                         </a>
                     </div>
                     <p className="flex justify-center pt-3 text-muted-foreground">À partir de 200€</p>
@@ -99,7 +118,6 @@ export default function Boutique() {
                     <ThreeDCard key={index} title={item.title} description={item.description} image={item.image} />
                 ))}
             </div>
-            <div className="h-20"></div>
-        </>
+        </section>
     );
 }

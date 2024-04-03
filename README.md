@@ -84,7 +84,7 @@ Distributed under the MIT License. See [`LICENSE`][license-url] for more informa
 
 ## Contact
 
-B-Pump - [b.pump.project@gmail.com](mailto:b.pump.project@gmail.com)
+B-Pump: [b.pump.project@gmail.com](mailto:b.pump.project@gmail.com)
 
 Org Link: [https://github.com/B-Pump](https://github.com/B-Pump)
 
@@ -94,4 +94,4 @@ Org Link: [https://github.com/B-Pump](https://github.com/B-Pump)
 [issues-url]: https://github.com/B-Pump/bpump-web/issues
 [license-shield]: https://img.shields.io/github/license/B-Pump/bpump-web.svg?style=for-the-badge
 [license-url]: https://github.com/B-Pump/bpump-web/blob/master/LICENSE
-[repo-screenshot]: https://black_hole-3kf-1-q4182424.deta.app/api/photo/n0nnqkrhzpk2.png
+[repo-screenshot]: https://i.imgur.com/nGLevkL.png
