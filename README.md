@@ -94,4 +94,4 @@ Org Link: [https://github.com/B-Pump](https://github.com/B-Pump)
 [issues-url]: https://github.com/B-Pump/bpump-web/issues
 [license-shield]: https://img.shields.io/github/license/B-Pump/bpump-web.svg?style=for-the-badge
 [license-url]: https://github.com/B-Pump/bpump-web/blob/master/LICENSE
-[repo-screenshot]: https://i.imgur.com/nGLevkL.png
+[repo-screenshot]: https://i.imgur.com/1y0hhsO.png

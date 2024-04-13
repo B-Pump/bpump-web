@@ -20,7 +20,7 @@ interface Inputs {
 }
 
 export default function Login() {
-    const { onLogin } = useAuth();
+    const { login } = useAuth();
     const router = useRouter();
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -29,7 +29,7 @@ export default function Login() {
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         setLoading(true);
 
-        const result = await onLogin!(data.username, data.password);
+        const result = await login!(data.username, data.password);
         if (result && result.error) {
             alert("Identifiants invalides");
         } else {

@@ -1,105 +1,81 @@
-"use client";
-
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { create } from "zustand";
 
 import { API_URL } from "@/lib/api";
-import { useLocalStorage } from "@/lib/storage";
+import { getItemAsync, removeItemAsync, setItemAsync } from "@/lib/storage";
 
-interface AuthProps {
-    authState?: { token: string | null; authenticated: boolean | null };
-    onRegister?: (username: string, password: string) => Promise<any>;
-    onLogin?: (username: string, password: string) => Promise<any>;
-    onLogout?: () => Promise<any>;
-    onDelete?: (username: string) => Promise<any>;
-}
+type AuthStore = {
+    token: string | null;
+    authenticated: boolean;
+    register: (username: string, password: string) => Promise<any>;
+    login: (username: string, password: string) => Promise<any>;
+    logout: () => Promise<void>;
+    remove: (username: string) => Promise<any>;
+    initialize: () => void;
+};
 
-const TOKEN_KEY = "auth_jwt";
+export const AUTH_KEY = "auth_jwt";
 
-const AuthContext = createContext<AuthProps>({});
+const useAuthStore = create<AuthStore>((set) => ({
+    token: null,
+    authenticated: false,
+    register: async (username: string, password: string) => {
+        try {
+            const response = await axios.post(`${API_URL}/register`, { username, password });
+            return response;
+        } catch (error) {
+            return { error: true, msg: error };
+        }
+    },
+    login: async (username: string, password: string) => {
+        try {
+            const response = await axios.post(`${API_URL}/login`, { username, password });
 
-export function useAuth() {
-    return useContext(AuthContext);
-}
+            set({ token: username, authenticated: true });
+            axios.defaults.headers.common["Authorization"] = `Bearer ${username}`;
+            await setItemAsync(AUTH_KEY, username);
 
-export const AuthProvider = ({ children }: any) => {
-    const { setItem, getItem, removeItem } = useLocalStorage(TOKEN_KEY);
+            return response;
+        } catch (error) {
+            return { error: true, msg: error };
+        }
+    },
+    logout: async () => {
+        await removeItemAsync(AUTH_KEY);
+        axios.defaults.headers.common["Authorization"] = "";
+        set({ token: null, authenticated: false });
+    },
+    remove: async (username: string) => {
+        try {
+            const response = await axios.delete(`${API_URL}/delete?username=${username}`);
 
-    const [authState, setAuthState] = useState<{
-        token: string | null;
-        authenticated: boolean | null;
-    }>({
-        token: null,
-        authenticated: null,
-    });
+            // TODO: get().logout ?
+            await removeItemAsync(AUTH_KEY);
+            axios.defaults.headers.common["Authorization"] = "";
+            set({ token: null, authenticated: false });
+
+            return response;
+        } catch (error) {
+            return { error: true, msg: error };
+        }
+    },
+    initialize: async () => {
+        const token = await getItemAsync(AUTH_KEY);
+        if (token) {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+            set({ token, authenticated: true });
+        }
+    },
+}));
+
+export const useAuth = () => {
+    const store = useAuthStore();
 
     useEffect(() => {
-        const loadToken = () => {
-            const token = getItem(TOKEN_KEY);
-            if (token) {
-                axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-                setAuthState({
-                    token: token,
-                    authenticated: true,
-                });
-            }
-        };
-        loadToken();
+        store.initialize();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const register = (username: string, password: string) => {
-        return axios
-            .post(`${API_URL}/register`, { username, password })
-            .then((response) => response.data)
-            .catch((error) => ({ error: true, msg: error }));
-    };
-
-    const login = (username: string, password: string) => {
-        return axios
-            .post(`${API_URL}/login`, { username, password })
-            .then((response) => {
-                setAuthState({
-                    token: username,
-                    authenticated: true,
-                });
-                axios.defaults.headers.common["Authorization"] = `Bearer ${username}`;
-                setItem(username);
-                return response.data;
-            })
-            .catch((error) => ({ error: true, msg: error }));
-    };
-
-    const logout = () => {
-        removeItem(TOKEN_KEY);
-
-        axios.defaults.headers.common["Authorization"] = "";
-
-        setAuthState({
-            token: null,
-            authenticated: false,
-        });
-
-        return Promise.resolve();
-    };
-
-    const remove = (username: string) => {
-        return axios
-            .post(`${API_URL}/delete?username=${username}`)
-            .then((response) => {
-                logout();
-                return response.data;
-            })
-            .catch((error) => ({ error: true, msg: error }));
-    };
-
-    const value = {
-        onRegister: register,
-        onLogin: login,
-        onLogout: logout,
-        onDelete: remove,
-        authState,
-    };
-
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+    return store;
 };

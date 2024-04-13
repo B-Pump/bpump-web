@@ -37,9 +37,9 @@
         "tailwind-merge": "^2.2.1",
         "tailwindcss-animate": "^1.0.7",
         "three": "^0.161.0",
-        "three-globe": "^2.31.0",
         "three-stdlib": "^2.29.4",
-        "zod": "^3.22.4"
+        "zod": "^3.22.4",
+        "zustand": "^4.5.2"
     },
     "devDependencies": {
         "@types/node": "^20",

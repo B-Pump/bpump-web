@@ -7,7 +7,6 @@ import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/context/theme";
 
-import { AuthProvider } from "@/context/auth";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
@@ -36,14 +35,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <html lang="fr" suppressHydrationWarning>
             <head />
             <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-                <AuthProvider>
-                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                        {children}
-                        <SpeedInsights />
-                        <Analytics />
-                        <Toaster position="bottom-center" className="select-none" />
-                    </ThemeProvider>
-                </AuthProvider>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                    {children}
+                    <SpeedInsights />
+                    <Analytics />
+                    <Toaster position="bottom-center" className="select-none" />
+                </ThemeProvider>
             </body>
         </html>
     );

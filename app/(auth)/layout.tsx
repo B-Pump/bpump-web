@@ -9,12 +9,12 @@ interface AuthLayoutProps {
 }
 
 export default function AuthLayout({ children }: AuthLayoutProps) {
-    const { authState } = useAuth();
+    const { authenticated } = useAuth();
     const router = useRouter();
 
     useEffect(() => {
-        if (authState?.authenticated) router.replace("/");
-    }, [authState, router]);
+        if (authenticated) router.replace("/");
+    }, [authenticated, router]);
 
     return <div className="min-h-screen">{children}</div>;
 }

@@ -14,7 +14,7 @@ import { MaskContainer } from "@/components/ui/mask";
 import { useAuth } from "@/context/auth";
 
 export default function Contact() {
-    const { authState } = useAuth();
+    const { token } = useAuth();
 
     const formSchema = z.object({
         username: z.string().min(5, {
@@ -50,7 +50,7 @@ export default function Contact() {
                 "service_21096s9",
                 "template_amv97xj",
                 {
-                    account: authState?.token || "Pas de compte",
+                    account: token || "Pas de compte",
                     name: values.username,
                     email: values.email,
                     phone: values.phone,

@@ -23,7 +23,7 @@ interface Inputs {
 }
 
 export default function Register() {
-    const { onLogin, onRegister } = useAuth();
+    const { login, register: onRegister } = useAuth();
     const router = useRouter();
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -40,7 +40,7 @@ export default function Register() {
             if (result && result.error) {
                 alert(result.msg);
             } else {
-                const result = await onLogin!(data.username, data.password);
+                const result = await login!(data.username, data.password);
                 if (result && result.error) {
                     alert("Veuillez réessayer");
                 } else {

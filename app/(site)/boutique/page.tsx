@@ -26,7 +26,8 @@ export default function Boutique() {
     const accordion: AccordionItem[] = [
         {
             title: "Ordinateur intégré",
-            description: "B-Pump est alimenté par un Rasperry Pi 4 offrant une puissance de traitement fiable pour fonctionnement fluidement",
+            description:
+                "B-Pump est alimenté par un Rasperry Pi 4 offrant une puissance de traitement fiable pour fonctionnement fluidement",
         },
         {
             title: "Caméra HD",
@@ -35,7 +36,8 @@ export default function Boutique() {
         },
         {
             title: "Projecteur HD",
-            description: "Le projecteur HD offre une expérience immerssive en affichant des instructions de mouvements clairs et nets",
+            description:
+                "Le projecteur HD offre une expérience immerssive en affichant des instructions de mouvements clairs et nets",
         },
         {
             title: "Connexion à l'application",
@@ -62,18 +64,20 @@ export default function Boutique() {
         },
         {
             title: "Figurine",
-            description: "Plongez dans l'univers captivant de notre projet avec cette adorable figurine à l'effigie de B-Pump. ",
+            description:
+                "Plongez dans l'univers captivant de notre projet avec cette adorable figurine à l'effigie de B-Pump. ",
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
         {
             title: "Casquette B-Pump",
-            description: "Adoptez le style unique de notre projet avec cette casquette tendance, alliant confort et élégance.",
+            description:
+                "Adoptez le style unique de notre projet avec cette casquette tendance, alliant confort et élégance.",
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
     ];
 
     return (
-        <section className="grid items-center gap-6 md:py-10">
+        <section className="grid items-center gap-6 md:pb-10">
             <div className="relative flex h-[30rem] w-full overflow-hidden rounded-md antialiased md:items-center md:justify-center">
                 <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
                 <div>
@@ -82,8 +86,9 @@ export default function Boutique() {
                             Procurez vous B-Pump
                         </h1>
                         <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-muted-foreground">
-                            Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de remise en forme avec facilité et
-                            motivation. Commandez le vôtre dès maintenant et laissez-vous guider vers le succès !
+                            Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de
+                            remise en forme avec facilité et motivation. Commandez le vôtre dès maintenant et
+                            laissez-vous guider vers le succès !
                         </p>
                     </div>
                     <div className="flex justify-center">

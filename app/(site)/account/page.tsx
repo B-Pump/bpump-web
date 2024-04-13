@@ -1,10 +1,21 @@
 "use client";
 
-import { IconChartArea, IconHome, IconShirtSport } from "@tabler/icons-react";
+import { IconHome, IconShirtSport } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,19 +23,8 @@ import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/auth";
 import useFetch from "@/lib/api";
 
-interface Progs {
-    id: string;
-    owner: string;
-    icon: string;
-    title: string;
-    description: string;
-    category: string;
-    difficulty: number;
-    hint: string[];
-    exercises: string[];
-}
 interface ProgsData {
-    data: Progs[];
+    data: ProgItem[];
     isLoading: boolean;
     error: boolean;
     refetch: () => void;
@@ -38,14 +38,14 @@ type TabItem = {
 };
 
 export default function Account() {
-    const { authState } = useAuth();
+    const { authenticated, token, logout, remove } = useAuth();
     const router = useRouter();
 
-    const { data, isLoading, error }: ProgsData = useFetch("GET", `progs/all?username=${authState?.token}`);
+    const { data, isLoading, error }: ProgsData = useFetch("GET", `progs/all?username=${token}`);
 
     useEffect(() => {
-        if (!authState?.authenticated) router.replace("/");
-    }, [authState, router]);
+        if (!authenticated) router.replace("/");
+    }, [authenticated, router]);
 
     const [selectedTab, setSelectedTab] = useState<string>("account");
 
@@ -57,11 +57,10 @@ export default function Account() {
             content: (
                 <>
                     <h1 className="text-center text-5xl font-semibold md:text-start">
-                        Bonjour,{" "}
-                        {authState?.token && authState.token.charAt(0).toUpperCase() + authState.token.slice(1)} !
+                        Bonjour, {token && token.charAt(0).toUpperCase() + token.slice(1)} !
                     </h1>
                     <div className="mt-10">
-                        <Card className="my-5 w-full lg:w-2/3">
+                        <Card className="my-5">
                             <CardHeader>
                                 <CardTitle>Votre identifiant</CardTitle>
                                 <CardDescription>
@@ -70,7 +69,7 @@ export default function Account() {
                             </CardHeader>
                             <CardContent>
                                 <form>
-                                    <Input placeholder={authState?.token || ""} />
+                                    <Input placeholder={token || ""} />
                                 </form>
                             </CardContent>
                             <CardFooter className="border-t px-6 py-4">
@@ -86,7 +85,7 @@ export default function Account() {
                                 </Button>
                             </CardFooter>
                         </Card>
-                        <Card className="my-5 w-full lg:w-2/3">
+                        <Card className="my-5">
                             <CardHeader>
                                 <CardTitle>Votre mot de passe</CardTitle>
                                 <CardDescription>Utilisé pour vous connecter à nos services.</CardDescription>
@@ -112,6 +111,59 @@ export default function Account() {
                                 </Button>
                             </CardFooter>
                         </Card>
+                        <Card className="my-5">
+                            <CardHeader>
+                                <CardTitle>Votre compte</CardTitle>
+                                <CardDescription>Zone dangereuse !</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">
+                                    Déconnexion : Permet de vous déconnecter du site. Vos données seront conservées.
+                                </p>
+                                <p className="text-muted-foreground">
+                                    Suppression : Cette action est irréversible. Vous perdrez toutes vos données.
+                                </p>
+                            </CardContent>
+                            <CardFooter className="gap-2 border-t px-6 py-4">
+                                <Button
+                                    variant="secondary"
+                                    onClick={() => {
+                                        if (logout) logout();
+                                        toast("Authentification", {
+                                            description: "Déconnexion éffectuée avec succès",
+                                        });
+                                    }}
+                                >
+                                    Déconnexion
+                                </Button>
+                                <AlertDialog>
+                                    <AlertDialogTrigger asChild>
+                                        <Button variant="destructive">Suppression</Button>
+                                    </AlertDialogTrigger>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader>
+                                            <AlertDialogTitle>Êtes vous vraiment sûr ?</AlertDialogTitle>
+                                            <AlertDialogDescription>
+                                                Cette action est irréversible. Vous perdrez toutes vos données.
+                                            </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <AlertDialogFooter>
+                                            <AlertDialogCancel>Annuler</AlertDialogCancel>
+                                            <AlertDialogAction
+                                                onClick={() => {
+                                                    if (remove && typeof token === "string") remove(token);
+                                                    toast("Dashboard", {
+                                                        description: "Compte supprimé avec succès !",
+                                                    });
+                                                }}
+                                            >
+                                                Confirmer
+                                            </AlertDialogAction>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialog>
+                            </CardFooter>
+                        </Card>
                     </div>
                 </>
             ),
@@ -121,7 +173,7 @@ export default function Account() {
             value: "programs",
             icon: <IconShirtSport className="size-4" />,
             content: (
-                <div>
+                <>
                     {isLoading ? (
                         <>{/* TODO: Skeleton */}</>
                     ) : error ? (
@@ -140,23 +192,13 @@ export default function Account() {
                                 </div>
                             ) : (
                                 <div>
-                                    {data && data.map((item: Progs, index: number) => <p key={index}>{item.title}</p>)}
+                                    {data &&
+                                        data.map((item: ProgItem, index: number) => <p key={index}>{item.title}</p>)}
                                 </div>
                             )}
                         </>
                     ) : null}
-                </div>
-            ),
-        },
-        {
-            title: "Statistiques",
-            value: "statistics",
-            icon: <IconChartArea className="size-4" />,
-            content: (
-                <div className="">
-                    <h3 className="text-2xl font-bold tracking-tight">Vous n&apos;avez aucun programmes</h3>
-                    <p className="text-sm text-muted-foreground">Vous pouvez désormais en créer depuis le site !</p>
-                </div>
+                </>
             ),
         },
     ];

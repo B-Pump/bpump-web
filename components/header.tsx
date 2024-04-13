@@ -216,7 +216,7 @@ function DialogCommand() {
 
 export function Header() {
     const router = useRouter();
-    const { authState, onLogout } = useAuth();
+    const { authenticated, logout } = useAuth();
     const { theme, setTheme } = useTheme();
 
     return (
@@ -256,7 +256,7 @@ export function Header() {
                             <IconMoon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                         </Button>
                         <CartDrawer />
-                        {authState?.authenticated ? (
+                        {authenticated ? (
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
                                     <Button variant="outline" size="icon">
@@ -270,7 +270,7 @@ export function Header() {
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem
                                         onClick={() => {
-                                            if (onLogout) onLogout();
+                                            if (logout) logout();
                                             toast("Authentification", {
                                                 description: "Déconnexion éffectuée avec succès",
                                             });
