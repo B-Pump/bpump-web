@@ -91,7 +91,7 @@ function CartDrawer() {
                     <IconShoppingCart />
                 </Button>
             </SheetTrigger>
-            <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
+            <SheetContent side="right">
                 <SheetHeader className="space-y-2.5 pr-6">
                     <SheetTitle>Votre panier</SheetTitle>
                     <Separator />
@@ -132,8 +132,8 @@ function DialogCommand() {
                 setOpen((open) => !open);
             }
         };
-
         document.addEventListener("keydown", down);
+
         return () => document.removeEventListener("keydown", down);
     }, [open]);
 

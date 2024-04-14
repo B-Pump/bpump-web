@@ -82,7 +82,7 @@ export default function Boutique() {
                 <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
                 <div>
                     <div className="relative z-10 mx-auto w-full max-w-7xl select-none p-4 pt-20 md:pt-0">
-                        <h1 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold dark:text-transparent md:text-7xl">
+                        <h1 className="bg-clip-text text-center text-4xl font-bold md:text-7xl">
                             Procurez vous B-Pump
                         </h1>
                         <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-muted-foreground">

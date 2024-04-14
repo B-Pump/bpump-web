@@ -1,5 +1,3 @@
-import { useTheme } from "next-themes";
-
 import { cn } from "@/lib/utils";
 
 type SpotlightProps = {
@@ -7,8 +5,6 @@ type SpotlightProps = {
 };
 
 export const Spotlight = ({ className }: SpotlightProps) => {
-    const { theme } = useTheme();
-
     return (
         <svg
             className={cn(
@@ -26,7 +22,7 @@ export const Spotlight = ({ className }: SpotlightProps) => {
                     rx="1924.71"
                     ry="273.501"
                     transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
-                    fill={theme === "light" ? "green" : "green"}
+                    fill="green"
                     fillOpacity="0.21"
                 />
             </g>

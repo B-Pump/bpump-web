@@ -13,19 +13,19 @@ export default function Home() {
             title: "Intelligence artificielle",
             description:
                 "Nous utilisons la dernière technologie d'IA de Google afin de détecter le positionnement de votre corps et mieux vous acompagner lors de vos exercices.",
-            link: "https://developers.google.com/mediapipe",
+            link: "/about",
         },
         {
             title: "Technologies innovantes",
             description:
                 "Notre robot contient les dernières technologies en terme de vision ordinateur pour vous aider à obtenir un entrainement aussi efficace que possible.",
-            link: "./about",
+            link: "/about",
         },
         {
             title: "Expérience utilisateur",
             description:
                 "Notre projet s'adapte à votre profil unique pour vous aider à obtenir l'entrainement qui vous convient le mieux. B-Pump fait tout cela en respectant votre vie privée, ne transmettant aucune information à des tiers",
-            link: "./onboarding",
+            link: "/about",
         },
     ];
 
@@ -58,7 +58,7 @@ export default function Home() {
     ];
 
     return (
-        <section className="grid items-center gap-6">
+        <section className="grid items-center gap-6 md:pb-10">
             <HeroGeminiEffect />
             <div id="startPage" className="container">
                 <div className="mx-auto -mt-32 max-w-5xl px-8 md:mt-auto">

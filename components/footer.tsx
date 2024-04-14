@@ -13,8 +13,8 @@ export function Footer() {
             title: "Réseaux",
             new_tab: true,
             content: [
-                { title: "Instagram", href: "https://www.instagram.com/b.pump76/" },
-                { title: "TikTok", href: "" },
+                { title: "Instagram", href: "https://instagram.com/b.pump76/" },
+                { title: "YouTube", href: "https://youtube.com/@b-pump" },
                 { title: "GitHub", href: "https://github.com/B-Pump" },
             ],
         },

@@ -22,6 +22,8 @@ import { Input } from "@/components/ui/input";
 
 import { useAuth } from "@/context/auth";
 import useFetch from "@/lib/api";
+import Image from "next/image";
+import Link from "next/link";
 
 interface ProgsData {
     data: ProgItem[];
@@ -193,7 +195,30 @@ export default function Account() {
                             ) : (
                                 <div>
                                     {data &&
-                                        data.map((item: ProgItem, index: number) => <p key={index}>{item.title}</p>)}
+                                        data.map((item: ProgItem, index: number) => (
+                                            <Link href={`/account/${item?.id}`} key={index}>
+                                                <div>
+                                                    <div>
+                                                        <Image
+                                                            src={item?.icon || "https://urlz.fr/q5qt"}
+                                                            alt=""
+                                                            width={200}
+                                                            height={200}
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <p>{item?.description || "Description non trouvée"}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p>{item?.title || "Titre non trouvé"}</p>
+                                                        <p>
+                                                            {item?.category || "Catégorie non trouvée"} - Niveau{" "}
+                                                            {item?.difficulty || "Difficultée non trouvée"}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        ))}
                                 </div>
                             )}
                         </>

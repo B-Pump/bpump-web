@@ -15,7 +15,7 @@ const transition = {
 const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: MotionValue[]; className?: string }) => {
     return (
         <div className={cn("sticky top-32", className)}>
-            <div className="relative z-10">
+            <div className="relative z-10 select-none">
                 <TextGenerateEffect
                     className="bg-clip-text pb-4 text-center text-3xl font-bold md:text-4xl xl:text-5xl 2xl:text-7xl"
                     lineOne={"Un robot coach sportif autonome"}
