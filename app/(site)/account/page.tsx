@@ -70,7 +70,7 @@ export default function Account() {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <form>
+                                <form id="new_id">
                                     <Input placeholder={token || ""} />
                                 </form>
                             </CardContent>
@@ -93,10 +93,10 @@ export default function Account() {
                                 <CardDescription>Utilisé pour vous connecter à nos services.</CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <form className="mb-2">
+                                <form className="mb-2" id="actual_password">
                                     <Input placeholder="Mot de passe actuel" />
                                 </form>
-                                <form className="mt-2">
+                                <form className="mt-2" id="new_password">
                                     <Input placeholder="Nouveau mot de passe" />
                                 </form>
                             </CardContent>

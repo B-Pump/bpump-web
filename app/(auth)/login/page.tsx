@@ -62,7 +62,7 @@ export default function Login() {
                     </p>
                 </div>
                 <div className="grid gap-6">
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)} id="login">
                         <div className="grid gap-2">
                             <div className="grid gap-1">
                                 <Label className="sr-only" htmlFor="username">
