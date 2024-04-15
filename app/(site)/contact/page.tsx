@@ -66,7 +66,7 @@ export default function Contact() {
         <div className="container grid flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
             <div className="p-8">
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" id="contact">
                         <FormField
                             control={form.control}
                             name="username"

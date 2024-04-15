@@ -1,6 +1,8 @@
 "use client";
 
 import { IconHome, IconShirtSport } from "@tabler/icons-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -18,12 +20,14 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 import { useAuth } from "@/context/auth";
 import useFetch from "@/lib/api";
-import Image from "next/image";
-import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 interface ProgsData {
     data: ProgItem[];
@@ -51,6 +55,55 @@ export default function Account() {
 
     const [selectedTab, setSelectedTab] = useState<string>("account");
 
+    const formSchema_username = z.object({
+        username: z.string().min(7, {
+            message: "Doit être au moins de 5 caractères",
+        }),
+    });
+    const form_username = useForm<z.infer<typeof formSchema_username>>({
+        resolver: zodResolver(formSchema_username),
+        defaultValues: {
+            username: "",
+        },
+    });
+
+    const formSchema_password = z.object({
+        past_password: z.string().min(5, {
+            message: "Doit être au moins de 5 caractères",
+        }),
+        new_password: z.string().min(5, {
+            message: "Doit être au moins de 5 caractères",
+        }),
+    });
+    const form_password = useForm<z.infer<typeof formSchema_password>>({
+        resolver: zodResolver(formSchema_password),
+        defaultValues: {
+            past_password: "",
+            new_password: "",
+        },
+    });
+
+    function onSubmit_username(values: z.infer<typeof formSchema_username>) {
+        // TODO: edit username method (api)
+
+        toast("Dashboard", {
+            description: "Identifiant modifié avec succès !",
+        });
+    }
+    function onSubmit_password(values: z.infer<typeof formSchema_password>) {
+        if (values.new_password === values.past_password) {
+            // TODO: edit password method (api)
+
+            toast("Dashboard", {
+                description: "Mot de passe modifié avec succès !",
+            });
+        } else {
+            toast("Dashboard", {
+                description: "Les mots de passe ne correspondent pas !",
+            });
+        }
+    }
+
     const items: TabItem[] = [
         {
             title: "Votre compte",
@@ -69,49 +122,87 @@ export default function Account() {
                                     Utilisé pour vous identifier et vous connecter à nos services.
                                 </CardDescription>
                             </CardHeader>
-                            <CardContent>
-                                <form id="new_id">
-                                    <Input placeholder={token || ""} />
+                            <Form {...form_username}>
+                                <form onSubmit={form_username.handleSubmit(onSubmit_username)}>
+                                    <CardContent>
+                                        <FormField
+                                            name="username"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder={token || ""}
+                                                            autoComplete="off"
+                                                            required
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </CardContent>
+                                    <CardFooter className="border-t px-6 py-4">
+                                        <Button type="submit" variant="secondary">
+                                            Modifier
+                                        </Button>
+                                    </CardFooter>
                                 </form>
-                            </CardContent>
-                            <CardFooter className="border-t px-6 py-4">
-                                <Button
-                                    variant="secondary"
-                                    onClick={() => {
-                                        toast("Dashboard", {
-                                            description: "Identifiant modifié avec succès !",
-                                        });
-                                    }}
-                                >
-                                    Modifier
-                                </Button>
-                            </CardFooter>
+                            </Form>
                         </Card>
                         <Card className="my-5">
                             <CardHeader>
                                 <CardTitle>Votre mot de passe</CardTitle>
                                 <CardDescription>Utilisé pour vous connecter à nos services.</CardDescription>
                             </CardHeader>
-                            <CardContent>
-                                <form className="mb-2" id="actual_password">
-                                    <Input placeholder="Mot de passe actuel" />
-                                </form>
-                                <form className="mt-2" id="new_password">
-                                    <Input placeholder="Nouveau mot de passe" />
-                                </form>
-                            </CardContent>
-                            <CardFooter className="border-t px-6 py-4">
-                                <Button
-                                    variant="secondary"
-                                    onClick={() => {
-                                        toast("Dashboard", {
-                                            description: "Mot de passe modifié avec succès !",
-                                        });
-                                    }}
+                            <Form {...form_password}>
+                                <form
+                                    onSubmit={form_password.handleSubmit(onSubmit_password)}
+                                    className="space-y-5"
+                                    id="password"
                                 >
-                                    Modifier
-                                </Button>
-                            </CardFooter>
+                                    <CardContent className="flex flex-col gap-3">
+                                        <FormField
+                                            name="past_password"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder="Mot de passe actuel"
+                                                            autoComplete="off"
+                                                            required
+                                                            type="password"
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            name="new_password"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder="Nouveau mot de passe"
+                                                            autoComplete="off"
+                                                            required
+                                                            type="password"
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </CardContent>
+                                    <CardFooter className="border-t px-6 py-4">
+                                        <Button type="submit" variant="secondary">
+                                            Modifier
+                                        </Button>
+                                    </CardFooter>
+                                </form>
+                            </Form>
                         </Card>
                         <Card className="my-5">
                             <CardHeader>
@@ -182,45 +273,31 @@ export default function Account() {
                         <p>Erreur lors du chargement de vos programmes</p>
                     ) : data ? (
                         <>
-                            {data.length < 1 ? (
-                                <div className="flex flex-col items-center gap-1 text-center">
-                                    <h3 className="text-2xl font-bold tracking-tight">
-                                        Vous n&apos;avez aucun programmes
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground">
-                                        Vous pouvez désormais en créer depuis le site !
-                                    </p>
-                                    <Button className="mt-4">Créer un programme</Button>
-                                </div>
-                            ) : (
-                                <div>
-                                    {data &&
-                                        data.map((item: ProgItem, index: number) => (
-                                            <Link href={`/account/${item?.id}`} key={index}>
-                                                <div>
-                                                    <div>
-                                                        <Image
-                                                            src={item?.icon || "https://urlz.fr/q5qt"}
-                                                            alt=""
-                                                            width={200}
-                                                            height={200}
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <p>{item?.description || "Description non trouvée"}</p>
-                                                    </div>
-                                                    <div>
-                                                        <p>{item?.title || "Titre non trouvé"}</p>
-                                                        <p>
-                                                            {item?.category || "Catégorie non trouvée"} - Niveau{" "}
-                                                            {item?.difficulty || "Difficultée non trouvée"}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        ))}
-                                </div>
-                            )}
+                            {data &&
+                                data.map((item: ProgItem, index: number) => (
+                                    <Link href={`/account/${item?.id}`} key={index}>
+                                        <div>
+                                            <div>
+                                                <Image
+                                                    src={item?.icon || "https://urlz.fr/q5qt"}
+                                                    alt=""
+                                                    width={200}
+                                                    height={200}
+                                                />
+                                            </div>
+                                            <div>
+                                                <p>{item?.description || "Description non trouvée"}</p>
+                                            </div>
+                                            <div>
+                                                <p>{item?.title || "Titre non trouvé"}</p>
+                                                <p>
+                                                    {item?.category || "Catégorie non trouvée"} - Niveau{" "}
+                                                    {item?.difficulty || "Difficultée non trouvée"}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
                         </>
                     ) : null}
                 </>
