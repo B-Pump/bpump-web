@@ -272,25 +272,30 @@ export default function Account() {
                     ) : error ? (
                         <p>Erreur lors du chargement de vos programmes</p>
                     ) : data ? (
-                        <>
+                        <div className="flex flex-col gap-5 lg:flex-row">
                             {data &&
                                 data.map((item: ProgItem, index: number) => (
                                     <Link href={`/account/${item?.id}`} key={index}>
-                                        <div>
-                                            <div>
+                                        <div className="flex flex-col gap-3 rounded-lg border border-border p-6 shadow-sm transition duration-300 hover:shadow-primary">
+                                            <div className="items-center justify-between">
                                                 <Image
+                                                    className="rounded-md"
                                                     src={item?.icon || "https://urlz.fr/q5qt"}
                                                     alt=""
-                                                    width={200}
-                                                    height={200}
+                                                    width={100}
+                                                    height={100}
                                                 />
                                             </div>
-                                            <div>
-                                                <p>{item?.description || "Description non trouvée"}</p>
+                                            <div className="justify-center">
+                                                <p className="overflow-hidden text-sm text-muted-foreground">
+                                                    {item?.description || "Description non trouvée"}
+                                                </p>
                                             </div>
                                             <div>
-                                                <p>{item?.title || "Titre non trouvé"}</p>
-                                                <p>
+                                                <p className="text-xl font-medium text-foreground">
+                                                    {item?.title || "Titre non trouvé"}
+                                                </p>
+                                                <p className="text-sm text-muted-foreground">
                                                     {item?.category || "Catégorie non trouvée"} - Niveau{" "}
                                                     {item?.difficulty || "Difficultée non trouvée"}
                                                 </p>
@@ -298,7 +303,7 @@ export default function Account() {
                                         </div>
                                     </Link>
                                 ))}
-                        </>
+                        </div>
                     ) : null}
                 </>
             ),
