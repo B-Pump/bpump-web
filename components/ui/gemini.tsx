@@ -19,7 +19,7 @@ const GoogleGeminiEffect = ({ pathLengths, className }: { pathLengths: MotionVal
                 <TextGenerateEffect
                     className="bg-clip-text pb-4 text-center text-3xl font-bold md:text-4xl xl:text-5xl 2xl:text-7xl"
                     lineOne={"Un robot coach sportif autonome"}
-                    lineTwo={"construit par 4 élèves de terminale"}
+                    lineTwo={"construit par 5 élèves de terminale"}
                 />
                 <p className="mx-auto mt-4 max-w-lg text-center text-sm font-normal text-neutral-400 md:text-xl">
                     Améliorez la justesse de vos mouvements grâce à <br /> B-Pump, votre coach sportif 100% Robotique !
