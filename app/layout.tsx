@@ -34,7 +34,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="fr" suppressHydrationWarning>
             <head />
-            <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+            <body
+                className={cn("min-h-screen bg-background font-sans antialiased selection:bg-muted", fontSans.variable)}
+            >
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     {children}
                     <SpeedInsights />

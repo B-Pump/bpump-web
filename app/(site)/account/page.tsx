@@ -1,11 +1,14 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { IconHome, IconShirtSport } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
 
 import {
     AlertDialog,
@@ -22,12 +25,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { useAuth } from "@/context/auth";
-import useFetch from "@/lib/api";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { useDashStore } from "@/context/dashboard";
+import { useFetch } from "@/lib/api";
 
 interface ProgsData {
     data: ProgItem[];
@@ -45,6 +47,8 @@ type TabItem = {
 
 export default function Account() {
     const { authenticated, token, logout, remove } = useAuth();
+    const { tab, setTab } = useDashStore();
+
     const router = useRouter();
 
     const { data, isLoading, error }: ProgsData = useFetch("GET", `progs/all?username=${token}`);
@@ -52,8 +56,6 @@ export default function Account() {
     useEffect(() => {
         if (!authenticated) router.replace("/");
     }, [authenticated, router]);
-
-    const [selectedTab, setSelectedTab] = useState<string>("account");
 
     const formSchema_username = z.object({
         username: z.string().min(7, {
@@ -268,7 +270,18 @@ export default function Account() {
             content: (
                 <>
                     {isLoading ? (
-                        <>{/* TODO: Skeleton */}</>
+                        <div className="flex flex-col gap-3 rounded-lg border border-border p-6">
+                            <div className="flex items-center gap-4">
+                                <Skeleton className="rounded-md" style={{ width: "100px", height: "100px" }} />
+                                <div>
+                                    <Skeleton className="mb-1 h-6 w-32" />
+                                    <Skeleton className="h-4 w-24" />
+                                </div>
+                            </div>
+                            <div className="justify-center">
+                                <Skeleton className="h-12" />
+                            </div>
+                        </div>
                     ) : error ? (
                         <p>Erreur lors du chargement de vos programmes</p>
                     ) : data ? (
@@ -277,7 +290,7 @@ export default function Account() {
                                 data.map((item: ProgItem, index: number) => (
                                     <Link href={`/account/${item?.id}`} key={index}>
                                         <div className="flex flex-col gap-3 rounded-lg border border-border p-6 shadow-sm transition duration-300 hover:shadow-primary">
-                                            <div className="items-center justify-between">
+                                            <div className="flex items-center gap-4">
                                                 <Image
                                                     className="rounded-md"
                                                     src={item?.icon || "https://urlz.fr/q5qt"}
@@ -285,19 +298,19 @@ export default function Account() {
                                                     width={100}
                                                     height={100}
                                                 />
+                                                <div>
+                                                    <p className="text-xl font-medium text-foreground">
+                                                        {item?.title || "Titre non trouvé"}
+                                                    </p>
+                                                    <p className="text-sm text-muted-foreground">
+                                                        {item?.category || "Catégorie non trouvée"} - Niveau{" "}
+                                                        {item?.difficulty || "Difficultée non trouvée"}
+                                                    </p>
+                                                </div>
                                             </div>
                                             <div className="justify-center">
-                                                <p className="overflow-hidden text-sm text-muted-foreground">
+                                                <p className="line-clamp-3 overflow-hidden text-sm text-muted-foreground">
                                                     {item?.description || "Description non trouvée"}
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p className="text-xl font-medium text-foreground">
-                                                    {item?.title || "Titre non trouvé"}
-                                                </p>
-                                                <p className="text-sm text-muted-foreground">
-                                                    {item?.category || "Catégorie non trouvée"} - Niveau{" "}
-                                                    {item?.difficulty || "Difficultée non trouvée"}
                                                 </p>
                                             </div>
                                         </div>
@@ -321,9 +334,9 @@ export default function Account() {
                         {items.map((item: TabItem, index: number) => (
                             <Button
                                 variant="ghost"
-                                onClick={() => setSelectedTab(item.value)}
+                                onClick={() => setTab(item.value)}
                                 className={`justify-start gap-3 text-base text-muted-foreground hover:text-primary ${
-                                    selectedTab === item.value && "text-primary"
+                                    tab === item.value && "text-primary"
                                 }`}
                                 key={index}
                             >
@@ -336,7 +349,7 @@ export default function Account() {
             </div>
             <div className="flex flex-1 p-5">
                 {items.map((item: TabItem, index: number) => {
-                    if (selectedTab === item.value) {
+                    if (tab === item.value) {
                         return (
                             <div className="flex-1 rounded-lg border border-dashed p-6" key={index}>
                                 {item.content}

@@ -13,19 +13,19 @@ export default function Home() {
             title: "Intelligence artificielle",
             description:
                 "Nous utilisons la dernière technologie d'IA de Google afin de détecter le positionnement de votre corps et mieux vous acompagner lors de vos exercices.",
-            link: "/about",
+            link: "about",
         },
         {
             title: "Technologies innovantes",
             description:
                 "Notre robot contient les dernières technologies en terme de vision ordinateur pour vous aider à obtenir un entrainement aussi efficace que possible.",
-            link: "/about",
+            link: "about",
         },
         {
             title: "Expérience utilisateur",
             description:
                 "Notre projet s'adapte à votre profil unique pour vous aider à obtenir l'entrainement qui vous convient le mieux. B-Pump fait tout cela en respectant votre vie privée, ne transmettant aucune information à des tiers",
-            link: "/about",
+            link: "about",
         },
     ];
 

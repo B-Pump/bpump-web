@@ -92,7 +92,7 @@ export default function Boutique() {
                         </p>
                     </div>
                     <div className="flex justify-center">
-                        <a href="./contact">
+                        <a href="/contact">
                             <Button onClick={() => {}}>Acheter dès maintenant</Button>
                         </a>
                     </div>

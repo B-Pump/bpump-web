@@ -150,7 +150,7 @@ export default function Contact() {
                     </form>
                 </Form>
             </div>
-            <div className="-mb-32 -mt-48 md:m-0">
+            <div className="-mb-32 -mt-48 select-none md:m-0">
                 <MaskContainer
                     revealText={
                         <p className="mx-auto max-w-4xl text-center text-4xl font-bold text-muted-foreground">

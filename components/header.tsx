@@ -67,7 +67,7 @@ function NavDrawer() {
                     {config.link.map((item, index) => (
                         <SheetClose key={index} asChild>
                             <Link
-                                href={item.href}
+                                href={`/${item.href}`}
                                 className={buttonVariants({
                                     size: "sm",
                                     variant: "secondary",
@@ -101,7 +101,7 @@ function CartDrawer() {
                     <div className="text-xl font-medium text-muted-foreground">Votre panier est vide !</div>
                     <SheetTrigger asChild>
                         <Link
-                            href="boutique"
+                            href="/boutique"
                             className={cn(
                                 buttonVariants({
                                     variant: "link",
@@ -169,7 +169,7 @@ function DialogCommand() {
                             <CommandItem
                                 key={index}
                                 onSelect={() => {
-                                    router.push(item.href);
+                                    router.push(`/${item.href}`);
                                     setOpen(false);
                                 }}
                             >
@@ -232,7 +232,7 @@ export function Header() {
                     </Link>
                     <nav className="flex gap-6">
                         {config.link.map((item: { title: string; href: string }, index: number) => (
-                            <Link href={item.href} legacyBehavior passHref key={index}>
+                            <Link href={`/${item.href}`} legacyBehavior passHref key={index}>
                                 <Button variant="ghost">{item.title}</Button>
                             </Link>
                         ))}
@@ -264,7 +264,7 @@ export function Header() {
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end">
-                                    <DropdownMenuItem onClick={() => router.push("account")}>
+                                    <DropdownMenuItem onClick={() => router.push("/account")}>
                                         Dashboard
                                     </DropdownMenuItem>
                                     <DropdownMenuSeparator />
