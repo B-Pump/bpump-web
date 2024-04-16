@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IconHome, IconShirtSport } from "@tabler/icons-react";
+import { IconHome, IconScoreboard, IconShirtSport } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -262,6 +262,12 @@ export default function Account() {
                     </div>
                 </>
             ),
+        },
+        {
+            title: "Votre métabolisme",
+            value: "metabolism",
+            icon: <IconScoreboard className="size-4" />,
+            content: <>{/* TODO: edit_metabolism method (api) */}</>,
         },
         {
             title: "Vos programmes",
