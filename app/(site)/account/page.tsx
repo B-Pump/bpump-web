@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
+import { ProgsSkeleton } from "@/components/data-skeleton";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -25,7 +26,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
 
 import { useAuth } from "@/context/auth";
 import { useDashStore } from "@/context/dashboard";
@@ -270,17 +270,9 @@ export default function Account() {
             content: (
                 <>
                     {isLoading ? (
-                        <div className="flex flex-col gap-3 rounded-lg border border-border p-6">
-                            <div className="flex items-center gap-4">
-                                <Skeleton className="rounded-md" style={{ width: "100px", height: "100px" }} />
-                                <div>
-                                    <Skeleton className="mb-1 h-6 w-32" />
-                                    <Skeleton className="h-4 w-24" />
-                                </div>
-                            </div>
-                            <div className="justify-center">
-                                <Skeleton className="h-12" />
-                            </div>
+                        <div className="flex flex-col gap-5 lg:flex-row">
+                            <ProgsSkeleton />
+                            <ProgsSkeleton />
                         </div>
                     ) : error ? (
                         <p>Erreur lors du chargement de vos programmes</p>

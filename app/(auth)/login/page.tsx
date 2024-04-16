@@ -31,15 +31,16 @@ export default function Login() {
 
         const result = await login!(data.username, data.password);
         if (result && result.error) {
-            alert("Identifiants invalides");
-        } else {
-            router.replace("/");
-            toast("Authentification", {
-                description: `Vous êtes désormais connecté en tant que ${
-                    data.username.charAt(0).toUpperCase() + data.username.slice(1)
-                }`,
-            });
+            setLoading(false);
+            return alert("Identifiants invalides");
         }
+
+        router.replace("/");
+        toast("Authentification", {
+            description: `Vous êtes désormais connecté en tant que ${
+                data.username.charAt(0).toUpperCase() + data.username.slice(1)
+            }`,
+        });
 
         setLoading(false);
     };

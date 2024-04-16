@@ -20,6 +20,10 @@ import config from "@/config/config.json";
 interface Inputs {
     username: string;
     password: string;
+    weight: number;
+    height: number;
+    age: number;
+    sex: string;
 }
 
 export default function Register() {
@@ -30,29 +34,40 @@ export default function Register() {
 
     const { register, handleSubmit } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        setLoading(true);
-
         const usernameRegex = /^[a-zA-Z0-9_\-]+$/;
         const passwordRegex = /^[a-zA-Z0-9@#$%^&*]+$/;
 
-        if (usernameRegex.test(data.username.trim()) && passwordRegex.test(data.password.trim())) {
-            const result = await onRegister!(data.username, data.password);
-            if (result && result.error) {
-                alert(result.msg);
-            } else {
-                const result = await login!(data.username, data.password);
-                if (result && result.error) {
-                    alert("Veuillez réessayer");
-                } else {
-                    router.replace("/");
-                    toast("Authentification", {
-                        description: `Vous êtes désormais connecté en tant que ${
-                            data.username.charAt(0).toUpperCase() + data.username.slice(1)
-                        }`,
-                    });
-                }
-            }
-        } else alert("Le nom d'utilisateur ou le mot de passe contient des caractères non autorisés");
+        if (!usernameRegex.test(data.username.trim()) || !passwordRegex.test(data.password.trim())) {
+            return alert("Le nom d'utilisateur ou le mot de passe contient des caractères non autorisés");
+        }
+
+        setLoading(true);
+
+        const registerResult = await onRegister!(
+            data.username,
+            data.password,
+            data.weight,
+            data.height,
+            data.age,
+            data.sex,
+        );
+        if (registerResult && registerResult.error) {
+            setLoading(false);
+            return alert("Erreur lors de la création de compte");
+        }
+
+        const loginResult = await login!(data.username, data.password);
+        if (loginResult && loginResult.error) {
+            setLoading(false);
+            return alert("Erreur lors de la connexion à votre compte");
+        }
+
+        router.replace("/");
+        toast("Authentification", {
+            description: `Vous êtes désormais connecté en tant que ${
+                data.username.charAt(0).toUpperCase() + data.username.slice(1)
+            }`,
+        });
 
         setLoading(false);
     };
@@ -110,6 +125,62 @@ export default function Register() {
                                         autoComplete="off"
                                         required={true}
                                         {...register("password")}
+                                    />
+                                    <Label className="sr-only" htmlFor="username">
+                                        Poids
+                                    </Label>
+                                    <Input
+                                        id="weight"
+                                        placeholder="Poids (kg)"
+                                        maxLength={3}
+                                        type="number"
+                                        autoCapitalize="none"
+                                        autoCorrect="off"
+                                        autoComplete="off"
+                                        required={true}
+                                        {...register("weight")}
+                                    />
+                                    <Label className="sr-only" htmlFor="username">
+                                        Taille
+                                    </Label>
+                                    <Input
+                                        id="height"
+                                        placeholder="Taille (cm)"
+                                        type="number"
+                                        maxLength={3}
+                                        autoCapitalize="none"
+                                        autoCorrect="off"
+                                        autoComplete="off"
+                                        required={true}
+                                        {...register("height")}
+                                    />
+                                    <Label className="sr-only" htmlFor="username">
+                                        Âge
+                                    </Label>
+                                    <Input
+                                        id="age"
+                                        placeholder="Âge (années)"
+                                        type="number"
+                                        maxLength={2}
+                                        autoCapitalize="none"
+                                        autoCorrect="off"
+                                        autoComplete="off"
+                                        required={true}
+                                        {...register("age")}
+                                    />
+                                    <Label className="sr-only" htmlFor="username">
+                                        Sexe de naissance
+                                    </Label>
+                                    <Input
+                                        id="sex"
+                                        placeholder="Sexe de naissance (m ou f)"
+                                        type="text"
+                                        maxLength={1}
+                                        autoCapitalize="none"
+                                        autoCorrect="off"
+                                        autoComplete="off"
+                                        required={true}
+                                        {...register("sex")}
                                     />
                                 </div>
                                 <Button variant="secondary" disabled={loading}>
