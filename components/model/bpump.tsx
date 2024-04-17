@@ -1,19 +1,19 @@
 import { useGLTF } from "@react-three/drei";
-import THREE from "three";
+import { Mesh, MeshStandardMaterial } from "three";
 import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
     nodes: {
-        Icosphere: THREE.Mesh;
-        Sphere001: THREE.Mesh;
-        Cylinder001: THREE.Mesh;
-        Cylinder002: THREE.Mesh;
+        Icosphere: Mesh;
+        Sphere001: Mesh;
+        Cylinder001: Mesh;
+        Cylinder002: Mesh;
     };
     materials: {
-        ["Material.001"]: THREE.MeshStandardMaterial;
-        ["Material.002"]: THREE.MeshStandardMaterial;
-        ["Material.003"]: THREE.MeshStandardMaterial;
-        ["Material.004"]: THREE.MeshStandardMaterial;
+        ["Material.001"]: MeshStandardMaterial;
+        ["Material.002"]: MeshStandardMaterial;
+        ["Material.003"]: MeshStandardMaterial;
+        ["Material.004"]: MeshStandardMaterial;
     };
 };
 

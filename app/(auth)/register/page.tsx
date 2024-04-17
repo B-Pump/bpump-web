@@ -43,14 +43,7 @@ export default function Register() {
 
         setLoading(true);
 
-        const registerResult = await onRegister!(
-            data.username,
-            data.password,
-            data.weight,
-            data.height,
-            data.age,
-            data.sex,
-        );
+        const registerResult = await onRegister!(data.username, data.password);
         if (registerResult && registerResult.error) {
             setLoading(false);
             return alert("Erreur lors de la création de compte");
@@ -125,62 +118,6 @@ export default function Register() {
                                         autoComplete="off"
                                         required={true}
                                         {...register("password")}
-                                    />
-                                    <Label className="sr-only" htmlFor="username">
-                                        Poids
-                                    </Label>
-                                    <Input
-                                        id="weight"
-                                        placeholder="Poids (kg)"
-                                        maxLength={3}
-                                        type="number"
-                                        autoCapitalize="none"
-                                        autoCorrect="off"
-                                        autoComplete="off"
-                                        required={true}
-                                        {...register("weight")}
-                                    />
-                                    <Label className="sr-only" htmlFor="username">
-                                        Taille
-                                    </Label>
-                                    <Input
-                                        id="height"
-                                        placeholder="Taille (cm)"
-                                        type="number"
-                                        maxLength={3}
-                                        autoCapitalize="none"
-                                        autoCorrect="off"
-                                        autoComplete="off"
-                                        required={true}
-                                        {...register("height")}
-                                    />
-                                    <Label className="sr-only" htmlFor="username">
-                                        Âge
-                                    </Label>
-                                    <Input
-                                        id="age"
-                                        placeholder="Âge (années)"
-                                        type="number"
-                                        maxLength={2}
-                                        autoCapitalize="none"
-                                        autoCorrect="off"
-                                        autoComplete="off"
-                                        required={true}
-                                        {...register("age")}
-                                    />
-                                    <Label className="sr-only" htmlFor="username">
-                                        Sexe de naissance
-                                    </Label>
-                                    <Input
-                                        id="sex"
-                                        placeholder="Sexe de naissance (m ou f)"
-                                        type="text"
-                                        maxLength={1}
-                                        autoCapitalize="none"
-                                        autoCorrect="off"
-                                        autoComplete="off"
-                                        required={true}
-                                        {...register("sex")}
                                     />
                                 </div>
                                 <Button variant="secondary" disabled={loading}>

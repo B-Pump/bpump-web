@@ -1,16 +1,14 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { IconHome, IconScoreboard, IconShirtSport } from "@tabler/icons-react";
+import { IconHome, IconShirtSport } from "@tabler/icons-react";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
 
-import { ProgsSkeleton } from "@/components/data-skeleton";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -24,15 +22,31 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 import { useAuth } from "@/context/auth";
 import { useDashStore } from "@/context/dashboard";
-import { useFetch } from "@/lib/api";
+import { API_URL, useFetch } from "@/lib/api";
+
+interface Inputs_password {
+    old_password: string;
+    new_password: string;
+}
+interface Inputs_metabolism {
+    weight: number;
+    height: number;
+    age: number;
+    sex: string;
+}
 
 interface ProgsData {
     data: ProgItem[];
+    isLoading: boolean;
+    error: boolean;
+    refetch: () => void;
+}
+interface MetaData {
+    data: Inputs_metabolism;
     isLoading: boolean;
     error: boolean;
     refetch: () => void;
@@ -51,60 +65,53 @@ export default function Account() {
 
     const router = useRouter();
 
-    const { data, isLoading, error }: ProgsData = useFetch("GET", `progs/all?username=${token}`);
+    const {
+        data: progsData,
+        isLoading: progsLoad,
+        error: progsError,
+    }: ProgsData = useFetch("GET", `progs/all?username=${token}`);
+    const { data: metaData, error: metaError }: MetaData = useFetch("GET", `metabolism?username=${token}`);
 
     useEffect(() => {
         if (!authenticated) router.replace("/");
     }, [authenticated, router]);
 
-    const formSchema_username = z.object({
-        username: z.string().min(7, {
-            message: "Doit être au moins de 5 caractères",
-        }),
-    });
-    const form_username = useForm<z.infer<typeof formSchema_username>>({
-        resolver: zodResolver(formSchema_username),
-        defaultValues: {
-            username: "",
-        },
-    });
+    const { register: passwordRegister, handleSubmit: passwordHandler } = useForm<Inputs_password>();
+    const { register: metabolismRegister, handleSubmit: metabolismHandler } = useForm<Inputs_metabolism>();
 
-    const formSchema_password = z.object({
-        past_password: z.string().min(5, {
-            message: "Doit être au moins de 5 caractères",
-        }),
-        new_password: z.string().min(5, {
-            message: "Doit être au moins de 5 caractères",
-        }),
-    });
-    const form_password = useForm<z.infer<typeof formSchema_password>>({
-        resolver: zodResolver(formSchema_password),
-        defaultValues: {
-            past_password: "",
-            new_password: "",
-        },
-    });
-
-    function onSubmit_username(values: z.infer<typeof formSchema_username>) {
-        // TODO: edit username method (api)
-
-        toast("Dashboard", {
-            description: "Identifiant modifié avec succès !",
-        });
-    }
-    function onSubmit_password(values: z.infer<typeof formSchema_password>) {
-        if (values.new_password === values.past_password) {
-            // TODO: edit password method (api)
-
-            toast("Dashboard", {
-                description: "Mot de passe modifié avec succès !",
+    const onSubmit_password: SubmitHandler<Inputs_password> = async (data) => {
+        await axios
+            .put(
+                `${API_URL}/edit_password?username=${token}&old_password=${data.old_password}&new_password=${data.new_password}`,
+            )
+            .then(() => {
+                toast("Dashboard", {
+                    description: "Mot de passe modifié avec succès !",
+                });
+                if (logout) logout();
+            })
+            .catch(() => {
+                alert("Mot de passe actuel incorrect");
             });
-        } else {
-            toast("Dashboard", {
-                description: "Les mots de passe ne correspondent pas !",
+    };
+    const onSubmit_metabolism: SubmitHandler<Inputs_metabolism> = async (data) => {
+        await axios
+            .put(`${API_URL}/edit_metabolism?username=${token}`, {
+                weight: data.weight,
+                height: data.height,
+                age: data.age,
+                sex: data.sex,
+            })
+            .then(() => {
+                toast("Dashboard", {
+                    description: "Métabolisme modifié avec succès !",
+                });
+                router.push("/");
+            })
+            .catch(() => {
+                alert("Mot de passe actuel incorrect");
             });
-        }
-    }
+    };
 
     const items: TabItem[] = [
         {
@@ -117,94 +124,106 @@ export default function Account() {
                         Bonjour, {token && token.charAt(0).toUpperCase() + token.slice(1)} !
                     </h1>
                     <div className="mt-10">
-                        <Card className="my-5">
-                            <CardHeader>
-                                <CardTitle>Votre identifiant</CardTitle>
-                                <CardDescription>
-                                    Utilisé pour vous identifier et vous connecter à nos services.
-                                </CardDescription>
-                            </CardHeader>
-                            <Form {...form_username}>
-                                <form onSubmit={form_username.handleSubmit(onSubmit_username)}>
-                                    <CardContent>
-                                        <FormField
-                                            name="username"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder={token || ""}
-                                                            autoComplete="off"
-                                                            required
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                </FormItem>
-                                            )}
+                        {metaError ? (
+                            <p></p>
+                        ) : (
+                            <Card className="my-5">
+                                <CardHeader>
+                                    <CardTitle>Votre métabolisme</CardTitle>
+                                    <CardDescription>
+                                        Renseigner ces informations nous permettrons de mieux adapter les exercices à
+                                        votre profil ainsi que de vous proposer des informations sur les calories
+                                        dépensées lors d&apos;un exercice.
+                                    </CardDescription>
+                                </CardHeader>
+                                <form onSubmit={metabolismHandler(onSubmit_metabolism)} id="metabolism">
+                                    <CardContent className="flex flex-col gap-3">
+                                        <Input
+                                            id="weight"
+                                            placeholder={
+                                                metaData?.weight != null ? metaData?.weight + " kg" : "Poids (kg)"
+                                            }
+                                            autoComplete="off"
+                                            required
+                                            type="number"
+                                            {...metabolismRegister("weight")}
+                                        />
+                                        <Input
+                                            id="height"
+                                            placeholder={
+                                                metaData?.height != null ? metaData?.height + " cm" : "Taille (cm)"
+                                            }
+                                            autoComplete="off"
+                                            required
+                                            type="number"
+                                            {...metabolismRegister("height")}
+                                        />
+                                        <Input
+                                            id="age"
+                                            placeholder={
+                                                metaData?.age != null ? metaData?.age + " ans" : "Âge (années)"
+                                            }
+                                            autoComplete="off"
+                                            required
+                                            type="number"
+                                            {...metabolismRegister("age")}
+                                        />
+                                        <Input
+                                            id="sex"
+                                            placeholder={
+                                                metaData?.sex != null
+                                                    ? metaData?.sex == "m"
+                                                        ? "Homme" + " (mettre f pour changer)"
+                                                        : "Femme" + " (mettre m pour changer)"
+                                                    : "Sexe de naissance (m ou f)"
+                                            }
+                                            autoComplete="off"
+                                            required
+                                            type="text"
+                                            {...metabolismRegister("sex")}
                                         />
                                     </CardContent>
-                                    <CardFooter className="border-t px-6 py-4">
+                                    <CardFooter className="gap-2 border-t px-6 py-4">
                                         <Button type="submit" variant="secondary">
                                             Modifier
                                         </Button>
                                     </CardFooter>
                                 </form>
-                            </Form>
-                        </Card>
+                            </Card>
+                        )}
                         <Card className="my-5">
                             <CardHeader>
                                 <CardTitle>Votre mot de passe</CardTitle>
-                                <CardDescription>Utilisé pour vous connecter à nos services.</CardDescription>
+                                <CardDescription>
+                                    Utilisé pour vous connecter à nos services. Suite à une modification, vous serez
+                                    déconnecté.
+                                </CardDescription>
                             </CardHeader>
-                            <Form {...form_password}>
-                                <form
-                                    onSubmit={form_password.handleSubmit(onSubmit_password)}
-                                    className="space-y-5"
-                                    id="password"
-                                >
-                                    <CardContent className="flex flex-col gap-3">
-                                        <FormField
-                                            name="past_password"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder="Mot de passe actuel"
-                                                            autoComplete="off"
-                                                            required
-                                                            type="password"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            name="new_password"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder="Nouveau mot de passe"
-                                                            autoComplete="off"
-                                                            required
-                                                            type="password"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </CardContent>
-                                    <CardFooter className="border-t px-6 py-4">
-                                        <Button type="submit" variant="secondary">
-                                            Modifier
-                                        </Button>
-                                    </CardFooter>
-                                </form>
-                            </Form>
+                            <form onSubmit={passwordHandler(onSubmit_password)} id="password">
+                                <CardContent className="flex flex-col gap-3">
+                                    <Input
+                                        id="old_password"
+                                        placeholder="Mot de passe actuel"
+                                        autoComplete="off"
+                                        required
+                                        type="password"
+                                        {...passwordRegister("old_password")}
+                                    />
+                                    <Input
+                                        id="new_password"
+                                        placeholder="Nouveau mot de passe"
+                                        autoComplete="off"
+                                        required
+                                        type="password"
+                                        {...passwordRegister("new_password")}
+                                    />
+                                </CardContent>
+                                <CardFooter className="border-t px-6 py-4">
+                                    <Button type="submit" variant="secondary">
+                                        Modifier
+                                    </Button>
+                                </CardFooter>
+                            </form>
                         </Card>
                         <Card className="my-5">
                             <CardHeader>
@@ -264,35 +283,26 @@ export default function Account() {
             ),
         },
         {
-            title: "Votre métabolisme",
-            value: "metabolism",
-            icon: <IconScoreboard className="size-4" />,
-            content: <>{/* TODO: edit_metabolism method (api) */}</>,
-        },
-        {
             title: "Vos programmes",
             value: "programs",
             icon: <IconShirtSport className="size-4" />,
             content: (
                 <>
-                    {isLoading ? (
-                        <div className="flex flex-col gap-5 lg:flex-row">
-                            <ProgsSkeleton />
-                            <ProgsSkeleton />
-                        </div>
-                    ) : error ? (
+                    {progsLoad ? (
+                        <p>Chargement de vos programmes...</p>
+                    ) : progsError ? (
                         <p>Erreur lors du chargement de vos programmes</p>
-                    ) : data ? (
-                        <div className="flex flex-col gap-5 lg:flex-row">
-                            {data &&
-                                data.map((item: ProgItem, index: number) => (
-                                    <Link href={`/account/${item?.id}`} key={index}>
+                    ) : progsData ? (
+                        <div className="flex flex-wrap gap-5">
+                            {progsData &&
+                                progsData.map((item: ProgItem, index: number) => (
+                                    <Link href={`/account/${item?.id}`} key={index} className="w-full">
                                         <div className="flex flex-col gap-3 rounded-lg border border-border p-6 shadow-sm transition duration-300 hover:shadow-primary">
                                             <div className="flex items-center gap-4">
                                                 <Image
                                                     className="rounded-md"
-                                                    src={item?.icon || "https://urlz.fr/q5qt"}
-                                                    alt=""
+                                                    src={item?.icon || "https://i.imgur.com/YPmxG4Y.jpeg"}
+                                                    alt="Miniature du programme"
                                                     width={100}
                                                     height={100}
                                                 />
