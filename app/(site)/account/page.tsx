@@ -113,6 +113,11 @@ export default function Account() {
             });
     };
 
+    const sayHello = () => {
+        const hour = new Date().getHours();
+        return hour >= 6 && hour < 18 ? "Bonjour" : "Bonsoir";
+    };
+
     const items: TabItem[] = [
         {
             title: "Votre compte",
@@ -121,7 +126,7 @@ export default function Account() {
             content: (
                 <>
                     <h1 className="text-center text-5xl font-semibold md:text-start">
-                        Bonjour, {token && token.charAt(0).toUpperCase() + token.slice(1)} !
+                        {sayHello()}, {token && token.charAt(0).toUpperCase() + token.slice(1)} !
                     </h1>
                     <div className="mt-10">
                         {metaError ? (
