@@ -27,7 +27,7 @@ export default function Boutique() {
         {
             title: "Ordinateur intégré",
             description:
-                "B-Pump est alimenté par un Rasperry Pi 4 offrant une puissance de traitement fiable pour fonctionnement fluidement",
+                "B-Pump est alimenté par un Rasperry Pi 4 offrant une puissance de traitement fiable pour fonctionner de manière fluide",
         },
         {
             title: "Caméra HD",
