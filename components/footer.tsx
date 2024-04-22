@@ -56,7 +56,7 @@ export function Footer() {
                                     {item.content.map((content, index) => (
                                         <li key={index} className="-mx-3">
                                             <Link
-                                                href={`/${content.href}`}
+                                                href={content.href}
                                                 target={item.new_tab ? "_blank" : "_self"}
                                                 className={cn(
                                                     buttonVariants({
