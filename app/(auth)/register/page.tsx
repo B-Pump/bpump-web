@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "sonner";
 
 import { AuroraBackground } from "@/components/ui/aurora";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -16,14 +15,11 @@ import { useAuth } from "@/context/auth";
 import { cn } from "@/lib/utils";
 
 import config from "@/config/config.json";
+import { toast } from "sonner";
 
 interface Inputs {
     username: string;
     password: string;
-    weight: number;
-    height: number;
-    age: number;
-    sex: string;
 }
 
 export default function Register() {
@@ -34,11 +30,28 @@ export default function Register() {
 
     const { register, handleSubmit } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        const usernameRegex = /^[a-zA-Z0-9_\-]+$/;
-        const passwordRegex = /^[a-zA-Z0-9@#$%^&*]+$/;
+        if (!data.username || !data.password) {
+            return alert("Erreur : Veuillez remplir tous les champs");
+        }
+        if (data.username.includes(" ") || data.password.includes(" ")) {
+            return alert("Erreur : Votre nom d'utilisateur ou votre mot de passe contient un ou plusieurs espaces");
+        }
+        if (data.username.length > 8) {
+            return alert("Erreur : Votre nom d'utilisateur doit faire moins de 8 caractères");
+        }
+        if (data.password.length < 5) {
+            return alert("Erreur : Votre mote de passe doit faire au moins 5 caractères");
+        }
 
-        if (!usernameRegex.test(data.username.trim()) || !passwordRegex.test(data.password.trim())) {
-            return alert("Le nom d'utilisateur ou le mot de passe contient des caractères non autorisés");
+        const hasNumber = /\d/.test(data.password);
+        const hasUpperCase = /[A-Z]/.test(data.password);
+        const hasLowerCase = /[a-z]/.test(data.password);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(data.password);
+
+        if (!hasNumber || !hasUpperCase || !hasLowerCase || !hasSpecialChar) {
+            return alert(
+                "Erreur : Votre mot de passe doit contenir au moins un chiffre, une majuscule, une minuscule et un caractère spécial",
+            );
         }
 
         setLoading(true);
@@ -46,13 +59,12 @@ export default function Register() {
         const registerResult = await onRegister!(data.username, data.password);
         if (registerResult && registerResult.error) {
             setLoading(false);
-            return alert("Erreur lors de la création de compte");
+            return alert("Erreur : Erreur lors de la création du compte");
         }
 
         const loginResult = await login!(data.username, data.password);
         if (loginResult && loginResult.error) {
-            setLoading(false);
-            return alert("Erreur lors de la connexion à votre compte");
+            return alert("Erreur : Erreur lors de la connexion à votre compte");
         }
 
         router.replace("/");
