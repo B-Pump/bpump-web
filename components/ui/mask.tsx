@@ -50,7 +50,11 @@ export const MaskContainer = ({
                 transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
             >
                 <div className="absolute inset-0 z-0 size-full bg-accent-foreground" />
-                <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className="relative z-20 mx-auto max-w-4xl">
+                <div
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className="relative z-20 mx-auto max-w-4xl"
+                >
                     <p className="text-center text-4xl font-bold text-accent">{children}</p>
                 </div>
             </motion.div>

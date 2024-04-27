@@ -46,9 +46,11 @@ import {
 } from "@/components/ui/sheet";
 
 import { useAuth } from "@/context/auth";
+import { useCartStore } from "@/context/cart";
 import { cn } from "@/lib/utils";
 
 import config from "@/config/config.json";
+import Image from "next/image";
 
 function NavDrawer() {
     return (
@@ -84,6 +86,8 @@ function NavDrawer() {
 }
 
 function CartDrawer() {
+    const { content, setContent } = useCartStore();
+
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -96,25 +100,65 @@ function CartDrawer() {
                     <SheetTitle>Votre panier</SheetTitle>
                     <Separator />
                 </SheetHeader>
-                <div className="flex h-full flex-col items-center justify-center space-y-1">
-                    <IconShoppingCart className="mb-4 size-16 text-muted-foreground" />
-                    <div className="text-xl font-medium text-muted-foreground">Votre panier est vide !</div>
-                    <SheetTrigger asChild>
-                        <Link
-                            href="/boutique"
-                            className={cn(
-                                buttonVariants({
-                                    variant: "link",
-                                    size: "sm",
-                                    className: "text-sm text-muted-foreground",
-                                }),
-                                "text-center pt-3",
-                            )}
-                        >
-                            Ajoutez des produits à votre panier pour <br /> procèder au paiement
-                        </Link>
-                    </SheetTrigger>
-                </div>
+                {content.length < 1 ? (
+                    <div className="flex h-full flex-col items-center justify-center space-y-1">
+                        <IconShoppingCart className="mb-4 size-16 text-muted-foreground" />
+                        <div className="text-xl font-medium text-muted-foreground">Votre panier est vide !</div>
+                        <SheetTrigger asChild>
+                            <Link
+                                href="/boutique"
+                                className={cn(
+                                    buttonVariants({
+                                        variant: "link",
+                                        size: "sm",
+                                        className: "text-sm text-muted-foreground",
+                                    }),
+                                    "text-center pt-3",
+                                )}
+                            >
+                                Ajoutez des produits à votre panier pour <br /> procèder au paiement
+                            </Link>
+                        </SheetTrigger>
+                    </div>
+                ) : (
+                    <>
+                        <div className="mt-5 flex flex-col space-y-5">
+                            {content.map((item, index) => (
+                                <div
+                                    className="flex flex-row rounded-lg border border-border bg-background p-6"
+                                    key={index}
+                                >
+                                    <div className="items-center justify-between rounded-xl">
+                                        <Image
+                                            src={item?.image}
+                                            alt="Produit"
+                                            style={{ borderRadius: 10 }}
+                                            width={50}
+                                            height={50}
+                                        />
+                                    </div>
+                                    <div className="ml-7 items-center">
+                                        <p className="text-xl font-medium text-foreground">
+                                            {item?.title} - {item?.price} &#8364;
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="my-10">
+                            <Button
+                                onClick={() => {
+                                    toast("Panier", {
+                                        description:
+                                            "Le système d'achat n'est malheureusement pas encore mit en place. Merci de réessayer plus tard !",
+                                    });
+                                }}
+                            >
+                                Valider votre panier
+                            </Button>
+                        </div>
+                    </>
+                )}
             </SheetContent>
         </Sheet>
     );

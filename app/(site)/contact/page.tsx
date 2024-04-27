@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { MaskContainer } from "@/components/ui/mask";
 import { useAuth } from "@/context/auth";
+import { toast } from "sonner";
 
 export default function Contact() {
     const { token } = useAuth();
@@ -59,6 +60,11 @@ export default function Contact() {
                 },
                 process.env.NEXT_PUBLIC_EJS_PUBLIC_KEY,
             )
+            .then(() => {
+                toast("Contact", {
+                    description: "Demande de contact envoyée avec succès !",
+                });
+            })
             .catch((error) => console.error("Error while sending email :", error));
     }
 

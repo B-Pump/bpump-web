@@ -8,19 +8,17 @@ import { Button } from "@/components/ui/button";
 import { Spotlight } from "@/components/ui/spotlight";
 import { ThreeDCard } from "@/components/ui/threed-card";
 
+import { useCartStore } from "@/context/cart";
 import { cn } from "@/lib/utils";
 
 type AccordionItem = {
     title: string;
     description: string;
 };
-type ProductItem = {
-    title: string;
-    description: string;
-    image: string;
-};
 
 export default function Boutique() {
+    const { content, setContent } = useCartStore();
+
     const [isGrabbing, setIsGrabbing] = useState<boolean>(false);
 
     const accordion: AccordionItem[] = [
@@ -56,22 +54,25 @@ export default function Boutique() {
         },
     ];
 
-    const products: ProductItem[] = [
+    const products: CartItem[] = [
         {
             title: "Porte clef",
             description: "Emportez l'esprit novateur de notre projet partout avec vous grâce à ce porte-clés exclusif.",
+            price: 5,
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
         {
             title: "Figurine",
             description:
                 "Plongez dans l'univers captivant de notre projet avec cette adorable figurine à l'effigie de B-Pump. ",
+            price: 15,
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
         {
-            title: "Casquette B-Pump",
+            title: "Casquette",
             description:
                 "Adoptez le style unique de notre projet avec cette casquette tendance, alliant confort et élégance.",
+            price: 10,
             image: "https://black_hole-3kf-1-q4182424.deta.app/api/photo/3qhdz53wpw9t.png",
         },
     ];
@@ -119,8 +120,15 @@ export default function Boutique() {
                 </div>
             </div>
             <div className="flex flex-wrap justify-center gap-5">
-                {products.map((item: ProductItem, index: number) => (
-                    <ThreeDCard key={index} title={item.title} description={item.description} image={item.image} />
+                {products.map((item: CartItem, index: number) => (
+                    <div key={index}>
+                        <ThreeDCard
+                            title={item.title}
+                            description={item.description}
+                            price={item.price}
+                            image={item.image}
+                        />
+                    </div>
                 ))}
             </div>
         </section>

@@ -9,3 +9,10 @@ interface ProgItem {
     hint: string[];
     exercises: string[];
 }
+
+interface CartItem {
+    title: string;
+    description: string;
+    price: number;
+    image: string;
+}

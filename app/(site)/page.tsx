@@ -98,7 +98,10 @@ export default function Home() {
                         height={150}
                     />
                 </Link>
-                <Link href="https://www.swisstransfer.com/d/3f886ada-fbce-4fb5-9ccf-bc5944b87dd1" target="_blank">
+                <Link
+                    href="https://drive.google.com/uc?id=1YK8SgaFUKMi5J9l7Ye-VuapJAqKKIs2G&export=download"
+                    target="_blank"
+                >
                     <Image
                         alt="Télécharger l'application pour Android"
                         src="https://i.imgur.com/Q6Dq41s.png"
