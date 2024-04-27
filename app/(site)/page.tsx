@@ -88,11 +88,20 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex flex-row items-center justify-center gap-5">
                 <Link href="/">
                     <Image
                         alt="Télécharger l'application pour Android"
                         src="https://play.google.com/intl/fr_FR/badges/static/images/badges/fr_badge_web_generic.png"
+                        style={{ width: "auto", height: "auto" }}
+                        width={150}
+                        height={150}
+                    />
+                </Link>
+                <Link href="https://www.swisstransfer.com/d/3f886ada-fbce-4fb5-9ccf-bc5944b87dd1" target="_blank">
+                    <Image
+                        alt="Télécharger l'application pour Android"
+                        src="https://i.imgur.com/Q6Dq41s.png"
                         style={{ width: "auto", height: "auto" }}
                         width={150}
                         height={150}
