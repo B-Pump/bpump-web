@@ -120,7 +120,7 @@ export default function About() {
     return (
         <section className="grid items-center gap-6">
             {/*c'est jamais too much le vert me fais */}
-            <div className="mx-auto h-[30rem] w-[calc(100%-4rem)]  overflow-hidden rounded-md">
+            <div className="mx-auto h-[30rem] w-[calc(100%-4rem)] overflow-hidden rounded-md">
                 <Vortex
                     backgroundColor="" /*selection:bg-muted bg-background*/ /*jsp comment mettre la bonne couleur apres je pense que le vortex vas partir mais ozef ça m'amuse*/
                     className="flex size-full flex-col items-center justify-center px-2 py-4 md:px-10"
