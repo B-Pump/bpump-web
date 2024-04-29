@@ -14,7 +14,8 @@ function addVariablesForColors({ addBase, theme }: any) {
 
 const config = {
     darkMode: ["class"],
-    content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
+    content: ["./src/**/*.{ts,tsx}"],
+    prefix: "",
     theme: {
         container: {
             center: true,
@@ -22,6 +23,9 @@ const config = {
             screens: { "2xl": "1400px" },
         },
         extend: {
+            fontFamily: {
+                sans: ["var(--font-sans)", ...fontFamily.sans],
+            },
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
@@ -62,9 +66,6 @@ const config = {
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
             },
-            fontFamily: {
-                sans: ["var(--font-sans)", ...fontFamily.sans],
-            },
             keyframes: {
                 "accordion-down": {
                     from: { height: "0" },
@@ -74,20 +75,12 @@ const config = {
                     from: { height: "var(--radix-accordion-content-height)" },
                     to: { height: "0" },
                 },
-                scroll: {
-                    to: { transform: "translate(calc(-50% - 0.5rem))" },
-                },
-                spotlight: {
-                    from: {
-                        opacity: "0",
-                        transform: "translate(-72%, -62%) scale(0.5)",
-                    },
+                "scroll-r": {
                     to: {
-                        opacity: "1",
-                        transform: "translate(-50%,-40%) scale(1)",
+                        transform: "translate(calc(-50% - 0.5rem))",
                     },
                 },
-                aurora: {
+                "aurora-bg": {
                     from: {
                         backgroundPosition: "50% 50%, 50% 50%",
                     },
@@ -95,13 +88,23 @@ const config = {
                         backgroundPosition: "350% 50%, 350% 50%",
                     },
                 },
+                spotlight: {
+                    "0%": {
+                        opacity: "0",
+                        transform: "translate(-72%, -62%) scale(0.5)",
+                    },
+                    "100%": {
+                        opacity: "1",
+                        transform: "translate(-50%,-40%) scale(1)",
+                    },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
-                scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+                "scroll-r": "scroll-r var(--animation-duration, 180s) var(--animation-direction, reverse) linear infinite",
+                "aurora-bg": "aurora-bg 60s linear infinite",
                 spotlight: "spotlight 2s ease .75s 1 forwards",
-                aurora: "aurora 60s linear infinite",
             },
         },
     },

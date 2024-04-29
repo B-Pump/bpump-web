@@ -1,0 +1,18 @@
+{
+    "author": [
+        { "name": "Pierre", "url": "https://github.com/wiizzl" },
+        { "name": "Galaad", "url": "https://github.com/Neipee" },
+        { "name": "Nathan", "url": "https://github.com/Arkhitecte" }
+    ],
+    "sugar": {
+        "title": "B-Pump",
+        "description": "La perfection dans chaque mouvement. Améliorez la justesse de vos postures grâce à B-Pump votre coach sportif 100% robotique !",
+        "keywords": ["Sport", "Robot"]
+    },
+    "link": [
+        { "title": "Accueil", "href": "" },
+        { "title": "À propos", "href": "about" },
+        { "title": "Boutique", "href": "shop" },
+        { "title": "Contact", "href": "contact" }
+    ]
+}
