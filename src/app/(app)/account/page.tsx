@@ -3,8 +3,7 @@
 import { Home, PlaneLanding } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useQueryState } from "nuqs";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -24,6 +23,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 
 import { useAuth } from "@/context/auth";
+import { useDashStore } from "@/context/dashboard";
 import { API_URL, useFetch } from "@/lib/api";
 
 interface Inputs_password {
@@ -59,8 +59,7 @@ type TabItem = {
 
 export default function Account() {
     const { authenticated, token, logout, remove } = useAuth();
-
-    const [tab, setTab] = useQueryState("tab", { defaultValue: "account" });
+    const { tab, setTab } = useDashStore();
 
     const router = useRouter();
 
@@ -345,42 +344,40 @@ export default function Account() {
     ];
 
     return (
-        <Suspense>
-            <div className="grid min-h-[93vh] w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-                <div className="border-r">
-                    <div className="flex h-full max-h-screen flex-col gap-2">
-                        <div className="flex h-14 items-center gap-2 border-b px-2 lg:h-[60px] lg:px-6">
-                            <p>Dashboard</p>
-                        </div>
-                        <nav className="grid items-start px-2 font-medium lg:px-4">
-                            {items.map((item: TabItem, index: number) => (
-                                <Button
-                                    variant="ghost"
-                                    onClick={() => setTab(item.value)}
-                                    className={`justify-start gap-3 text-base text-muted-foreground hover:text-primary ${
-                                        tab === item.value && "text-primary"
-                                    }`}
-                                    key={index}
-                                >
-                                    {item.icon}
-                                    {item.title}
-                                </Button>
-                            ))}
-                        </nav>
+        <div className="grid min-h-[93vh] w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+            <div className="border-r">
+                <div className="flex h-full max-h-screen flex-col gap-2">
+                    <div className="flex h-14 items-center gap-2 border-b px-2 lg:h-[60px] lg:px-6">
+                        <p>Dashboard</p>
                     </div>
-                </div>
-                <div className="flex flex-1 p-5">
-                    {items.map((item: TabItem, index: number) => {
-                        if (tab === item.value) {
-                            return (
-                                <div className="flex-1 rounded-lg border border-dashed p-6" key={index}>
-                                    {item.content}
-                                </div>
-                            );
-                        }
-                    })}
+                    <nav className="grid items-start px-2 font-medium lg:px-4">
+                        {items.map((item: TabItem, index: number) => (
+                            <Button
+                                variant="ghost"
+                                onClick={() => setTab(item.value)}
+                                className={`justify-start gap-3 text-base text-muted-foreground hover:text-primary ${
+                                    tab === item.value && "text-primary"
+                                }`}
+                                key={index}
+                            >
+                                {item.icon}
+                                {item.title}
+                            </Button>
+                        ))}
+                    </nav>
                 </div>
             </div>
-        </Suspense>
+            <div className="flex flex-1 p-5">
+                {items.map((item: TabItem, index: number) => {
+                    if (tab === item.value) {
+                        return (
+                            <div className="flex-1 rounded-lg border border-dashed p-6" key={index}>
+                                {item.content}
+                            </div>
+                        );
+                    }
+                })}
+            </div>
+        </div>
     );
 }
