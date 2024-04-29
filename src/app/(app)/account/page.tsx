@@ -60,7 +60,7 @@ type TabItem = {
 export default function Account() {
     const { authenticated, token, logout, remove } = useAuth();
 
-    const [tab, setTab] = useQueryState("tab", { defaultValue: "account", clearOnDefault: true });
+    const [tab, setTab] = useQueryState("tab", { defaultValue: "account" });
 
     const router = useRouter();
 
