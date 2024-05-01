@@ -229,7 +229,7 @@ export default function About() {
                             <span className="text-primary">GitHub</span>. Si vous êtes intéressé par le développement de notre
                             projet ou si vous souhaitez simplement jeter un coup d&apos;oeil à notre code, n&apos;hésitez pas à{" "}
                             <span className="text-primary">visiter nos repository</span>. Nous accueillons également les &quot;
-                            <span className="text-primary">Issues</span> &quot;, alors n&apos;hésitez pas à nous{" "}
+                            <span className="text-primary">Issues</span>&quot;, alors n&apos;hésitez pas à nous{" "}
                             <span className="text-primary">rapporter des problèmes ou des conseils</span> si vous avez des idées
                             ou des améliorations à suggérer.
                         </p>
@@ -244,6 +244,12 @@ export default function About() {
                                 {item.title}
                             </Link>
                         ))}
+                    </div>
+                    <div className="flex gap-1">
+                        <p>Pour plus d&apos;informations sur le produit en général, consultez notre</p>
+                        <Link href="/faq" className="underline">
+                            Foire Aux Questions
+                        </Link>
                     </div>
                 </div>
             </div>
