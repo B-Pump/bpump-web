@@ -161,7 +161,7 @@ export default function About() {
                     <h1 className="bg-clip-text text-center text-3xl font-bold leading-normal md:text-4xl xl:text-5xl 2xl:text-6xl">
                         Un projet créé pour des Olympiades avec{" "}
                         <span className="text-primary">
-                            passion & performance
+                            passion & performance{" "}
                             <AlertDialog>
                                 <AlertDialogTrigger asChild>
                                     <button>🦾</button>
@@ -175,6 +175,7 @@ export default function About() {
                                         </AlertDialogDescription>
                                     </AlertDialogHeader>
                                     <iframe
+                                        className="rounded-xl"
                                         src="https://open.spotify.com/embed/playlist/3WS804z70NuFS17SK4JE4R?utm_source=generator"
                                         width="100%"
                                         height="352"
