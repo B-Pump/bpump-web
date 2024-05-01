@@ -6,8 +6,6 @@ import { HoverCard } from "@/components/aceternity/hover-card";
 import { InfiniteMovingCards } from "@/components/aceternity/reviews-card";
 import { TextGenerateEffect } from "@/components/aceternity/text-gen";
 
-import config from "@/config.json";
-
 export default function Home() {
     const projects = [
         {
@@ -25,7 +23,7 @@ export default function Home() {
         {
             title: "Expérience utilisateur",
             description:
-                "Notre projet s'adapte à votre profil unique pour vous aider à obtenir l'entrainement qui vous convient le mieux. B-Pump fait tout cela en respectant votre vie privée, ne transmettant aucune information à des tiers",
+                "Notre projet s'adapte à votre profil unique pour vous aider à obtenir l'entrainement qui vous convient le mieux. B-Pump fait tout cela en respectant votre vie privée, ne transmettant aucune information à des tiers.",
             link: "about",
         },
     ];
@@ -79,7 +77,7 @@ export default function Home() {
                     lineTwo={"construit par 5 élèves de terminale"}
                 />
                 <p className="mx-auto mt-4 max-w-2xl text-center text-sm font-normal text-muted-foreground md:text-xl">
-                    {config.sugar.description}
+                    La perfection dans chaque mouvement.
                 </p>
             </Gemini>
             <div className="container">

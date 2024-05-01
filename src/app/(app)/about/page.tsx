@@ -1,12 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import { LayoutGrid } from "@/components/aceternity/layout-grid";
 import { Tooltip } from "@/components/aceternity/tooltip";
 import { WobbleCard } from "@/components/aceternity/wobble-card";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 
 export default function About() {
     const people = [
@@ -143,13 +152,40 @@ export default function About() {
         },
     ];
 
+    const videos = [{ file: "app" }, { file: "ia" }, { file: "ia" }, { file: "app" }];
+
     return (
         <section className="my-10">
             <div className="container">
                 <div className="flex flex-col justify-center gap-8">
-                    <h1 className="text-center text-6xl font-bold leading-normal">
-                        Un projet créé pour des Olympiades avec
-                        <span className="text-primary"> passion & performance 🦾</span>
+                    <h1 className="bg-clip-text text-center text-3xl font-bold leading-normal md:text-4xl xl:text-5xl 2xl:text-6xl">
+                        Un projet créé pour des Olympiades avec{" "}
+                        <span className="text-primary">
+                            passion & performance
+                            <AlertDialog>
+                                <AlertDialogTrigger asChild>
+                                    <button>🦾</button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                    <AlertDialogHeader>
+                                        <AlertDialogHeader>Vous savez quoi ?</AlertDialogHeader>
+                                        <AlertDialogDescription>
+                                            La musique utilisée pour le développement de notre projet est assez spéciale... On
+                                            vous laisse l&apos;écouter :
+                                        </AlertDialogDescription>
+                                    </AlertDialogHeader>
+                                    <iframe
+                                        src="https://open.spotify.com/embed/playlist/3WS804z70NuFS17SK4JE4R?utm_source=generator"
+                                        width="100%"
+                                        height="352"
+                                        loading="lazy"
+                                    />
+                                    <AlertDialogFooter>
+                                        <AlertDialogAction>Compris !</AlertDialogAction>
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialog>
+                        </span>
                     </h1>
                     <div className="flex flex-col gap-5">
                         <p className="text-center text-muted-foreground">
@@ -204,7 +240,7 @@ export default function About() {
                         />
                     </WobbleCard>
                 </div>
-                <div className="mx-16 flex max-w-7xl flex-col gap-10">
+                <div className="mx-0 flex max-w-7xl flex-col gap-10 lg:mx-16">
                     {content.map((item, index: number) => (
                         <div className="flex flex-col gap-3" key={index}>
                             <h2 className="text-3xl font-medium">{item.title}</h2>
@@ -215,7 +251,7 @@ export default function About() {
                 <div className="h-screen">
                     <LayoutGrid cards={cards} />
                 </div>
-                <div className="mx-16 flex flex-col gap-8">
+                <div className="mx-0 flex flex-col gap-8 pb-10 lg:mx-16">
                     <div className="flex max-w-7xl flex-col gap-5">
                         <p>
                             Suivez-nous sur nos <span className="text-primary">réseaux sociaux</span> pour être tenu au courant
@@ -238,19 +274,41 @@ export default function About() {
                             croissance !
                         </p>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex flex-wrap gap-3">
                         {socials.map((item, index: number) => (
                             <Link href={item.href} target="_blank" className={buttonVariants({})} key={index}>
                                 {item.title}
                             </Link>
                         ))}
                     </div>
-                    <div className="flex gap-1">
-                        <p>Pour plus d&apos;informations sur le produit en général, consultez notre</p>
+                </div>
+                <div className="mx-0 flex flex-col gap-3 pb-10 lg:mx-16">
+                    <h3 className="text-xl font-medium">
+                        Nous avons eu l&apos;occasion de réaliser plusieurs vidéos de promotion et de présentation de notre
+                        projet.
+                    </h3>
+                    <div className="grid grid-cols-1 grid-rows-4 gap-4 lg:grid-cols-2 lg:grid-rows-2">
+                        {videos.map((item, index: number) => (
+                            <video
+                                controls
+                                className="rounded-xl border"
+                                poster={`/video/about/poster/${item.file}.png`}
+                                key={index}
+                            >
+                                <source src={`/video/about/${item.file}.mp4`} type="video/mp4" />
+                                Votre naviguateur n&apos;arrive pas à afficher cette vidéo...
+                            </video>
+                        ))}
+                    </div>
+                </div>
+                <div className="mx-0 lg:mx-16">
+                    <p className="text-lg">
+                        Pour plus d&apos;informations sur le produit en général, consultez notre{" "}
                         <Link href="/faq" className="underline">
                             Foire Aux Questions
                         </Link>
-                    </div>
+                        .
+                    </p>
                 </div>
             </div>
         </section>
