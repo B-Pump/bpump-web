@@ -67,7 +67,7 @@ export const Tooltip = ({
                         width={100}
                         src={item.image}
                         alt={item.name}
-                        className="relative !m-0 size-16 rounded-full border-2 border-accent object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-125"
+                        className="relative !m-0 size-16 rounded-full border-2 border-accent object-cover object-top !p-0 transition duration-500 hover:border-0 group-hover:z-20 group-hover:scale-125"
                     />
                 </div>
             ))}

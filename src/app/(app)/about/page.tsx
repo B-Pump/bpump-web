@@ -29,19 +29,19 @@ export default function About() {
             id: 2,
             name: "Auguste G.",
             designation: "Programmation - Design",
-            image: "/image/team/auguste.jpg",
+            image: "/image/team/auguste.png",
         },
         {
             id: 3,
             name: "Galaad G.",
             designation: "Programmation - Mécanique",
-            image: "/image/team/galaad.jpg",
+            image: "/image/team/galaad.png",
         },
         {
             id: 4,
             name: "Emma B.",
             designation: "Design",
-            image: "/image/team/emma.jpg",
+            image: "/image/team/emma.png",
         },
         {
             id: 5,
