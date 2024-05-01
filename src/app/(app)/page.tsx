@@ -12,7 +12,7 @@ export default function Home() {
         {
             title: "Intelligence artificielle",
             description:
-                "Nous utilisons la dernière technologie d'IA de Google afin de détecter le positionnement de votre corps et mieux vous acompagner lors de vos exercices.",
+                "Nous utilisons la dernière technologie d'IA de Google afin de détecter le positionnement de votre corps et mieux vous accompagner lors de vos exercices.",
             link: "about",
         },
         {
@@ -45,7 +45,7 @@ export default function Home() {
     const reviews = [
         {
             title: "Étudiante",
-            quote: "Ce projet a révolutionné ma routine d'entraînement. C'est comme avoir un coach personnel 24/7. J'adore la manière dont il ajuste les exercices en fonction de mes progrès. Une vraie percée technologique !",
+            quote: "Ce projet a révolutionné ma routine d'entraînement. C'est comme avoir un coach personnel 24h/24. J'adore la manière dont il ajuste les exercices en fonction de mes progrès. Une vraie percée technologique !",
             name: "Sophie, 20 ans",
         },
         {
@@ -55,7 +55,7 @@ export default function Home() {
         },
         {
             title: "Amatrice de technologie",
-            quote: "Je suis bluffé par la performance de B-Pump. Il offre une variété d'activités, s'adapte à mon niveau de condition physique et motive constamment. Un investissement qui vaut vraiment la peine !",
+            quote: "Je suis bluffée par la performance de B-Pump. Il offre une variété d'activités, s'adapte à mon niveau de condition physique et motive constamment. Un investissement qui vaut vraiment la peine !",
             name: "Marie, 22 ans",
         },
         {
@@ -100,8 +100,8 @@ export default function Home() {
                             analysant les données de mouvement recueillies par la vision machine, notre système est capable de
                             fournir des conseils individualisés et des recommandations d&apos;
                             <b className="font-bold text-primary">entraînement sur mesure</b>. Que ce soit pour corriger vos
-                            technique ou maximiser les résultats, notre coach virtuel est là pour vous guider et vous soutenir à
-                            chaque étape de leur parcours. B-pump vous offre ainsi un outil puissant pour améliorer vos
+                            techniques ou maximiser les résultats, notre coach virtuel est là pour vous guider et vous soutenir à
+                            chaque étape de votre parcours. B-pump vous offre ainsi un outil puissant pour améliorer vos
                             performances et atteindre vos objectifs.
                         </p>
                     </div>
