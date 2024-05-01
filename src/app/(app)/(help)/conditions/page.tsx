@@ -1,6 +1,6 @@
 "use client";
 
-export default function TermsOfUse() {
+export default function ConditionsOfUse() {
     const articles: AccordionItem[] = [
         {
             title: "Acceptation des conditions d'utilisation",

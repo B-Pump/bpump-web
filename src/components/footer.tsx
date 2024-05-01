@@ -39,9 +39,9 @@ export default function Footer() {
             title: "Aide",
             new_tab: false,
             content: [
-                { title: "FAQ", href: "faq" },
-                { title: "Politique de confidentialité", href: "confidentiality" },
-                { title: "Conditions d'utilisation", href: "terms" },
+                { title: "Foire aux Questions", href: "faq" },
+                { title: "Politique de Confidentialité", href: "confidentiality" },
+                { title: "Conditions d'Utilisation", href: "conditions" },
             ],
         },
     ];

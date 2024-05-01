@@ -15,11 +15,11 @@ export default function Faq() {
                 {
                     title: "Qui sont les membres de l'équipe derrière le projet B-Pump ?",
                     content:
-                        "Nous sommes 6 lycéens passionnés par le monde de la technologie ayant pour objectif de réaliser un projet sur le thème du sport dans le cadre des Olympiades des Sciences de l'Ingénieur 2024.",
+                        "Nous sommes 5 lycéens passionnés par le monde de la technologie ayant pour objectif de réaliser un projet sur le thème du sport dans le cadre des Olympiades des Sciences de l'Ingénieur 2024.",
                 },
                 {
                     title: "Quel est le rôle de chacun des membres dans le projet B-Pump ?",
-                    content: "Nous sommes 4 développeurs et 2 designers.",
+                    content: "De manière globale, nous sommes 4 développeurs et 1 designeuse.",
                 },
                 {
                     title: "Quels sont les objectifs principaux du projet B-Pump ?",

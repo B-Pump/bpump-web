@@ -23,31 +23,31 @@ export default function About() {
             id: 1,
             name: "Pierre H.",
             designation: "Programmation - Montage vidéo",
-            image: "https://i.imgur.com/YPmxG4Y.jpeg",
+            image: "/image/team/pierre.jpg",
         },
         {
             id: 2,
             name: "Auguste G.",
             designation: "Programmation - Design",
-            image: "https://i.imgur.com/YPmxG4Y.jpeg",
+            image: "/image/team/auguste.jpg",
         },
         {
             id: 3,
             name: "Galaad G.",
             designation: "Programmation - Mécanique",
-            image: "https://i.imgur.com/YPmxG4Y.jpeg",
+            image: "/image/team/galaad.jpg",
         },
         {
             id: 4,
             name: "Emma B.",
             designation: "Design",
-            image: "https://i.imgur.com/YPmxG4Y.jpeg",
+            image: "/image/team/emma.jpg",
         },
         {
             id: 5,
             name: "Nathan C.",
             designation: "Programmation - Physique",
-            image: "https://i.imgur.com/YPmxG4Y.jpeg",
+            image: "/image/team/nathan.jpg",
         },
     ];
 
@@ -140,11 +140,11 @@ export default function About() {
     const socials = [
         {
             title: "Instagram",
-            href: "https://www.instagram.com/b.pump76",
+            href: "https://instagram.com/b.pump76",
         },
         {
             title: "YouTube",
-            href: "https://www.youtube.com/@b-pump",
+            href: "https://youtube.com/@b-pump",
         },
         {
             title: "GitHub",
@@ -192,7 +192,7 @@ export default function About() {
                         <p className="text-center text-muted-foreground">
                             Conçu par une équipe d&apos;élèves de Terminale du lycée Galilée à Franqueville St. Pierre
                         </p>
-                        <div className="mb-10 flex w-full flex-row items-center justify-center">
+                        <div className="flex w-full flex-row items-center justify-center">
                             <Tooltip items={people} />
                         </div>
                     </div>
@@ -306,7 +306,7 @@ export default function About() {
                     <p className="text-lg">
                         Pour plus d&apos;informations sur le produit en général, consultez notre{" "}
                         <Link href="/faq" className="underline">
-                            Foire Aux Questions
+                            Foire aux Questions
                         </Link>
                         .
                     </p>

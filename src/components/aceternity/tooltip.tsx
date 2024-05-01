@@ -55,7 +55,7 @@ export const Tooltip = ({
                                 rotate: rotate,
                                 whiteSpace: "nowrap",
                             }}
-                            className="absolute -left-1/2 -top-16 z-50 flex translate-x-1/2  flex-col items-center justify-center rounded-md bg-accent-foreground px-4 py-2 text-xs shadow-xl"
+                            className="absolute -left-1/2 -top-16 z-50 flex translate-x-1/2 flex-col items-center justify-center rounded-md bg-accent-foreground px-4 py-2 text-xs shadow-xl"
                         >
                             <p className="text-base font-bold text-accent">{item.name}</p>
                             <p className="text-xs text-accent">{item.designation}</p>
@@ -67,7 +67,7 @@ export const Tooltip = ({
                         width={100}
                         src={item.image}
                         alt={item.name}
-                        className="relative !m-0 size-14 rounded-full border-2 border-accent object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105"
+                        className="relative !m-0 size-16 rounded-full border-2 border-accent object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-125"
                     />
                 </div>
             ))}
