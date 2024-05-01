@@ -38,9 +38,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <html lang="fr" suppressHydrationWarning>
             <head />
             <body className={cn("font-sans antialiased selection:bg-muted", fontSans.variable)}>
-                <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+                <ThemeProvider attribute="class" enableSystem={false}>
                     {children}
-                    <Toaster position="bottom-center" className="select-none" />
+                    <Toaster position="top-right" className="select-none" />
                 </ThemeProvider>
             </body>
         </html>

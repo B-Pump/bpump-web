@@ -5,7 +5,7 @@ export default function TermsOfUse() {
         {
             title: "Acceptation des conditions d'utilisation",
             content:
-                "En utilisant l'application mobile de B-Pump ou tout service fourni par B-Pump, vous acceptez d'être lié par ces Termes d'Utilisation. Si vous n'acceptez pas ces Termes, veuillez ne pas utiliser l'application ou les services de B-Pump.",
+                "En utilisant l'application mobile de B-Pump ou tout service fourni par B-Pump, vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas ces Termes, veuillez ne pas utiliser l'application ou les services de B-Pump.",
         },
         {
             title: "Utilisation autorisée",
@@ -25,12 +25,12 @@ export default function TermsOfUse() {
         {
             title: "Limitation de responsabilité",
             content:
-                "B-Pump ne peut être tenu responsable de tout dommage indirect, accessoire, spécial, consécutif ou punitif résultant de votre utilisation de l'application ou de tout service fourni par B-Pump.",
+                "B-Pump ne peut être tenu responsable de tout domage indirect, accessoire, spécial, consécutif ou punitif résultant de votre utilisation de l'application ou de tout service fourni par B-Pump.",
         },
         {
             title: "Modifications des termes",
             content:
-                "B-Pump se réserve le droit de modifier ces Termes d'utilisation à tout moment. Les modifications prendront effet dès leur publication sur ce site. Il est de votre responsabilité de consulter régulièrement les Termes d'utilisation pour être informé des modifications.",
+                "B-Pump se réserve le droit de modifier ces Conditions d'utilisation à tout moment. Les modifications prendront effet dès leur publication sur ce site. Il est de votre responsabilité de consulter régulièrement les Conditions d'utilisation pour être informé des modifications.",
         },
         {
             title: "Résiliation",
@@ -42,7 +42,7 @@ export default function TermsOfUse() {
     return (
         <section className="grid items-center gap-6">
             <div className="container pt-6 md:py-10">
-                <h1 className="text-5xl font-bold">Termes d&apos;utilisation</h1>
+                <h1 className="text-5xl font-bold">Conditions d&apos;utilisation</h1>
                 <div>
                     {articles.map((item: AccordionItem, index: number) => (
                         <div key={index}>

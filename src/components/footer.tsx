@@ -41,7 +41,7 @@ export default function Footer() {
             content: [
                 { title: "FAQ", href: "faq" },
                 { title: "Politique de confidentialité", href: "confidentiality" },
-                { title: "Termes d'utilisation", href: "terms" },
+                { title: "Conditions d'utilisation", href: "terms" },
             ],
         },
     ];

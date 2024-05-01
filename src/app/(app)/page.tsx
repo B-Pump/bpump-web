@@ -1,11 +1,12 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import { Gemini } from "@/components/aceternity/gemini";
 import { HoverCard } from "@/components/aceternity/hover-card";
 import { InfiniteMovingCards } from "@/components/aceternity/reviews-card";
 import { TextGenerateEffect } from "@/components/aceternity/text-gen";
 
 import config from "@/config.json";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
     const projects = [
@@ -28,7 +29,6 @@ export default function Home() {
             link: "about",
         },
     ];
-
     const download = [
         {
             alt: "Download from Play Store",

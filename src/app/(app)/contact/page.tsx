@@ -48,7 +48,7 @@ export default function Contact() {
 
     return (
         <section className="grid flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div className="container">
+            <div className="container mt-10">
                 <form onSubmit={handleSubmit(onSubmit)} id="contact">
                     <div className="grid gap-2">
                         <div className="grid gap-1">

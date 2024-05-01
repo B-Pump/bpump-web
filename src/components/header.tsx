@@ -77,7 +77,7 @@ function CartDrawer() {
                         <div className="text-xl font-medium text-muted-foreground">Votre panier est vide !</div>
                         <SheetTrigger asChild>
                             <Link
-                                href="/boutique"
+                                href="/shop"
                                 className={cn(
                                     buttonVariants({
                                         variant: "link",
@@ -139,8 +139,8 @@ export default function Header() {
                                 } else setTheme("dark");
                             }}
                         >
-                            <Sun className="size-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                            <Moon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                            <Moon className="size-[1.2rem] rotate-0 scale-100 transition-all dark:rotate-90 dark:scale-0" />
+                            <Sun className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:-rotate-0 dark:scale-100" />
                         </Button>
                         <CartDrawer />
                         {authenticated ? (

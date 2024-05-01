@@ -24,7 +24,7 @@ export default function Confidentiality() {
         {
             title: "Accès et contrôle de vos informations",
             content:
-                "Vous pouvez accéder ou supprimer vos informations personnelles en vous connectant à votre compte utilisateur sur le site B-Pump. Vous pouvez également demander à supprimer votre compte ce qui supprimera l'entièreté de vos données de notre base de donnée.",
+                "Vous pouvez accéder ou supprimer vos informations personnelles en vous connectant à votre compte utilisateur sur le site B-Pump. Vous pouvez également demander à supprimer votre compte ce qui supprimera l'entièreté de vos données de notre base de données.",
         },
         {
             title: "Modifications de la politique",

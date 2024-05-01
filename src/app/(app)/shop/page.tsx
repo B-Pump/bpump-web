@@ -31,12 +31,12 @@ export default function Shop() {
         {
             title: "Projecteur HD",
             content:
-                "Le projecteur HD offre une expérience immerssive en affichant des instructions de mouvements clairs et nets",
+                "Le projecteur HD offre une expérience immerssive en affichant des instructions de mouvements claires et nettes",
         },
         {
             title: "Connexion à l'application",
             content:
-                "B-Pump se connecte facilement à une application dédiée, permettant aux utilisateurs de personnaliser leurs séances d'entraînement, de suivre leur progressions et d'accéder à des conseils personnalisés",
+                "B-Pump se connecte facilement à une application dédiée, permettant aux utilisateurs de personnaliser leurs séances d'entraînement, de suivre leur progression et d'accéder à des conseils personnalisés",
         },
         {
             title: "Suivi des performances en temps réel",
@@ -80,7 +80,7 @@ export default function Shop() {
                         <h1 className="bg-clip-text text-center text-4xl font-bold md:text-7xl">Procurez vous B-Pump</h1>
                         <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-muted-foreground">
                             Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de remise en forme
-                            avec facilité et motivation. Commandez le vôtre dès maintenant et laissez-vous guider vers le succès !
+                            avec facilité et motivation. Commandez le votre dès maintenant et laissez-vous guider vers le succès !
                         </p>
                     </div>
                     <div className="flex justify-center">
