@@ -106,7 +106,7 @@ export default function Header() {
     const { authenticated, logout } = useAuth();
 
     return (
-        <header className="sticky top-0 z-50 w-full select-none border-b bg-background">
+        <header className="sticky top-0 z-50 w-full select-none border-b bg-background lg:static">
             <div className="container flex h-16 items-center justify-between">
                 <div>
                     <div className="lg:hidden">
