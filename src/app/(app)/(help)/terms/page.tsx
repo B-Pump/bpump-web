@@ -25,7 +25,7 @@ export default function TermsOfUse() {
         {
             title: "Limitation de responsabilité",
             content:
-                "B-Pump ne peut être tenu responsable de tout domage indirect, accessoire, spécial, consécutif ou punitif résultant de votre utilisation de l'application ou de tout service fourni par B-Pump.",
+                "B-Pump ne peut être tenu responsable de tout dommage indirect, accessoire, spécial, consécutif ou punitif résultant de votre utilisation de l'application ou de tout service fourni par B-Pump.",
         },
         {
             title: "Modifications des termes",
