@@ -71,31 +71,29 @@ export default function About() {
             id: 2,
             content: (
                 <div>
-                    <p className="text-4xl font-bold text-white">Bonjour</p>
+                    <p className="text-4xl font-bold text-white">Première utilisation du Raspberry</p>
                     <p className="my-4 max-w-lg text-base font-normal text-neutral-200">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ex totam dolore, vitae aut culpa impedit
-                        ducimus laborum.
+                        Nous avons testé le bon fonctionnement de la caméra sur le Raspberry et la réaction de l&apos;IA face à un
+                        environnement moins performant que sur nos propres ordinateurs.
                     </p>
                 </div>
             ),
             className: "col-span-1",
-            thumbnail:
-                "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            thumbnail: "/image/work/raspberry.png",
         },
         {
             id: 3,
             content: (
                 <div>
-                    <p className="text-4xl font-bold text-white">Bonjour</p>
+                    <p className="text-4xl font-bold text-white">Auguste, travaillant sur le vidéo projecteur</p>
                     <p className="my-4 max-w-lg text-base font-normal text-neutral-200">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ex totam dolore, vitae aut culpa impedit
-                        ducimus laborum.
+                        Nous avons été amené à démonter le vidéo projecteur afin de mieux comprendre son fonctionnement et de
+                        pouvoir connecter le bouton d&apos;allumage au raspberry.
                     </p>
                 </div>
             ),
             className: "col-span-1",
-            thumbnail:
-                "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            thumbnail: "/image/work/videoproj.png",
         },
         {
             id: 4,
@@ -241,7 +239,7 @@ export default function About() {
                         />
                     </WobbleCard>
                 </div>
-                <div className="mx-0 flex max-w-7xl flex-col gap-10 lg:mx-16">
+                <div className="flex max-w-7xl flex-col gap-10 pb-10">
                     {content.map((item, index: number) => (
                         <div className="flex flex-col gap-3" key={index}>
                             <h2 className="text-3xl font-medium">{item.title}</h2>
@@ -249,10 +247,10 @@ export default function About() {
                         </div>
                     ))}
                 </div>
-                <div className="h-screen">
+                <div className="h-screen pb-10">
                     <LayoutGrid cards={cards} />
                 </div>
-                <div className="mx-0 flex flex-col gap-8 pb-10 lg:mx-16">
+                <div className="flex flex-col gap-8 pb-10">
                     <div className="flex max-w-7xl flex-col gap-5">
                         <p>
                             Suivez-nous sur nos <span className="text-primary">réseaux sociaux</span> pour être tenu au courant
@@ -283,7 +281,7 @@ export default function About() {
                         ))}
                     </div>
                 </div>
-                <div className="mx-0 flex flex-col gap-3 pb-10 lg:mx-16">
+                <div className="flex flex-col gap-3 pb-10">
                     <h3 className="text-xl font-medium">
                         Nous avons eu l&apos;occasion de réaliser plusieurs vidéos de promotion et de présentation de notre
                         projet.
@@ -302,7 +300,7 @@ export default function About() {
                         ))}
                     </div>
                 </div>
-                <div className="mx-0 lg:mx-16">
+                <div>
                     <p className="text-lg">
                         Pour plus d&apos;informations sur le produit en général, consultez notre{" "}
                         <Link href="/faq" className="underline">
