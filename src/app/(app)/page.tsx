@@ -31,7 +31,7 @@ export default function Home() {
         {
             alt: "Download from Play Store",
             image: "https://play.google.com/intl/fr_FR/badges/static/images/badges/fr_badge_web_generic.png",
-            link: "/",
+            link: "https://play.google.com/store/apps/details?id=com.wiizz.bpumpapp",
         },
         {
             alt: "Download directly",
