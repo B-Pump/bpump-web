@@ -10,9 +10,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     return (
         <>
             <Header />
-            <div className="hidden lg:block">
-                <FloatingNavBar />
-            </div>
+            <FloatingNavBar />
             <main className="flex-1">{children}</main>
             <Footer />
         </>

@@ -44,7 +44,7 @@ export default function Faq() {
                 {
                     title: "Comment l'application mobile interagit-elle avec le robot ?",
                     content:
-                        "Vous avez le choix entre la connexion via Bluetooth ou bien via WiFi. Dans les deux cas, les données sont échangées très rapidement.",
+                        "L'application se connecte au robot via WiFi. Nous utilisons un service de tunneling donc vous n'êtes pas obligé d'être connecté au même wifi que votre robot.",
                 },
             ],
         },
