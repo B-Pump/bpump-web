@@ -1,5 +1,6 @@
 "use client";
 
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,6 +17,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { buttonVariants } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 export default function About() {
     const people = [
@@ -150,7 +152,7 @@ export default function About() {
         },
     ];
 
-    const videos = [{ file: "app" }, { file: "ia" }, { file: "ia" }, { file: "app" }];
+    const videos = [{ file: "ia" }, { file: "app" }];
 
     return (
         <section className="my-10">
@@ -251,7 +253,114 @@ export default function About() {
                     <LayoutGrid cards={cards} />
                 </div>
                 <div className="flex flex-col gap-8 pb-10">
-                    <div className="flex max-w-7xl flex-col gap-5">
+                    <div className="flex max-w-7xl flex-col gap-3">
+                        <h3 className="text-xl font-medium">
+                            Nous avons appliqué la démarche des Sciences Industrielles de l&apos;Ingénieur.
+                        </h3>
+                        <p>
+                            Dans le cadre de notre projet, nous avons suivi une démarche rigoureuse et structurée, inspirée des
+                            méthodes de travail des ingénieurs professionnels. Notre objectif était de concevoir un produit
+                            innovant, fiable et répondant aux besoins de nos utilisateurs, tout en respectant{" "}
+                            <span className="text-primary">les normes et les standards de l&apos;industrie</span>.
+                        </p>
+                        <p>
+                            Pour ce faire, nous avons commencé par définir <span className="text-primary">les exigences</span> de
+                            notre projet, en identifiant les fonctions principales que notre produit devait remplir. Nous avons
+                            ensuite élaboré un{" "}
+                            <Link href={"/about/specifications"} className="text-primary underline">
+                                cahier des charges
+                            </Link>{" "}
+                            détaillé, qui décrit les spécifications techniques, fonctionnelles et ergonomiques de notre solution.
+                            Ce document nous a servi de guide tout au long du projet.
+                        </p>
+                        <div>
+                            <Image
+                                src="/svg/requirements.svg"
+                                alt="Diagramme des exigences"
+                                height={1000}
+                                width={1000}
+                                className="rounded-xl border p-2"
+                            />
+                            <p className="text-sm italic">Diagramme des exigences du système.</p>
+                        </div>
+                        <p>
+                            En parallèle, nous avons réalisé des <span className="text-primary">schémas cinématiques</span>, qui
+                            nous ont aidés à visualiser le fonctionnement de notre produit. Cela nous a également permis de
+                            détecter les éventuels problèmes ou contraintes techniques, et de trouver des solutions adaptées.
+                        </p>
+                        <div>
+                            <Carousel plugins={[Autoplay({ delay: 5000 })]}>
+                                <CarouselContent>
+                                    <CarouselItem>
+                                        <Image
+                                            src="/svg/cinematic/cinematic1.svg"
+                                            alt="Diagramme des exigences"
+                                            height={1200}
+                                            width={1200}
+                                            className="rounded-xl border"
+                                        />
+                                        <p className="text-sm italic">
+                                            Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité
+                                            abandonnée).
+                                        </p>
+                                    </CarouselItem>
+                                    <CarouselItem>
+                                        <Image
+                                            src="/svg/cinematic/cinematic2.svg"
+                                            alt="Diagramme des exigences"
+                                            height={1200}
+                                            width={1200}
+                                            className="rounded-xl border"
+                                        />
+                                        <p className="text-sm italic">
+                                            Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité
+                                            abandonnée).
+                                        </p>
+                                    </CarouselItem>
+                                </CarouselContent>
+                            </Carousel>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col gap-8 pb-10">
+                    <div className="flex max-w-7xl flex-col gap-3">
+                        <h3 className="text-xl font-medium">Notre projet est pluri-disciplinaire.</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque aliquid modi explicabo,
+                            consectetur alias dolorum dolorem harum at voluptatibus aut, fugit facilis unde voluptatem! Fugiat
+                            autem unde sapiente ab. Corrupti officiis sunt animi cum adipisci totam excepturi eius! Voluptate quis
+                            soluta facere qui, odio expedita consectetur doloremque voluptatum minima nobis cumque vero quam. Quos
+                            esse dolores exercitationem, iste ratione assumenda beatae modi nesciunt atque hic odit debitis neque
+                            obcaecati vero molestiae dolorem ipsam dolore corrupti repellat minus ut? Omnis cupiditate aliquam et
+                            doloremque impedit, nihil sequi ab.
+                        </p>
+                        <div>
+                            <Image src="https://i.imgur.com/RcjG7IK.png" alt="Diagramme des exigences" height={500} width={500} />
+                            <p className="text-sm italic">Graphique représentatif de la pluri-disciplinarité du projet.</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col gap-3 pb-10">
+                    <h3 className="text-xl font-medium">
+                        Nous avons eu l&apos;occasion de réaliser plusieurs vidéos de promotion et de présentation de notre
+                        projet.
+                    </h3>
+                    <div className="grid grid-cols-1 grid-rows-2 gap-4 lg:grid-cols-2 lg:grid-rows-1">
+                        {videos.map((item: { file: string }, index: number) => (
+                            <video
+                                controls
+                                className="rounded-xl border"
+                                poster={`/video/about/poster/${item.file}.png`}
+                                key={index}
+                            >
+                                <source src={`/video/about/${item.file}.mp4`} type="video/mp4" />
+                                Votre naviguateur n&apos;arrive pas à afficher cette vidéo...
+                            </video>
+                        ))}
+                    </div>
+                </div>
+                <div className="flex flex-col gap-8 pb-10">
+                    <div className="flex max-w-7xl flex-col gap-3">
                         <p>
                             Suivez-nous sur nos <span className="text-primary">réseaux sociaux</span> pour être tenu au courant
                             des dernières avancées de notre projet ! Nous partageons régulièrement{" "}
@@ -274,29 +383,10 @@ export default function About() {
                         </p>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                        {socials.map((item, index: number) => (
-                            <Link href={item.href} target="_blank" className={buttonVariants({})} key={index}>
+                        {socials.map((item: { title: string; href: string }, index: number) => (
+                            <Link href={item.href} target="_blank" className={buttonVariants()} key={index}>
                                 {item.title}
                             </Link>
-                        ))}
-                    </div>
-                </div>
-                <div className="flex flex-col gap-3 pb-10">
-                    <h3 className="text-xl font-medium">
-                        Nous avons eu l&apos;occasion de réaliser plusieurs vidéos de promotion et de présentation de notre
-                        projet.
-                    </h3>
-                    <div className="grid grid-cols-1 grid-rows-4 gap-4 lg:grid-cols-2 lg:grid-rows-2">
-                        {videos.map((item, index: number) => (
-                            <video
-                                controls
-                                className="rounded-xl border"
-                                poster={`/video/about/poster/${item.file}.png`}
-                                key={index}
-                            >
-                                <source src={`/video/about/${item.file}.mp4`} type="video/mp4" />
-                                Votre naviguateur n&apos;arrive pas à afficher cette vidéo...
-                            </video>
                         ))}
                     </div>
                 </div>
