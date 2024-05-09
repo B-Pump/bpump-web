@@ -1,5 +1,6 @@
 "use client";
 
+import AutoScroll from "embla-carousel-auto-scroll";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,7 +26,7 @@ export default function About() {
             id: 1,
             name: "Pierre H.",
             designation: "Programmation - Montage vidéo",
-            image: "/image/team/pierre.jpg",
+            image: "/image/team/pierre.png",
         },
         {
             id: 2,
@@ -154,6 +155,43 @@ export default function About() {
 
     const videos = [{ file: "ia" }, { file: "app" }];
 
+    const cinematic = [
+        {
+            image: "cinematic1.svg",
+            desc: "Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité abandonnée).",
+        },
+        {
+            image: "cinematic2.svg",
+            desc: "Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité abandonnée).",
+        },
+    ];
+    const blueprint = [
+        {
+            image: "back.png",
+            desc: "Bonjour",
+        },
+        {
+            image: "front.png",
+            desc: "Bonjour",
+        },
+        {
+            image: "side.png",
+            desc: "Bonjour",
+        },
+        {
+            image: "back_composant.png",
+            desc: "Bonjour",
+        },
+        {
+            image: "front_composant.png",
+            desc: "Bonjour",
+        },
+        {
+            image: "side_composant.png",
+            desc: "Bonjour",
+        },
+    ];
+
     return (
         <section className="my-10">
             <div className="container">
@@ -267,7 +305,7 @@ export default function About() {
                             Pour ce faire, nous avons commencé par définir <span className="text-primary">les exigences</span> de
                             notre projet, en identifiant les fonctions principales que notre produit devait remplir. Nous avons
                             ensuite élaboré un{" "}
-                            <Link href={"/about/specifications"} className="text-primary underline">
+                            <Link href={"https://urlz.fr/qBRn"} target="_blank" className="text-primary underline">
                                 cahier des charges
                             </Link>{" "}
                             détaillé, qui décrit les spécifications techniques, fonctionnelles et ergonomiques de notre solution.
@@ -289,34 +327,20 @@ export default function About() {
                             détecter les éventuels problèmes ou contraintes techniques, et de trouver des solutions adaptées.
                         </p>
                         <div>
-                            <Carousel plugins={[Autoplay({ delay: 5000 })]}>
+                            <Carousel plugins={[Autoplay({ delay: 5000 })]} opts={{ loop: true }}>
                                 <CarouselContent>
-                                    <CarouselItem>
-                                        <Image
-                                            src="/svg/cinematic/cinematic1.svg"
-                                            alt="Diagramme des exigences"
-                                            height={1200}
-                                            width={1200}
-                                            className="rounded-xl border"
-                                        />
-                                        <p className="text-sm italic">
-                                            Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité
-                                            abandonnée).
-                                        </p>
-                                    </CarouselItem>
-                                    <CarouselItem>
-                                        <Image
-                                            src="/svg/cinematic/cinematic2.svg"
-                                            alt="Diagramme des exigences"
-                                            height={1200}
-                                            width={1200}
-                                            className="rounded-xl border"
-                                        />
-                                        <p className="text-sm italic">
-                                            Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité
-                                            abandonnée).
-                                        </p>
-                                    </CarouselItem>
+                                    {cinematic.map((item: { image: string; desc: string }, index: number) => (
+                                        <CarouselItem key={index}>
+                                            <Image
+                                                src={`/svg/cinematic/${item.image}`}
+                                                alt="Diagramme des exigences"
+                                                height={1200}
+                                                width={1200}
+                                                className="rounded-xl border"
+                                            />
+                                            <p className="text-sm italic">{item.desc}</p>
+                                        </CarouselItem>
+                                    ))}
                                 </CarouselContent>
                             </Carousel>
                         </div>
@@ -337,6 +361,33 @@ export default function About() {
                         <div>
                             <Image src="https://i.imgur.com/RcjG7IK.png" alt="Diagramme des exigences" height={500} width={500} />
                             <p className="text-sm italic">Graphique représentatif de la pluri-disciplinarité du projet.</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col gap-8 pb-10">
+                    <div className="flex max-w-7xl flex-col gap-3">
+                        <h3 className="text-xl font-medium">Un design soigné</h3>
+                        <p>
+                            Nous avons fait l&apos;effort pour chaque parties du projet à marquer le côté esthétique. Le design du
+                            robot et le placement de chaque composant à l&apos;intérieur de ce dernier est réfléchi.
+                        </p>
+                        <div>
+                            <Carousel plugins={[AutoScroll({ speed: 0.5 })]} opts={{ loop: true, dragFree: true }}>
+                                <CarouselContent>
+                                    {blueprint.map((item: { image: string; desc: string }, index: number) => (
+                                        <CarouselItem className="basis-1/3" key={index}>
+                                            <Image
+                                                src={`/image/blueprint/${item.image}`}
+                                                alt="Diagramme des exigences"
+                                                height={500}
+                                                width={500}
+                                                className="rounded-xl border"
+                                            />
+                                            <p className="text-sm italic">{item.desc}</p>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                            </Carousel>
                         </div>
                     </div>
                 </div>
@@ -377,10 +428,7 @@ export default function About() {
                             <span className="text-primary">rapporter des problèmes ou des conseils</span> si vous avez des idées
                             ou des améliorations à suggérer.
                         </p>
-                        <p>
-                            Rejoignez-nous dès maintenant pour suivre notre parcours et faire partie de notre communauté en pleine
-                            croissance !
-                        </p>
+                        <p>Rejoignez-nous dès maintenant pour suivre notre parcours !</p>
                     </div>
                     <div className="flex flex-wrap gap-3">
                         {socials.map((item: { title: string; href: string }, index: number) => (
