@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 import { Spotlight } from "@/components/aceternity/spotlight";
 import { ThreeDCard } from "@/components/aceternity/threed-card";
-import { Model } from "@/components/model";
+import { BPump } from "@/components/model";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
@@ -94,15 +94,15 @@ export default function Shop() {
                     <p className="flex justify-center pt-3 text-muted-foreground">À partir de 200€</p>
                 </div>
             </div>
-            <div className="flex h-[80vh] pb-20">
+            <div className="flex h-auto flex-col pb-10 lg:h-[80vh] lg:flex-row lg:pb-0">
                 <div
-                    className={cn("w-1/2", isGrabbing ? "cursor-grabbing" : "cursor-grab")}
+                    className={cn("w-full lg:w-1/2", isGrabbing ? "cursor-grabbing" : "cursor-grab")}
                     onMouseDown={() => setIsGrabbing(true)}
                     onMouseUp={() => setIsGrabbing(false)}
                 >
-                    <Model />
+                    <BPump />
                 </div>
-                <div className="flex w-1/2 items-center justify-center p-4">
+                <div className="flex w-full items-center justify-center p-4 lg:w-1/2">
                     <Accordion type="single" collapsible className="w-3/4">
                         {accordion.map((item: AccordionItem, index: number) => (
                             <AccordionItem key={index} value={`item-${index}`}>
