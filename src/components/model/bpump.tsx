@@ -4,7 +4,6 @@
 */
 
 import { useGLTF } from "@react-three/drei";
-import React from "react";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
 
@@ -31,10 +30,9 @@ type GLTFResult = GLTF & {
     };
 };
 
-type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements["mesh"]>>;
-
 export function Model(props: JSX.IntrinsicElements["group"]) {
     const { nodes, materials } = useGLTF("/3d/shoe-draco.glb") as GLTFResult;
+
     return (
         <group {...props} dispose={null}>
             <mesh receiveShadow geometry={nodes.shoe.geometry} material={materials.laces} />

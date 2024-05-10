@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { Spotlight } from "@/components/aceternity/spotlight";
 import { ThreeDCard } from "@/components/aceternity/threed-card";
 import { BPump } from "@/components/model";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -72,29 +71,23 @@ export default function Shop() {
     ];
 
     return (
-        <section className="mb-10">
-            <div className="relative flex h-[30rem] w-full overflow-hidden rounded-md antialiased md:items-center md:justify-center">
-                <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
-                <div>
-                    <div className="relative z-10 mx-auto w-full max-w-7xl select-none p-4 pt-20 md:pt-0">
-                        <h1 className="bg-clip-text text-center text-4xl font-bold md:text-7xl">
-                            Procurez vous <br />
-                            B-Pump
-                        </h1>
-                        <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-muted-foreground">
+        <section className="my-10">
+            <div className="container">
+                <div className="flex flex-col gap-6">
+                    <h1 className="bg-clip-text text-center text-4xl font-bold md:text-7xl">
+                        Procurez vous <br />
+                        <span className="text-primary">B-Pump</span>
+                    </h1>
+                    <div className="flex flex-col items-center justify-center gap-3">
+                        <p className="max-w-xl text-center text-muted-foreground">
                             Transformez votre routine d&apos;entraînement avec B-pump ! Atteignez vos objectifs de remise en forme
                             avec facilité et motivation. Commandez le votre dès maintenant et laissez-vous guider vers le succès !
                         </p>
+                        <Button onClick={() => {}}>Acheter dès maintenant</Button>
                     </div>
-                    <div className="flex justify-center">
-                        <a href="/contact">
-                            <Button onClick={() => {}}>Acheter dès maintenant</Button>
-                        </a>
-                    </div>
-                    <p className="flex justify-center pt-3 text-muted-foreground">À partir de 200€</p>
                 </div>
             </div>
-            <div className="flex h-auto flex-col pb-10 lg:h-[80vh] lg:flex-row lg:pb-0">
+            <div className="flex h-auto flex-col pb-10 lg:h-[60vh] lg:flex-row lg:pb-0">
                 <div
                     className={cn("w-full lg:w-1/2", isGrabbing ? "cursor-grabbing" : "cursor-grab")}
                     onMouseDown={() => setIsGrabbing(true)}
