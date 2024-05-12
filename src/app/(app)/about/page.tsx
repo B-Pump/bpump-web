@@ -1,7 +1,6 @@
 "use client";
 
 import AutoScroll from "embla-carousel-auto-scroll";
-import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -59,16 +58,17 @@ export default function About() {
             id: 1,
             content: (
                 <div>
-                    <p className="text-4xl font-bold text-white">Bonjour</p>
+                    <p className="text-4xl font-bold text-white">
+                        Pierre, testant des fusibles pour sécuriser le circuit du robot
+                    </p>
                     <p className="my-4 max-w-lg text-base font-normal text-neutral-200">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ex totam dolore, vitae aut culpa impedit
-                        ducimus laborum.
+                        Nous avons pris soin de sécuriser le circuit électrique via un fusible de 4A et des gaines thermiques afin
+                        d&apos;éviter un court circuit.
                     </p>
                 </div>
             ),
             className: "md:col-span-2",
-            thumbnail:
-                "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            thumbnail: "/image/work/fusible.jpg",
         },
         {
             id: 2,
@@ -102,16 +102,14 @@ export default function About() {
             id: 4,
             content: (
                 <div>
-                    <p className="text-4xl font-bold text-white">Bonjour</p>
+                    <p className="text-4xl font-bold text-white">Schéma explicatif de notre système</p>
                     <p className="my-4 max-w-lg text-base font-normal text-neutral-200">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ex totam dolore, vitae aut culpa impedit
-                        ducimus laborum.
+                        Voici un schéma représentatif de comment notre système communique.
                     </p>
                 </div>
             ),
             className: "md:col-span-2",
-            thumbnail:
-                "https://images.unsplash.com/photo-1475070929565-c985b496cb9f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            thumbnail: "/image/work/schema.jpg",
         },
     ];
 
@@ -155,16 +153,6 @@ export default function About() {
 
     const videos = [{ file: "ia" }, { file: "app" }];
 
-    const cinematic = [
-        {
-            image: "cinematic1.svg",
-            desc: "Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité abandonnée).",
-        },
-        {
-            image: "cinematic2.svg",
-            desc: "Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité abandonnée).",
-        },
-    ];
     const blueprint = [
         {
             image: "back.png",
@@ -327,22 +315,16 @@ export default function About() {
                             détecter les éventuels problèmes ou contraintes techniques, et de trouver des solutions adaptées.
                         </p>
                         <div>
-                            <Carousel plugins={[Autoplay({ delay: 5000 })]} opts={{ loop: true }}>
-                                <CarouselContent>
-                                    {cinematic.map((item: { image: string; desc: string }, index: number) => (
-                                        <CarouselItem key={index}>
-                                            <Image
-                                                src={`/svg/cinematic/${item.image}`}
-                                                alt="Diagramme des exigences"
-                                                height={1200}
-                                                width={1200}
-                                                className="rounded-xl border"
-                                            />
-                                            <p className="text-sm italic">{item.desc}</p>
-                                        </CarouselItem>
-                                    ))}
-                                </CarouselContent>
-                            </Carousel>
+                            <Image
+                                src="/svg/cinematic.svg"
+                                alt="Schéma cinématique"
+                                height={1000}
+                                width={1000}
+                                className="rounded-xl border"
+                            />
+                            <p className="text-sm italic">
+                                Schéma cinématique de notre système pour orienter le vidéo projecteur (fonctionnalité abandonnée).
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -359,7 +341,7 @@ export default function About() {
                             doloremque impedit, nihil sequi ab.
                         </p>
                         <div>
-                            <Image src="https://i.imgur.com/RcjG7IK.png" alt="Diagramme des exigences" height={500} width={500} />
+                            <Image src="/image/pluridisciplinarite.png" alt="Pluri-disciplinarité" height={800} width={800} />
                             <p className="text-sm italic">Graphique représentatif de la pluri-disciplinarité du projet.</p>
                         </div>
                     </div>
@@ -378,12 +360,11 @@ export default function About() {
                                         <CarouselItem className="basis-1/3" key={index}>
                                             <Image
                                                 src={`/image/blueprint/${item.image}`}
-                                                alt="Diagramme des exigences"
+                                                alt="Blueprint du robot"
                                                 height={500}
                                                 width={500}
                                                 className="rounded-xl border"
                                             />
-                                            <p className="text-sm italic">{item.desc}</p>
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
