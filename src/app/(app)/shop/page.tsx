@@ -51,21 +51,15 @@ export default function Shop() {
 
     const products = [
         {
-            title: "Porte clef",
+            title: "Porte-clés",
             description: "Emportez l'esprit novateur de notre projet partout avec vous grâce à ce porte-clés exclusif.",
             price: 5,
-            image: "https://i.imgur.com/Ld62AQI.png",
+            image: "https://i.imgur.com/tqVJ5sp.jpeg",
         },
         {
             title: "Figurine",
             description: "Plongez dans l'univers captivant de notre projet avec cette adorable figurine à l'effigie de B-Pump. ",
             price: 15,
-            image: "https://i.imgur.com/Ld62AQI.png",
-        },
-        {
-            title: "Casquette",
-            description: "Adoptez le style unique de notre projet avec cette casquette tendance, alliant confort et élégance.",
-            price: 10,
             image: "https://i.imgur.com/Ld62AQI.png",
         },
     ];
